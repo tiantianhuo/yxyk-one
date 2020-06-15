@@ -42,7 +42,7 @@ public class MappingController extends BaseController {
         return "regulations/regulations";
     }
     /*添加文章*/
-        @GetMapping("regulations/addarticle")
+    @GetMapping("regulations/addarticle")
     public String addArticles(){
         return "regulations/addarticle";
     }
