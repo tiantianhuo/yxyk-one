@@ -1,0 +1,97 @@
+*{margin: 0;padding: 0;}
+html,body{height: 100%;width: 100%;font-size: 10px;font-family: "微软雅黑";}
+.clearfix{overflow: hidden;}
+
+
+.nav-tabs>li{
+	margin-right: 10px !important;
+}
+.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	background: #3299fe !important;
+	color: #fff;
+}
+.person_pass{
+	width: 100%;
+	margin-top: 18px;
+}
+.person_hp{
+	width: 96%;
+	margin: 0 auto;
+	padding: 24px 0 34px 0 ;
+	border-bottom: 1px dashed #e6e9f0;
+}
+.pp_left{
+	float: left;
+	width: 15%;
+	font-size: 14px;
+	color: #464e5a;
+	text-align: right;
+	padding-right: 33px;
+}
+.pp_right{
+	float: left;
+	width: 85%;
+}
+.pp_head{
+	line-height: 74px;
+	vertical-align: middle;
+}
+.person_chagepass{
+	width: 90%;
+	float: left;
+	margin: 0 auto;
+	padding-top: 50px;
+}
+.pp_right input{
+	width: 362px;
+	height: 40px;
+	border: 1px solid #d7dde4;
+	border-radius: 5px;
+	padding-left: 1em;
+}	
+.pp_right input::-webkit-input-placeholder{
+	transform:translateX(-0.7em);
+	color: #aab6c7;
+	font-size: 12px;
+}
+.person_fillin{
+	padding-top: 36px;
+	margin-left:20%;
+}
+.pp_pass{
+	line-height: 40px;
+	vertical-align: middle;
+}
+.pp_btn{
+	margin-left: 32%;
+	margin-top: 30px;
+	padding:10px 26px;
+	color: #fff;
+	font-size: 16px;
+	background: #3299fe;
+	border: 0;
+	border-radius: 5px;
+}
+.pp_btntwo{
+	margin-left: 36%;
+}
+.w20{
+	width: 20% !important;
+}
+.w80{
+	width: 80% !important;
+}
+.titles{
+	font-family: '微软雅黑';
+	font-size: 14px;
+	color: #464e5a;
+	padding-left: 15%;
+}
+
+.checkbox-inline, .radio-inline{
+	padding-left: 0 !important;
+	padding-right: 20px !important;
+}
+.checkbox label, .radio label{
+	padding-left: 0 !important;
+}

@@ -1,0 +1,87 @@
+.off_app_tals{
+	width: 100%;
+	padding: 0 30px;
+}
+.off_app_talsl{
+	border: 1px solid #e6e9f0 !important;
+}
+.off_app_talsl textarea{
+	border: 0;
+}
+.off_app_talsr{
+	background: #fff;
+	border: 1px solid #e6e9f0;
+	padding: 20px;
+	overflow: auto;
+}
+.off_app_talsr::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.off_app_talsr::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #e6e9f0;
+	height:30px !important;
+    }
+.off_app_talsr::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+.off_app_talsrc{
+	border: 1px solid #e6e9f0;
+}
+.off_app_taltit{
+	padding:10px;
+	border-bottom: 1px solid #e6e9f0;
+	background: #f4f4f4;
+}
+.time-cicle{
+	margin: 0 5px 0 10px;
+}
+.off_app_ttime{
+	color:#868e9a;
+	font-size: 12px;
+}
+.off_app_file_copy,.off_app_file_del{
+	float: right;
+	cursor: pointer;
+}
+.off_app_file_del{
+	margin-left: 15px;
+}
+
+.off_app_talcont{
+	width: 100%;
+	color: #464e5a;
+	font-size: 14px;
+	line-height: 30px;
+	height: 150px;
+	border: 0;
+	padding: 0 15px;
+}
+.off_app_talsra{
+	padding: 15px;
+	font-size: 12px;
+}
+.off_app_talsra a{
+	color: #3299fe;
+	text-decoration: none;
+}
+.off_app_talsra a:hover{
+	text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

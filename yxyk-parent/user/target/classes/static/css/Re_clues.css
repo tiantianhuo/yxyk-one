@@ -1,0 +1,238 @@
+*{margin: 0;padding: 0;}
+html,body{height: 100%;width: 100%;font-size: 10px;font-family: "微软雅黑";}
+.clearfix{overflow: hidden;}
+
+.Re_c_cont{
+	width: 100%;
+	float: right;
+}
+.Re_c_ctxt{
+	display: inline-block;
+	font-size: 17px;
+	color: #464e5a;
+	font-weight: bold;
+	padding: 20px 40px;
+}
+.Re_c_opera,.Re_c_opera1{
+	float: right;
+	font-size: 14px;
+	cursor: pointer;
+	margin: 20px 5%;
+}
+.Re_c_opera span,.Re_c_opera1 span{
+	display: inline-block;
+}
+.Re_c_opera1{
+	margin-top: 30px;
+}
+
+.Re_c_oP,.Re_c_oP1{
+	color: #3299fe;
+	margin-right: 30px;
+}
+.Re_c_oP1{
+	margin-right: 0;
+}
+.Re_c_oE{
+	background:#3299fe;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 5px ;
+}
+.Re_c_rmess{
+    width: 93%;
+	margin: 0 auto;
+	border: 1px solid #e6e9f0;
+	border-radius: 5px;
+}
+.Re_c_rmess1{
+	padding: 25px 0 0 35px;
+}
+.Re_c_rmess2{
+	padding: 14px 0 25px 35px;
+}
+.Re_c_rmess1 li,.Re_c_rmess2 li{
+	float: left;
+	width: 33%;
+	font-size: 16px;
+	color: #464e5a;
+}
+.Re_c_cp{
+	width: 92%;
+	color: #464e5a;
+	font-size: 16px;
+	margin: 0 auto;
+	text-indent: 2em;
+	line-height: 2;
+}
+.Re_c_cimg{
+	width: 92%;
+	margin: 20px auto;
+	margin-top: 0;
+	overflow: hidden;
+}
+.Re_c_cimg img{
+	width: 140px;
+	height: 100px;
+	padding-right: 36px;
+	cursor: pointer;
+}
+.Notm{
+	width: 96%;
+	margin: 70px auto;
+	font-size: 18px;
+}
+.Notm p{
+	width: 100%;
+	padding: 18px 0;
+	text-align: center;
+	background:#f4f6f8;
+	border: 1px solid #e6e9f0;
+}
+.Notm span{
+	color: #e06158;
+}
+.Re_c_rcope{
+	width: 96%;
+	margin: 70px auto;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+}
+.Re_c_rbtn{
+	background: #3299fe;
+	padding: 10px 22px;
+	border: 0;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+.addbox{
+	width: 580px;
+}
+.addmessbox{
+	width: 83%;
+	margin:  20px 30px;
+}
+.addp{
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 11%;
+}
+.addmb{
+	font-size: 14px;
+	color: #464e5a;
+	margin-top: 20px;
+}
+.addmb1{
+	float: left;
+	width: 25%;
+	text-align:right;
+	padding-right: 20px;
+	line-height: 40px;
+	vertical-align: middle;
+}
+.addmb2{
+	float: left;
+	width: 75%;
+}
+.addmb2ta{
+	width: 360px;
+    height: 120px;
+    resize: none;
+    border: 1px solid #d7dde4;
+    border-radius: 5px;
+    padding: 0.8em 1em;
+}
+.addmb2ta::-webkit-input-placeholder{
+	transform:translateX(-0.7em);
+}
+.addmb2rad{
+	line-height: 40px;
+	vertical-align: middle;
+}
+.icss{
+	width: 360px;
+    height: 40px;
+    border: 1px solid #d7dde4;
+    color: #515c75;
+    border-radius: 5px;
+    text-indent: 1em;
+}
+
+
+
+/*详情页右键hover*/
+.alertliser{
+	position: relative;
+}
+.alertliser:hover >ul{
+	display: block;
+}
+.hoverbox{
+	position: absolute;
+	width:100%;
+	height:auto;
+	background: #fff;
+	top:-1px;
+	left:100%;
+	border: 1px solid #e6e9f0;
+	display: none;
+}
+.hoverli{
+	float:left;
+	width:100%;
+	height:auto;
+	font-family: 微软雅黑;
+    font-size: 14px;
+    color:#464e5a;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e6e9f0;
+}
+.hoverli:hover{
+	float:left;
+	width:100%;
+	height:auto;
+	font-family: 微软雅黑;
+    font-size: 14px;
+    color:#464e5a;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e6e9f0;
+    background: #3299fe;
+    color:#fff;
+}
+
+
+/*语音播放*/
+.app-voice-pause,.app-voice-play{
+  height: 18px;
+  background-repeat: no-repeat;
+  background-image: url(../img/voice.png);
+  background-size: 18px auto;
+  opacity: 0.5;
+}
+ .app-voice-you .app-voice-pause{
+  /*从未播放*/
+  background-position: 0px -39px;
+}
+.app-voice-you .app-voice-play{
+  /*播放中（不需要过渡动画）*/
+  background-position: 0px -39px;
+  -webkit-animation: voiceplay 1s infinite step-start;
+  -moz-animation: voiceplay 1s infinite step-start;
+  -o-animation: voiceplay 1s infinite step-start;
+  animation: voiceplay 1s infinite step-start;
+}
+@-webkit-keyframes voiceplay {
+  0%,
+  100% {
+    background-position: 0px -39px;
+  }
+  33.333333% {
+    background-position: 0px -0px;
+  }
+  66.666666% {
+    background-position: 0px -19.7px;
+  }
+}

@@ -1,0 +1,168 @@
+html,body{  
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+.logins{
+	width:100%;
+	height:100%;
+}
+.logins .top{
+	width:100%;
+	height:18%;
+	position: relative;
+	background: url(../images/login/login.png) no-repeat center center;	
+}
+.logins .content{
+	width:100%;
+	height:66%;
+	background: url(../images/login/loginbg.png);	
+	background-size: 100%;
+}
+.logins .content .neirong{
+	width:1300px;
+	height:100%;
+	margin:0 auto;
+}
+.left{
+	width:50%;
+	height:100%;
+	float: left;
+	background: url(../images/login/01_04.png) no-repeat center;	
+	background-size: 78%;
+}
+.left img{
+	width:100%;
+}
+.right{
+	width:50%;
+	height:100%;
+	float: left;
+}
+.right .boxlogin{
+	width:65%;
+	height:70%;
+	background: #fff;
+	float:right;
+	margin-top:15%;
+	padding:0 30px;
+	padding-bottom: 30px;
+	font-weight: bold;
+}
+.right .boxlogin .topzi{
+	width:100%;
+	height:20%;
+	text-align: left;
+	line-height: 80px;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color:#666;
+}
+.right .boxlogin .formbox{
+	width:100%;
+/*	height:80%;*/
+	overflow: hidden;
+}
+.logins .footer{
+	width:100%;
+	height:16%;
+	text-align: center;
+	line-height: 130px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#122c3e;
+}
+.accounts {
+        width: 100% !important;
+        height: 50px;
+        background: #fff;
+        font-size: 16px;
+        line-height: 45px;
+        border:1px solid #eaeaea;
+        border-radius: 2px;
+    }
+.accounts input {
+        height: 100%;
+        border: none;
+        background: none;
+        outline: none;
+        width: 300px;
+        color: #a9a9a9;
+    }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+        border: 1px solid #fff!important;
+        height: 27px!important;
+        line-height: 27px!important;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .accounts span {
+        font-size: 16px;
+        padding: 0 10px;
+        color: #DDD;
+    }
+.password {
+        margin-top: 30px;
+        width: 100%;
+        height: 50px;
+        font-size: 16px;
+        background: #fff;
+        line-height: 45px;
+        border:1px solid #eaeaea;
+        border-radius: 2px;
+    }
+
+    .password span {
+        font-size: 16px;
+        padding: 0 10px;
+        color: #DDD;
+    }
+
+    .password input {
+        height: 100%;
+        border: none;
+        background: none;
+        outline: none;
+        width: 300px;
+        color: #a9a9a9;
+    }
+	form .btn {
+        width: 100%;
+        height: 48px;
+        background: #5186e2;
+        border: none;
+        border-radius: 5px !important;
+        color: #fff;
+        font-size: 20px;
+    }
+
+    form .btn:hover {
+        width: 100%;
+        height: 48px;
+        background: #447de0;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 20px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 1px 0 rgba(255, 255, 255, .1);
+    }
+	.checkbox label {
+        font-size: 16px;
+        padding-left: 0px;
+        color: #999;
+        line-height: 18px;
+    }
+	.checkbox {
+        margin: 20px auto;
+        color: #fff;
+    }
+	/*ickeck*/
+	.icheckbox_minimal-blue{
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	}
+
+

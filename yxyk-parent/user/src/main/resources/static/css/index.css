@@ -1,0 +1,362 @@
+/*首页开始*/
+/*选项卡*/
+.choice{
+	width:100%;
+	height:auto;
+	padding:15px 20px;
+}
+.choiceul{
+	width:auto;
+	height:35px;
+	font-family: "微软雅黑";
+	font-size: 13px;
+	color:#4a4a4a;
+	text-align: center;
+	line-height: 35px;
+}
+.choiceli{
+	float: left;
+	width:auto;
+	height:35px;
+	border:1px solid #d7dde4;
+	font-family: "微软雅黑";
+	font-size: 13px;
+	color:#4a4a4a;
+	text-align: center;
+	line-height: 35px;
+	padding:0 23px;
+	background: #fff;
+	cursor: pointer;
+}
+.actives{
+	background: #3299fe;
+	color:#fff;
+	border-color:#3299fe;
+}
+/*选项卡内容开始*/
+.indexcontent{
+	width:100%;
+	padding:0 20px;
+	overflow: hidden;
+}
+.contentbox{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+.legend{
+	float: left;
+	width:29%;
+	height:100%;
+	border:1px solid #e6e9f0;
+	padding:15px;
+}
+.map{
+	margin-left: 1%;
+	float:left;
+	width:70%;
+	height:100%;
+	border:1px solid #e6e9f0;
+}
+/*线索总量*/
+.legendtop{
+	width:100%;
+	height:0.4rem;
+	overflow: hidden;
+	margin-bottom:0.2rem !important;
+}
+.lefendsele{
+	width:1.3rem;
+	height:0.32rem;
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 0.13rem;
+	color:#4a4a4a;
+	border: 1px solid #d7dde4;
+	border-radius: 5px;
+}
+.xsnum{
+	width:auto;
+	height:100%;
+	float: right;
+	font-family: "微软雅黑";
+	font-size: 0.13rem;
+	color:#4b4b4b;
+	line-height: 0.4rem;
+}
+.text{
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 0.13rem;
+	color:#4b4b4b;
+	line-height: 0.4rem;
+}
+.xian{
+	float: left;
+	margin:0 0.2rem;
+	color:#868e9a;
+}
+.num{
+	float:left;
+	font-family: "微软雅黑";
+	font-size: 0.38rem;
+	color:#f6950a;
+	font-weight: bold;
+	line-height: 0.4rem;
+}
+/*图表开始*/
+.shujubox{
+	width:100%;
+	height:auto;
+	padding-bottom: 10px;
+}
+@media screen and (max-width: 1920px) {
+	#main{
+		width:auto;
+		height:230px;
+	}
+}
+@media screen and (max-width: 1440px) {
+	#main{
+		width:auto;
+		height:200px;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	#main{
+		width:auto;
+		height:150px;
+	}
+}
+
+.propelling{
+	width:100%;
+	height:4rem;
+}
+
+
+/*首页选项卡*/
+.nav-my-style{
+	border:none;
+	justify-content: left;
+	width:100%;
+}
+.nav-my-style li{
+	padding:0 !important;
+	width:32.333%;
+	text-align: center;
+	border:none;
+	font-size: 0.13rem;
+}
+.nav-my-style li a:hover{
+	background: #fff;
+	border:none;
+	font-size: 0.13rem;
+}
+.nav-tabs>li.active>a{
+	border:none !important;
+	border-bottom: 3px solid #4da4eb !important;
+	color:#4da4eb;
+	font-size: 0.13rem;
+}
+.nav-tabs>li.active>a:hover{
+	border:none;
+	border-bottom: 2px solid #4da4eb;
+	color:#4da4eb;
+	font-size: 0.13rem;
+}
+.zhuti{
+	height:3.8rem;
+	overflow-y: scroll;
+}
+.zhuti::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.zhuti::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #f4f4f4;
+	height:30px !important;
+    }
+.zhuti::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+.panel{
+	box-shadow:none !important;
+}
+.show{
+	width:100%;
+	height:auto;
+}
+.showli{
+	width:100%;
+	height:auto;
+	padding-left:0.6rem;
+	position: relative;
+}
+.showli img{
+	position: absolute;
+	top:0;
+	left:0;
+	width:0.5rem;
+}
+.showp{
+	font-family: "微软雅黑";
+	font-size: 0.13rem;
+	text-align: left;
+	color:#4a4a4a;
+	cursor: pointer;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.showspan{
+	font-family: "微软雅黑";
+	font-size: 0.12rem;
+	text-align: left;
+	color:#868e9a;
+	margin-right: 0.05rem;
+}
+
+
+
+
+
+
+/*趋势总览开始*/
+.trendcontent{
+	width:100%;
+	padding:0 20px;
+	overflow: hidden;
+}
+.trendtop{
+	width:100%;
+	height:auto;
+	border:1px solid #e6e9f0;
+	padding:30px;
+	padding-top:20px;
+	overflow:hidden;
+	margin-bottom: 0.2rem;
+}
+
+@media screen and (max-width: 1920px) {
+	#main1{
+		width:auto;
+		height:250px;
+	}
+}
+@media screen and (max-width: 1440px) {
+	#main1{
+		width:auto;
+		height:200px;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	#main1{
+		width:auto;
+		height:140px;
+	}
+}
+.trendtitle{
+	width:100%;
+	height:auto;
+	margin-bottom: 20px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#464e5a;
+}
+.fang{
+	width:8px;
+	height:8px;
+	background: #3299fe;
+	float: left;
+	margin-top:6px;
+	margin-right: 10px;
+}
+
+.trendbuttom{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.trendbuttomli{
+	float: left;
+	width:32%;
+	height:auto;
+	border:1px solid #e6e9f0;
+	padding:30px;
+	padding-top:20px;
+	overflow:hidden;
+	margin-left: 2%;
+	padding-bottom: 10px;
+}
+.first{
+	margin:0 !important;
+}
+@media screen and (max-width: 1920px) {
+	#main2{
+		width:auto;
+		height:300px;
+	}
+}
+@media screen and (max-width: 1440px) {
+	#main2{
+		width:auto;
+		height:180px;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	#main2{
+		width:auto;
+		height:135px;
+	}
+}
+
+
+@media screen and (max-width: 1920px) {
+	#main3{
+		width:auto;
+		height:300px;
+	}
+}
+@media screen and (max-width: 1440px) {
+	#main3{
+		width:auto;
+		height:180px;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	#main3{
+		width:auto;
+		height:135px;
+	}
+}
+
+
+@media screen and (max-width: 1920px) {
+	#main4{
+		width:auto;
+		height:300px;
+	}
+}
+@media screen and (max-width: 1440px) {
+	#main4{
+		width:auto;
+		height:180px;
+	}
+}
+
+@media screen and (max-width: 1366px) {
+	#main4{
+		width:auto;
+		height:135px;
+	}
+}
+
+
+

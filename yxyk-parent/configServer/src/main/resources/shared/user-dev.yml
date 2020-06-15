@@ -1,0 +1,43 @@
+server:
+  port: 8031
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  freemarker:
+    suffix: .html
+    templateEncoding: UTF-8
+    templateLoaderPath: classpath:/templates/
+    content-type: text/html
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+logging:
+  config: classpath:logback-spring.xml
+  path: yxyk-user-log
+#customer:
+#  upload:
+#    serviceUrl: http://39.100.87.147:8002
+#    gainUrl: /single/
+#    requestUrl: /singlefileuploadhandle
+#    downUrl: download/
+#    textUrl: /singleext/
+#  ueditor:
+#    resourceUrl: ueditor/jsp.zip
+c3p0:
+  jdbcUrl: jdbc:mysql://127.0.0.1:3306/ssp_omp?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false
+  user: root
+  password: 123456
+  driverClass: com.mysql.jdbc.Driver
+  minPoolSize: 2
+  maxPoolSize: 10
+  maxIdleTime: 1800000
+  acquireIncrement: 3
+  maxStatements: 1000
+  initialPoolSize: 3
+  idleConnectionTestPeriod: 60
+  acquireRetryAttempts: 30
+  acquireRetryDelay: 1000
+  breakAfterAcquireFailure: false
+  testConnectionOnCheckout: false

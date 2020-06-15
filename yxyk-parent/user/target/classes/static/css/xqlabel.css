@@ -1,0 +1,498 @@
+/*面包屑*/
+.cookie{
+	width:100%;
+	height:57px;
+	padding:0 27px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#868e9a;
+	line-height: 57px;
+}
+.cookie span{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#868e9a;
+	line-height: 57px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.cookie span a{ 
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#868e9a;
+	text-decoration: none;
+	line-height: 57px;
+}
+.mar5{
+	margin:0 3px;
+}
+
+/*标注*/
+.biaozhu{
+	width:100%;
+	height:auto;
+	padding:20px;
+	overflow: hidden;
+	position: relative;
+}
+.biaozhuleft{
+	float: left;
+	width:59%;
+	height:100%;
+	border:1px solid #e6e9f0;
+	padding:40px;
+	position: relative;
+	/*overflow:auto;*/
+}
+/*.biaozhuleft::-webkit-scrollbar {
+        display: none;
+    }*/
+.biaozhuleft::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.biaozhuleft::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #e6e9f0;
+	height:30px !important;
+    }
+.biaozhuleft::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+.biaozhuright{
+	float: left;
+	width:39%;
+	height:100%;
+	margin-left: 20px;
+	overflow: hidden;
+}
+.textp{
+	font-family: "微软雅黑";
+	font-size: 17px;
+	color:#464e5a;
+	font-weight: bold;
+	text-align: left;
+	line-height: 24px;
+	margin-bottom: 20px;
+}
+.biaozhuleft span{
+	font-family: "微软雅黑";
+	font-size: 13px;
+	color:#868e9a;
+	text-align: left;
+	line-height: 18px;
+	margin-right: 40px;
+}
+.biaozhuleft span a{
+	font-family: "微软雅黑";
+	font-size: 13px;
+	color:#3299fe;
+	text-align: left;
+	line-height: 18px;
+}
+.shoucang{
+	position: absolute;
+	right:40px;
+	top:80px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#868e9a;
+	cursor: pointer;
+}
+.shoucang img{
+	margin-right: 5px;
+}
+.shoucangtwo{
+	position: absolute;
+	right:40px;
+	top:80px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#868e9a;
+	cursor: pointer;
+}
+.shoucangtwo img{
+	margin-right: 5px;
+}
+.textcontent{
+	width:100%;
+	height:auto;
+	margin-top:20px;
+	position: relative;
+}
+.textcontent span{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#868e9a;
+	margin-right: 15px;
+}
+.maintext{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#868e9a;
+	line-height: 25px;
+	text-indent:2em;
+	margin-top: 20px;
+}
+
+
+
+.biaozhuntop{
+	width:100%;
+	height:3rem;
+	border:1px solid #e6e9f0;
+	padding:0.2rem;
+}
+.biaozhunbuttom{
+	width:100%;
+	height:2rem;
+	border:1px solid #e6e9f0;
+	margin:0.2rem 0;
+	padding:0.2rem;
+}
+.look{
+	font-family: "微软雅黑";
+	font-size: 0.14rem;
+	color:#3299fe;
+	margin-top:0.2rem;
+	cursor: pointer;
+}
+/*右侧标题*/
+.title{
+	width:100%;
+	height:0.2rem;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+	font-family: "微软雅黑";
+	font-size: 0.14rem;
+	color:#464e5a;
+	text-align: left;
+	line-height: 0.2rem;
+}
+.fang{
+	float: left;
+	width:8px;
+	height:8px;
+	background: #3299fe;
+	margin-top:0.06rem;
+	margin-right: 0.1rem;
+}
+
+
+.contentul{
+	width:100%;
+	max-height:1.2rem;
+	overflow-y: auto;
+}
+
+.contentul::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.contentul::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #e6e9f0;
+	height:30px !important;
+    }
+.contentul::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+    
+.contentli{
+	width:100%;
+	height:0.2rem;
+	float: left;
+	margin-bottom: 0.2rem;
+}
+.contentli span{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#464e5a;
+	margin-right: 0.3rem;
+}
+
+.contentultwo{
+	width:100%;
+	max-height:2.2rem;
+	overflow-y: auto;
+}
+
+.contentultwo::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.contentultwo::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #e6e9f0;
+	height:30px !important;
+    }
+.contentultwo::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+    
+.contentlitwo{
+	width:100%;
+	height:0.2rem;
+	float: left;
+	margin-bottom: 0.2rem;
+}
+.contentlitwo span{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#464e5a;
+	margin-right: 0.3rem;
+	cursor: pointer;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.right{
+	width:39%;
+	height:100%;
+	background: #fff;
+	position:absolute;
+	top:0;
+	right:100%;
+	border:1px solid #e6e9f0;
+	padding:0.2rem;
+	overflow: auto;
+}
+
+.right::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.right::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #e6e9f0;
+	height:30px !important;
+    }
+.right::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+
+/*选项卡*/
+.nav-my-style{
+	border:none;
+	justify-content: left;
+	width:100%;
+}
+.nav-my-style li{
+	padding:0 !important;
+	width:15%;
+	text-align: center;
+	border:none;
+	font-size: 0.13rem;
+}
+.nav-my-style li a:hover{
+	background: #fff;
+	border:none;
+	font-size: 0.13rem;
+}
+.nav-tabs>li.active>a{
+	border:none !important;
+	border-bottom: 2px solid #4da4eb !important;
+	color:#4da4eb;
+	font-size: 0.13rem;
+}
+.nav-tabs>li.active>a:hover{
+	border:none;
+	border-bottom: 2px solid #4da4eb;
+	color:#4da4eb;
+	font-size: 0.13rem;
+}
+.panel{
+	box-shadow:none !important;
+}
+/*tab内容*/
+.zhailu{
+	width:100%;
+	height:2rem;
+	margin-bottom: 0.2rem;
+}
+.zhailitop{
+	width:100%;
+	height:0.35rem;
+	background: #f4f4f4;
+	position: relative;
+	padding:0 0.24rem;
+	border:1px solid #e6e9f0;
+}
+.yuan{
+	width:0.1rem;
+	height:0.1rem;
+	background: #3299fe;
+	border-radius: 50%;
+	position: absolute;
+	top:0.12rem;
+	left:0.24rem;
+}
+.zhailitop span{
+	margin-left:0.2rem;
+	font-family: "微软雅黑";
+	font-size: 0.12rem;
+	color:#868e9a;
+	line-height: 0.35rem;
+}
+.clone{
+	position: absolute;
+	top:0.12rem;
+	right:0.5rem;
+	cursor: pointer;
+}
+.closebtn{
+	position: absolute;
+	top:0.12rem;
+	right:0.15rem;
+	cursor: pointer;
+}
+.zhailibuttom{
+	width:100%;
+	height:1.35rem;
+	/*padding:0.25rem;*/
+	font-family: "微软雅黑";
+	font-size: 0.14rem;
+	color:#464e5a;
+	line-height: 0.25rem;
+	border:1px solid #e6e9f0;
+}
+.zhailibuttom p{
+	font-family: "微软雅黑";
+	font-size: 0.14rem;
+	color:#464e5a;
+	line-height:0.25rem;
+}
+.yuanwen{
+	width:100%;
+	height:auto;
+	font-family: "微软雅黑";
+	font-size: 0.12rem;
+	color:#464e5a;
+	line-height: 0.25rem;
+	padding-top:0.1rem;
+}
+.yuanwen a{
+	font-size: 0.12rem;
+	color:#3299fe;
+	line-height: 0.25rem;
+}
+.panel-heading{
+	padding:0 !important;
+}
+
+
+.wenben{
+	width:100%;
+	height:100%;
+	background: #fff;
+	border:none !important;
+	resize:none;
+	padding:0.25rem;
+	font-family: "微软雅黑";
+	font-size: 0.14rem;
+	color:#464e5a;
+	line-height:0.25rem;
+}
+
+
+/*右键*/
+.alertbox{
+	width:150px;
+	height:auto;
+	background: #fff;
+	position: absolute;
+	/*overflow: auto;*/
+	top:0;
+	left:0;
+	display: none;
+	border: 1px solid #e6e9f0;
+	padding:0 20px;
+}
+.alertli{
+	width:100%;
+	height:auto;
+	border-bottom: 1px solid #e6e9f0;
+	padding:10px 0;
+	font-family: "微软雅黑";
+	font-size: 0.14rem;
+	color:#464e5a;
+	cursor: pointer;
+}
+.hidetwo{
+	width:20px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+
+/*设置弹框*/
+.set{
+	position: absolute;
+	right:0.45rem;
+	top:0.5rem;
+	cursor: pointer;
+}
+.modal-header{
+	background: #6598dd;
+	color:#fff;
+	font-size: 16px;
+	font-weight: bold;
+}
+.modal-body{
+	padding-bottom: 30px;
+}
+.close .guan{
+	font-family: "微软雅黑";
+	font-size: 16px !important;
+	color:#fff !important;
+}
+.closes{
+	float:right;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#fff;
+	cursor: pointer;
+}
+.addtab{
+	width:100%;
+	margin:30px 0;
+}
+.inputs{
+	width:90%;
+	height:42px;
+	border: 1px solid #d7dde4;
+	border-radius: 5px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#464e5a;
+	padding-left: 12px;
+	margin-right: 20px;
+}
+.addimg{
+	cursor: pointer;
+}
+.jianimg{
+	cursor: pointer;
+}
+.baocuns {
+    font-family: 微软雅黑;
+    font-size: 16px;
+    text-align: center;
+    line-height: 10px;
+    color: rgb(255, 255, 255);
+    margin-right: 10px;
+    position: absolute;
+    top: 0px;
+    left: 45%;
+    padding: 12px 18px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(50, 153, 254);
+    border-image: initial;
+    background: rgb(50, 153, 254);
+    border-radius: 5px;
+}

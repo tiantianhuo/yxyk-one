@@ -1,0 +1,42 @@
+/*.layui-tab{
+	padding: 7px 0px;
+}*/
+.layui-tab-title{
+	padding: 0px 27px;
+}
+.layui-tab-title li{
+	background: #f4f4f4;
+	color:#515c75;
+	margin-left: 13px;
+	border-top: 1px solid #e6e9f0;
+	border-right: 1px solid #e6e9f0;
+	border-left: 1px solid #e6e9f0;
+}
+.layui-tab-title .layui-this{
+	background: #ffffff;
+	border-top: none;
+	border-right:none;
+	border-left:none;
+}
+
+.mo .layui-tab-close{
+	display: none !important;
+}
+.mokuai{
+    font-family: "微软雅黑";
+    font-size: 13px;
+    text-align: center;
+    line-height: 10px;
+    padding: 12px 18px;
+    color: #fff;
+    border: 1px solid #3299fe;
+    background: #3299fe;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-top:7px
+    }
+
+ .mo.layui-this:after{
+	border-width: 0px;
+}

@@ -1,0 +1,474 @@
+/*线索核查详情开始*/
+/*面包屑*/
+.cookie{
+	width:100%;
+	height:50px;
+	padding:15px 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#333;
+	background: #fff;
+}
+.one a{
+	color:#333;
+	text-decoration: none;
+	margin-left: 10px;
+}
+.two{
+	color:#333;
+}
+.three a{
+	color:#818bee;
+	text-decoration: none;
+}
+/*线索开始*/
+.cluebox{
+	width:100%;
+	min-height:800px;
+}
+.clueleft{
+	width:60%;
+	height:auto;
+	float:left;
+	margin-right: 3%;
+}
+.xqbox{
+	width:100%;
+	height:auto;
+	background: rgba(246,249,255,0.7);
+	border-radius: 10px;
+}
+.xqbtn{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+	padding-top: 20px;
+}
+/*按钮*/
+.anniu{
+	padding:5px 10px;
+	background: #818bee;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	line-height: 20px;
+	color:#fff;
+	box-shadow: none;
+	border-radius: 10px;
+	border:1px solid #818bee;
+	float: left;
+	margin-right: 40px;
+}
+.anniutwo{
+	padding:5px 10px;
+	background: #818bee;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	line-height: 20px;
+	color:#fff;
+	box-shadow: none;
+	border-radius: 10px;
+	border:1px solid #818bee;
+	float: left;
+}
+.anniuthree{
+	padding:5px 10px;
+	background: #818bee;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	line-height: 20px;
+	color:#fff;
+	box-shadow: none;
+	border-radius: 10px;
+	border:1px solid #818bee;
+	float:right;
+}
+.dayin{
+	margin-right: 15px;
+	float: left;
+}
+.retract{
+	margin-right: 15px;
+	float:left;
+}
+.add{
+	margin-right: 15px;
+	float:left;
+}
+/*举报人*/
+.jubaobox{
+	width:100%;
+	height:auto;
+	background: url(../images/index/jbbj.png) no-repeat;
+	padding:0 30px;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.jubaobox li{
+	float: left;
+	width:33.33%;
+	height:60px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#fff;
+	line-height: 60px;
+	text-align: left;
+}
+.jbcontent{
+	width:100%;
+	height:auto;
+	padding:0 30px;
+	margin-top:30px;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color:#666;
+}
+.jbcontent p{
+	line-height: 30px;
+}
+/*图片*/
+.jbimg{
+	width:100%;
+	/*height:auto;*/
+	height:220px;
+	padding:30px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.jbimg li{
+	float:left;
+	width:173px;
+	height:173px;
+	border-radius: 10px;
+	margin-right: 30px;
+	overflow: hidden;
+}
+.jbimg li img{
+	height:173px;
+}
+.jbimg .more{
+	width:auto;
+	height:173px;
+	font-family: "微软雅黑";
+	font-size: 50px;
+	color:#c8daff;
+	font-weight: bold;
+	margin:0;
+	cursor: pointer;
+	line-height: 173px;
+	text-align: center;
+}
+/*右侧开始*/
+.clueright{
+	width:35%;
+	float:right;
+	background: url(../images/index/pgbj.png) no-repeat;
+	height:auto;
+	margin-left: 2%;
+	padding:30px;
+}
+.cluerightp{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color:#fff;
+}
+.pgone{
+	width:100%;
+	height:auto;
+	margin-top:20px;
+}
+.pgonep{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color:#fff;
+	margin-bottom: 10px;
+}
+.inputlab{
+	margin-top:20px;
+	color:#fff;
+	min-width: 100%;
+}
+.icheckbox_minimal-red{
+	margin-right: 10px;
+}
+.textar{
+	width:100%;
+	height:175px !important;
+	border-radius: 30px !important;
+	margin-top:30px;
+}
+.butbox{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.lianbtn{
+	padding:5px 10px;
+	background: #fff;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	line-height: 20px;
+	color:#949fff;
+	box-shadow: none;
+	border-radius: 10px;
+	float: left;
+	margin-right: 40px;
+	margin-left: 45px;
+}
+
+
+/*首页开始*/
+.indexcontent{
+	float: left;
+	width:810px;
+	height:620px;
+}
+.indexright{
+	float:right;
+	width:390px;
+	height:620px;
+    background: linear-gradient(to right, #58a1f9, #7482db);
+    padding: 30px;
+}
+.shujufenxi{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+}
+.w135{
+	float:left;
+	width:135px !important;
+}
+.xsnum{
+	float:right;
+}
+.xiala{
+	background: none;
+	border:none;
+	font-family: "微软雅黑";
+	color:#fff;
+	font-size: 14px;
+	box-shadow: none;
+}
+.xiala option{
+	color:#333;
+	background: none;
+	border: none;
+}
+.xstext{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#fff;
+	line-height: 34px;
+	text-align: right;
+}
+.shuju{
+	width:100%;
+	height:170px;
+	float:left;
+}
+#main{
+	width:100%;
+	height:170px;
+}
+/*首页选项卡*/
+.nav-my-style li{
+	padding:0 !important;
+	width:30%;
+	margin:0 20px;
+}
+.panel{
+	margin-top:15px;
+	background: none;
+	color:#fff;
+}
+.zhuti{
+	width:100%;
+	height:300px;
+	border:1px solid #57d7ff;
+	background: none !important;
+	overflow-y: scroll;
+}
+
+.zhuti::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.zhuti::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: #4f5bd3;
+	height:30px !important;
+    }
+.zhuti::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+
+.toubu{
+	background: none !important;
+	padding-bottom: 0 !important;
+}
+/*选项卡内容*/
+.yulunbox{
+	width:100%;
+	height:300px;
+}
+.yulunli{
+	float:left;
+	width:100%;
+	height:auto;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#fff;
+}
+.yulunleft{
+	width:15%;
+	float:left;
+}
+.yulunleft img{
+	width:40px;
+}
+.yulunright{
+	width:85%;
+	float:left;
+}
+.yulunright p{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#fff;
+	line-height: 20px;
+	cursor: pointer;
+}
+.time{
+	float:left;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#86aaf5;
+}
+.times{
+	float:right;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#86aaf5;
+}
+/*举报线索详情开始*/
+.cluerights{
+	width:33%;
+	float:right;
+	background: url(../images/index/pgbj.png) no-repeat;
+	height:auto;
+	margin-left: 2%;
+	padding:30px;
+	border-radius: 10px;
+}
+.cluertxt{
+	font-family: "微软雅黑";
+	color: #fff;
+	text-align: center;
+}
+.cluerspan{
+	font-family: "微软雅黑";
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+	margin:0 20px;
+}
+.cluerp{
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color: #fff;
+	text-align: left;
+	margin-top: 20px;
+}
+.nobackg{
+	background: none;
+}
+.btnbox{
+	margin-top:20px;
+}
+.anbtn{
+	background: none;
+	color:#fff;
+	border:1px solid #fff;
+	padding:5px;
+	border-radius: 10px;
+	margin-right: 20px;
+	font-family: "微软雅黑";
+	font-size: 16px;
+}
+
+/*举报线索弹框*/
+.title{
+	width:100%;
+	height:auto;
+	margin-bottom: 40px;
+}
+.feedback{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+}
+.feedtext{
+	font-family: "微软雅黑";
+    font-size: 18px;
+    text-align: center;
+    color:#666;
+    line-height: 33px;   
+}
+.way{
+	background: #eee;
+    border: 1px solid #eee;
+    padding-left: 10px;
+    height: 33px;
+    border-radius: 30px;
+    font-family: "微软雅黑";
+    font-size: #666;  
+}
+.w30{
+	width:30%;
+	float:left;
+}
+.w70{
+	width:70%;
+	float:left;
+}
+.w310{
+	width:310px;
+}
+.form-group{
+	margin-bottom: 20px !important;
+	overflow: hidden;
+}
+.lxway{
+	background: #eee;
+    border: 1px solid #eee;
+    padding-left: 10px;
+    height: 33px;
+    border-radius: 30px;
+    font-family: "微软雅黑";
+    font-size: #666;
+}
+.xxway{
+	background: #eee;
+    border: 1px solid #eee;
+    padding: 10px;
+    height: 130px;
+    border-radius: 10px;
+    font-family: "微软雅黑";
+    font-size: #666;
+}
+/*左侧按钮*/
+.anbtnleft{
+	background: #4f5bd3;
+	color:#fff;
+	border:1px solid #fff;
+	padding:10px 20px;
+	border-radius: 30px;
+	margin-left: 5%;
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+.btnboxs{
+	padding:0 20%;
+	margin-bottom:40px;
+}

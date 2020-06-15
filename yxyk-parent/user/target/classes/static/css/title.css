@@ -1,0 +1,9 @@
+.tooltip-inner {
+	border-color: #E6E9F0;
+	font-size: 10px;
+	background:#f4f6f8;
+	color:#868e9a ;
+}
+.tooltip.bottom .tooltip-arrow{
+	border-bottom-color: #f4f6f8;
+}

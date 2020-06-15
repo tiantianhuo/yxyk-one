@@ -1,0 +1,596 @@
+<link rel="stylesheet" href="../../static/css/bootstrap-dialog.min.css"/>
+<script src="../../static/js/bootstrap-dialog.min.js"></script>
+<header>
+    <nav class="navbar-fixed-top navbar navbar-default nav-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="" href="#">
+                    <img src="../../static/images/header/head.png" width="40px" height="40px"/></a>
+                    <span class="header-span">
+                       <span style="color: #fff;line-height: 70px;font-size: 18px;" id ="company_name"></span>
+                    </span>
+            </div>
+            <div class="link">
+                <ul class="nav navbar-nav" style="margin-left:13%;">
+                    <@shiro.hasAnyPermissions name="10101">
+                    <li id="li_xsgl">
+                        <a href="/PopularOpinion/networklist">线索管理</a>
+                    </li>
+                    </@shiro.hasAnyPermissions>
+                    <@shiro.hasAnyPermissions name="10201">
+                    <li id="li_xshc">
+                        <a href="/PopularOpinion/department">线索核查</a>
+                    </li>
+                    </@shiro.hasAnyPermissions>
+                     <@shiro.hasAnyPermissions name="10301">
+                    <li id="li_sjtj">
+                        <a href="/index">数据统计</a>
+                    </li>
+                    </@shiro.hasAnyPermissions>
+                    <li id="li_bgyy">
+                        <a href="/office/workindex">办公应用</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dw noticetap">
+                    <a href="#" class="righta"><img src="../../static/images/header/tzld.png"></a>
+                    <div  id="count"></div>
+                </li>
+                <li>
+                    <a href="../../static/公益诉讼线索管理平台操作手册.pdf" target="_blank" class="righta"><img src="../../static/images/header/help.png" alt=""/>帮助</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       style="font-size: 13px;padding-top:20px;">
+                        <img src="../../static/images/header/usernew.png" alt="" style='margin-right: 5px;'/>
+                        <@shiro.principal/>，您好
+                    </a>
+                    <ul class="dropdown-menu user-center-pop">
+                        <li><a href="/PeiZhi/pingGu"><i class="iconfont icon-shezhi"></i>配置管理</a></li>
+                         <@shiro.hasAnyPermissions name="10601">
+                        <li><a href="/Setting/personalAccset"><i class="iconfont icon-jikediancanicon03-copy"></i>个人中心</a></li>
+                         </@shiro.hasAnyPermissions>
+                        <li><a href="/logout" class="righta"><i class="iconfont icon-tuichu1"></i>退出登录</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--通知开始-->
+<div class="notice">
+<!--    提示-->
+    <div class="tishibox">
+        <div class="tishizi" id="mess">消息（1条未读）</div>
+        <div class="guanbi">
+            <img src="../../static/images/header/close.png" alt=""/>
+        </div>
+    </div>
+    <div class="read" onclick="deleteAll()"><span class="readok">清空所有通知</span></div>
+    <ul class="news">
+<!--        <li class="newlist" onclick="modal()">-->
+<!--            <div class="newtop">-->
+<!--                <div class="titlebox">-->
+<!--                    <span class="title">山西省人民检察院</span>-->
+<!--                    <span class="look">申请查看</span>-->
+<!--                </div>-->
+<!--                <div class="time">1分钟前</div>-->
+<!--            </div>-->
+<!--            <div class="newbottom">-->
+<!--                <span>数据统计</span>-->
+<!--            </div>-->
+<!--            <div class="dian"></div>-->
+<!--        </li>-->
+<!--        <li class="newlist">-->
+<!--            <div class="newtop">-->
+<!--                <div class="titlebox">-->
+<!--                    <span class="name">张鑫旭</span>-->
+<!--                    <span class="name">提供线索</span>-->
+<!--                </div>-->
+<!--                <div class="time">30分钟前</div>-->
+<!--            </div>-->
+<!--            <div class="newbottom">-->
+<!--                <a href="https://www.baidu.com/"><div class="text">市民反映环境污染问题较多，晋城公交站市民反映环境污染问题较多，晋城公交站</div></a>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li class="newlist">-->
+<!--            <div class="newtop">-->
+<!--                <div class="titlebox">-->
+<!--                    <span class="titleleft">你申请查看</span>-->
+<!--                </div>-->
+<!--                <div class="time">56分钟前</div>-->
+<!--            </div>-->
+<!--            <div class="newcontent">-->
+<!--                <span>处理反馈：</span>-->
+<!--                <span>不同意</span>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li class="newlist">-->
+<!--            <div class="newtop">-->
+<!--                <div class="titlebox">-->
+<!--                    <span class="titleleft">你申请查看</span>-->
+<!--                    <span class="titleright">太原市人民检察院</span>-->
+<!--                </div>-->
+<!--                <div class="time">2天前</div>-->
+<!--            </div>-->
+<!--            <div class="newcontent">-->
+<!--                <span>处理反馈：</span>-->
+<!--                <span>同意</span>-->
+<!--            </div>-->
+<!--            <div class="newbottom">-->
+<!--                <span>数据统计</span>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li class="newlist">-->
+<!--            <div class="newtop">-->
+<!--                <div class="titlebox">-->
+<!--                    <span class="name">有新的舆情专报请注意查看</span>-->
+<!--                </div>-->
+<!--                <div class="time">10天前</div>-->
+<!--            </div>-->
+<!--            <div class="newbottom">-->
+<!--                <a href="https://www.baidu.com/"><div class="text">2019年10月舆情专报...</div></a>-->
+<!--            </div>-->
+<!--        </li>-->
+    </ul>
+</div>
+<script type="text/javascript">
+    var socket;
+    if (typeof (WebSocket) == "undefined") {
+        console.log("遗憾：您的浏览器不支持WebSocket");
+    } else {
+        console.log("恭喜：您的浏览器支持WebSocket");
+
+        //实现化WebSocket对象
+        //指定要连接的服务器地址与端口建立连接
+        //注意ws、wss使用不同的端口。我使用自签名的证书测试，
+        //无法使用wss，浏览器打开WebSocket时报错
+        //ws对应http、wss对应https。
+        // var pathName = window.document.location.pathname;
+        // // //获取主机地址
+        // var curPath = window.document.location.href;
+        // var pos = curPath.indexOf(pathName);
+        // var localhostPaht = curPath.substring(0, pos);
+        var hos=window.document.location.host;
+        var protocolStr = document.location.protocol;
+        if(protocolStr === "http:") {
+            socket = new WebSocket("ws://"+hos+"/ws/asset");
+        } else {
+            socket = new WebSocket("wss://"+hos+"/ws/asset");
+        }
+        // if(pathName.indexOf(".com")<=0){
+        //     socket = new WebSocket("ws://"+a+"/ws/as set");
+        // }else {
+        //     socket = new WebSocket("wss://gzssp.bjzjxfkj.com/ws/asset");
+        // }
+        //连接打开事件
+        socket.onopen = function() {
+            console.log("Socket 已打开");
+            socket.send("消息发送测试(From Client)");
+        };
+        //收到消息事件
+        socket.onmessage = function(msg) {
+            console.log(msg.data);
+            isread();
+        };
+        //连接关闭事件
+        socket.onclose = function() {
+            console.log("Socket已关闭");
+        };
+        //发生了错误事件
+        socket.onerror = function() {
+            console.log("Socket发生了错误");
+        };
+
+        //窗口关闭时，关闭连接
+        window.unload=function() {
+            socket.close();
+        };
+    }
+
+    $.post("/apis/user/findHeaderName",function (result) {
+        if (result.success){
+            $("#company_name").text(result.data);
+        }
+    });
+    var count;
+    $(function () {
+        isread();
+    });
+    function deleteAll() {
+        $.post("/message/deleteAll",function (result) {
+            $(".news").find("li").remove();
+            findAll();
+            alertmsg(result.data)
+        })
+    }
+    function isread(){
+        $.post("/message/findUnRead",function (result) {
+            count=result.data;
+            if(result.data==0){
+                $("#count").hide();
+            }else {
+                $("#count").show();
+                $("#count").text(result.data)
+                $("#count").addClass("circle")
+            }
+        })
+    }
+    // 点击通知出现和隐藏
+    $(".noticetap").click(function(){
+        $('.notice').animate({right:'0'}, 500);
+        findAll();
+    });
+    function findAll() {
+        $.post("/message/findAll",function (result) {
+            if(result.success){
+                $("#mess").text("消息（"+count+"条未读）");
+                var idList = new Array();
+                $.each(result.data,function (i, obj) {
+                    if(obj.messageType!=0&&obj.isRead!=2){
+                        idList.push(obj.id);
+                    }
+                });
+                if(idList.length>0){
+                    $.post("/message/save",{
+                        messageIds:JSON.stringify(idList)
+                    },function (result) {
+
+                    });
+                }
+                var messageStr="";
+                $.each(result.data,function (i, obj) {
+                    if(obj.messageType==0){
+                        if(obj.isRead==2){
+                            messageStr+="<li class=\"newlist\" >\n" +
+                                "            <div class=\"newtop\">\n" +
+                                "                <div class=\"titlebox\">\n" +
+                                "                    <span class=\"title\">"+obj.title+"</span>\n" +
+                                "                </div>\n" +
+                                "                <div class=\"timeplus\">"+obj.createTime+"</div>\n" +
+                                "            </div>\n" +
+                                "            <div class=\"newbottom\">\n" +
+                                "                <span>"+obj.content+"</span>\n" +
+                                "            </div>\n"+
+                                "        </li>";
+                        }else {
+                            messageStr+="<li class=\"newlist\" onclick=\"modal("+obj.userId+","+"&quot;"+obj.title+"&quot;"+","+obj.id+")\">\n" +
+                                "            <div class=\"newtop\">\n" +
+                                "                <div class=\"titlebox\">\n" +
+                                "                    <span class=\"title\">"+obj.title+"</span>\n" +
+                                "                </div>\n" +
+                                "                <div class=\"timeplus\">"+obj.createTime+"</div>\n" +
+                                "            </div>\n" +
+                                "            <div class=\"newbottom\">\n" +
+                                "                <span>"+obj.content+"</span>\n" +
+                                "            </div>\n"+
+                                "            <div class=\"dian\"></div>\n" +
+                                "        </li>";
+
+                        }
+                    }else if(obj.messageType==1){
+                        messageStr+=" <li class=\"newlist\">\n" +
+                            "            <div class=\"newtop\">\n" +
+                            "                <div class=\"titlebox\">\n" +
+                            "                    <span class=\"titleleft\">"+obj.title+"</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"timeplus\">"+obj.createTime+"</div>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"newcontent\">\n" +
+                            "                <span>"+obj.content+"</span>\n" +
+                            "            </div>\n"
+                        if(obj.isRead==1){
+                            messageStr+=  "            <div class=\"dian\"></div>\n" +
+                                "        </li>"
+                        }else {
+                            messageStr+= "</li>"
+                        }
+                    }else if(obj.messageType==2){
+                        messageStr+=" <li class=\"newlist\">\n" +
+                            "            <div class=\"newtop\">\n" +
+                            "                <div class=\"titlebox\">\n" +
+                            "                    <span class=\"name\">"+obj.title+"</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"timeplus\">"+obj.createTime+"</div>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"newbottom\">\n" +
+                            "                <a href=\"#\" onclick='jumpXQ("+obj.reportId+","+obj.id+")'><div class=\"text\">"+obj.content+"</div></a>\n" +
+                            "            </div>\n" ;
+                        if(obj.isRead==1){
+                            messageStr+=  "            <div class=\"dian\"></div>\n" +
+                                "        </li>"
+                        }else {
+                            messageStr+= "</li>"
+                        }
+                    }else {
+                        messageStr+="<li class=\"newlist\">\n" +
+                            "            <div class=\"newtop\">\n" +
+                            "                <div class=\"titlebox\">\n" +
+                            "                    <span class=\"name\">"+obj.title+"</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"timeplus\">"+obj.createTime+"</div>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"newbottom\">\n" +
+                            "                <a href=\"#\" onclick=\"jumpYQ("+obj.id+")\" ><div class=\"text\">"+obj.createTime+"舆情专报...</div></a>\n" +
+                            "            </div>\n" ;
+                        if(obj.isRead==1){
+                            messageStr+=  "            <div class=\"dian\"></div>\n" +
+                                "        </li>"
+                        }else {
+                            messageStr+= "</li>"
+                        }
+                    }
+                })
+                $(".news").html(messageStr);
+                if(result.data.length==0){
+                    $(".news").html("<img src='../../static/common/noneDate.png'>")
+                }
+            }
+        })
+    }
+    function jumpYQ(id){
+        window.location.href = "/yuqing/yuqingIndex"
+    }
+    function jumpXQ(reportId,id){
+        window.location.href="/PopularOpinion/networklistDetails?id="+reportId
+    }
+    $(document).click(function(){
+        $('.notice').animate({right:'-23%'}, 500);
+    })
+    $(".guanbi").click(function(){
+        $('.notice').animate({right:'-23%'}, 500);
+        isread()
+    })
+    $(".notice").click(function(event){
+        event.stopPropagation();
+    });
+    $(".noticetap").click(function(event){
+        event.stopPropagation();
+    });
+    // 标记为已读
+    $(".readok").click(function(event){
+        $(".dian").hide();
+        $(".circle").hide();
+    });
+    function feedback(sendUserId,content,id) {
+      $.post("/message/feedback",{
+          sendUserId:sendUserId,
+          content:content,
+          messageId:id
+      },function (result) {
+            if(result.success){
+                isread();
+            }
+      })
+    }
+    // 模态框
+   function modal(sendUserId,title,id){
+        BootstrapDialog.show({
+            title: '提示',
+            // message: '山西省人民检察院申请查看数据管理',
+            message: $('<span class="twos">'+title+'数据统计</span>'),
+            onshow: function(dialog) {
+            },
+            buttons: [{
+                label: '去设置',
+                action: function(dialogItself) {
+                    window.location.href = "/Setting/personalAccset?type=1&messageId="+id   ;
+                    dialogItself.close();
+                }
+            }, {
+                label: '不同意',
+                action: function(dialogItself) {
+                    feedback(sendUserId,'不同意',id);
+                    dialogItself.close();
+                }
+            }]
+        });
+    };
+</script>
+<style>
+    html{
+        position: relative;
+    }
+    .notice{
+        width: 23%;
+        height: auto;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        right: -23%;
+        z-index: 999;
+        border: 1px solid #E6E9F0;
+        /*box-shadow:inset 0px 0px 1px  0.5px #aaa;*/
+    }
+    .dw{
+        position: relative;
+    }
+    .circle{
+        width: 18px;
+        height: 18px;
+        background: red;
+        border-radius: 50%;
+        position: absolute;
+        top: 20px;
+        left: 25px;
+        text-align: center;
+        line-height: 18px;
+        color: #fff;
+        font-family: '微软雅黑';
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .tishibox{
+        width: 100%;
+        height: 52px;
+        background: #f4f6f8;
+        padding: 0 20px;
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #4a4a4a;
+        line-height: 52px;
+    }
+    .tishizi{
+        float: left;
+    }
+    .guanbi{
+        float: right;
+        cursor: pointer;
+        line-height: 44px;
+    }
+    .read{
+        width: 100%;
+        height: 52px;
+        background: #fff;
+        padding: 0 20px;
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #3299fe;
+        line-height: 52px;
+        text-align: right;
+    }
+    .read .readok{
+        cursor: pointer;
+    }
+    .news{
+        width: 100%;
+        height: auto;
+        overflow: auto;
+    }
+    .news img{
+        margin-left: 34%;
+        margin-top: 100px;
+    }
+    .news::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 10px;
+    }
+    .news::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        height:10px;
+        border-radius: 10px;
+        background-color: #e6e9f0;
+        height:30px !important;
+    }
+    .news::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        background: none;
+    }
+    .news .newlist{
+        width: 100%;
+        height: auto;
+        padding: 24px 22px;
+        cursor: pointer;
+        position: relative;
+    }
+    .news .newlist:hover{
+        width: 100%;
+        height: auto;
+        padding: 24px 22px;
+        background: #f4f6f8;
+        position: relative;
+    }
+    .newtop{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+    .newcontent{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        text-align: left;
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #4a4a4a;
+        margin-top: 10px;
+    }
+    .newbottom{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        text-align: left;
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #868e9a;
+        margin-top: 10px;
+    }
+    .newbottom a{
+        text-decoration: none;
+    }
+    .newbottom .text{
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #0096fe;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+    .titlebox{
+        width: 80%;
+        float: left;
+    }
+    .title{
+        font-family: '微软雅黑';
+        font-size: 16px;
+        color: #4a4a4a;
+        font-weight: bold;
+    }
+    .name{
+        font-family: '微软雅黑';
+        font-size: 16px;
+        color: #4a4a4a;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+    .look{
+        font-family: '微软雅黑';
+        font-size: 16px;
+        color: #4a4a4a;
+        margin-left: 20px;
+    }
+    .titleleft{
+        font-family: '微软雅黑';
+        font-size: 16px;
+        color: #4a4a4a;
+    }
+    .titleright{
+        font-family: '微软雅黑';
+        font-size: 16px;
+        color: #4a4a4a;
+        margin-left: 20px;
+        font-weight: bold;
+    }
+    .timeplus{
+        width: 20%;
+        float: right;
+        font-family: '微软雅黑';
+        font-size: 12px;
+        color: #868e9a;
+        text-align: right;
+    }
+    .dian{
+        width: 6px;
+        height: 6px;
+        background: #fe2e3a;
+        border-radius: 50%;
+        position: absolute;
+        top: 32px;
+        left:15px;
+    }
+    .one{
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #4a4a4a;
+        font-weight: bold;
+    }
+    .twos{
+        font-family: '微软雅黑';
+        font-size: 14px;
+        color: #4a4a4a;
+        margin-left: 10px;
+    }
+    .modal-header{
+        background: #6598dd;
+    }
+</style>

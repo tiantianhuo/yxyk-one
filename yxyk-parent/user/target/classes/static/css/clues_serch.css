@@ -1,0 +1,82 @@
+
+.serch_box{
+	width: 100%;
+	text-align: center;
+	font-family: "微软雅黑";
+	margin-top: 9%;
+}
+.serch_title{
+	color: #3299fe;
+	font-size: 38px;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+.serch_key span{
+	color:#2468c3;
+	font-size: 13px;
+	margin-right: 25px;
+	
+}
+.serch_key{
+	margin-bottom: 27px;
+}
+.serch_key span{
+	cursor: pointer;
+}
+.serch_inp{
+	width: 663px;
+	height: 53px;
+	border: 1px solid #e6e9f0;
+	border-radius: 3px;
+	text-indent: 1em;
+	font-size: 14px;
+}
+.serch_inp::-webkit-input-placeholder { /* WebKit browsers */ 
+	color: #aab6c7; 
+} 
+.serch_inp::-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+	color: #aab6c7;
+} 
+.serch_inp::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+	color: #aab6c7;
+} 
+.serch_inp::-ms-input-placeholder { /* Internet Explorer 10+ */ 
+	color: #aab6c7; 
+} 
+.serch_inpbox{
+	position: relative;
+	margin: 0 auto 30px auto;
+	width: 663px;
+}
+.serch_ico{
+	position: absolute;
+	height: 23px;
+	width: 23px;
+	top: 15px;
+	cursor: pointer;
+	left: 620px;
+}
+.serch_box_radio span{
+	margin-right: 30px;
+	margin-left: 14px;
+	vertical-align: middle;
+	color:#868e9a;
+	font-size: 13px;
+}
+.serch_box_radio{
+	margin-bottom: 12%;	
+}
+.serch_bootom{
+	height: 348px;
+}
+.contentright{
+	overflow-y: scroll;
+}
+/*滚动条样式*/
+.contentright::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 0px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0px;
+    border-radius: 10px;
+}
