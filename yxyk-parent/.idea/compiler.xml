@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="user" />
         <module name="configServer" />
+        <module name="gateway" />
         <module name="order" />
         <module name="eurekaServer" />
       </profile>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="configServer" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="order" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="yxyk-parent" options="-parameters" />
