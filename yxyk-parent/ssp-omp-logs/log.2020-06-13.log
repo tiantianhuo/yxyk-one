@@ -1,4 +1,4 @@
-2020-06-13 16:20:54.099 [main] INFO  com.yxyk.UserApplication - The following profiles are active: dev
+2020-06-13 16:20:54.099 [main] INFO  com.yxyk.SensitiveApplication - The following profiles are active: dev
 2020-06-13 16:20:54.111 [main] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1b004b8: startup date [Sat Jun 13 16:20:54 CST 2020]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@1192798
 2020-06-13 16:20:54.908 [main] INFO  o.s.integration.config.IntegrationRegistrar - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
 2020-06-13 16:20:55.199 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=3175d340-f78f-3403-b3b6-aca0741f38b2
@@ -213,7 +213,7 @@ org.springframework.jdbc.support.MetaDataAccessException: Could not get Connecti
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Connections could not be acquired from the underlying database!
 	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
 	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:319)
@@ -314,7 +314,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityManager' defined in class path resource [com/yxyk/config/shiro/config/ShiroConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.shiro.web.mgt.DefaultWebSecurityManager]: Factory method 'defaultWebSecurityManager' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'myShiroRealm': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository': Cannot create inner bean '(inner bean)#1a667c8' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#1a667c8': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
@@ -426,7 +426,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:259)
 	... 99 common frames omitted
-2020-06-13 16:23:14.322 [main] INFO  com.yxyk.UserApplication - The following profiles are active: dev
+2020-06-13 16:23:14.322 [main] INFO  com.yxyk.SensitiveApplication - The following profiles are active: dev
 2020-06-13 16:23:14.336 [main] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@b0f763: startup date [Sat Jun 13 16:23:14 CST 2020]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@9f0a20
 2020-06-13 16:23:15.127 [main] INFO  o.s.integration.config.IntegrationRegistrar - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
 2020-06-13 16:23:15.415 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=3175d340-f78f-3403-b3b6-aca0741f38b2
@@ -641,7 +641,7 @@ org.springframework.jdbc.support.MetaDataAccessException: Could not get Connecti
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Connections could not be acquired from the underlying database!
 	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
 	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:319)
@@ -742,7 +742,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityManager' defined in class path resource [com/yxyk/config/shiro/config/ShiroConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.shiro.web.mgt.DefaultWebSecurityManager]: Factory method 'defaultWebSecurityManager' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'myShiroRealm': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository': Cannot create inner bean '(inner bean)#a04257' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#a04257': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
@@ -854,7 +854,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:259)
 	... 99 common frames omitted
-2020-06-13 16:24:42.078 [main] INFO  com.yxyk.UserApplication - The following profiles are active: dev
+2020-06-13 16:24:42.078 [main] INFO  com.yxyk.SensitiveApplication - The following profiles are active: dev
 2020-06-13 16:24:42.096 [main] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@11505e7: startup date [Sat Jun 13 16:24:42 CST 2020]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@c6daf0
 2020-06-13 16:24:42.948 [main] INFO  o.s.integration.config.IntegrationRegistrar - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
 2020-06-13 16:24:43.234 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=3175d340-f78f-3403-b3b6-aca0741f38b2
@@ -1069,7 +1069,7 @@ org.springframework.jdbc.support.MetaDataAccessException: Could not get Connecti
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Connections could not be acquired from the underlying database!
 	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
 	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:319)
@@ -1170,7 +1170,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityManager' defined in class path resource [com/yxyk/config/shiro/config/ShiroConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.shiro.web.mgt.DefaultWebSecurityManager]: Factory method 'defaultWebSecurityManager' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'myShiroRealm': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository': Cannot create inner bean '(inner bean)#af8427' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#af8427': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
@@ -1282,7 +1282,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:259)
 	... 99 common frames omitted
-2020-06-13 16:27:06.138 [main] INFO  com.yxyk.UserApplication - The following profiles are active: dev
+2020-06-13 16:27:06.138 [main] INFO  com.yxyk.SensitiveApplication - The following profiles are active: dev
 2020-06-13 16:27:06.155 [main] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1eb6e1c: startup date [Sat Jun 13 16:27:06 CST 2020]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@164305a
 2020-06-13 16:27:06.941 [main] INFO  o.s.integration.config.IntegrationRegistrar - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
 2020-06-13 16:27:07.227 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=3175d340-f78f-3403-b3b6-aca0741f38b2
@@ -1320,7 +1320,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 2020-06-13 16:27:08.320 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'hikariPoolDataSourceMetadataProvider' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$Lambda$331/6833084] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2020-06-13 16:27:08.344 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration$$EnhancerBySpringCGLIB$$7fa9b8c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2020-06-13 16:27:08.411 [main] INFO  c.m.v2.c3p0.impl.AbstractPoolBackedDataSource - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> 1hge18maa1bxy3m11ent8ei|1a373fd, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge18maa1bxy3m11ent8ei|1a373fd, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/ssp_omp?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 10, maxStatements -> 1000, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
-2020-06-13 16:29:10.700 [main] INFO  com.yxyk.UserApplication - The following profiles are active: dev
+2020-06-13 16:29:10.700 [main] INFO  com.yxyk.SensitiveApplication - The following profiles are active: dev
 2020-06-13 16:29:10.712 [main] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@12ab8d9: startup date [Sat Jun 13 16:29:10 CST 2020]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@54db99
 2020-06-13 16:29:11.523 [main] INFO  o.s.integration.config.IntegrationRegistrar - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
 2020-06-13 16:29:11.811 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=3175d340-f78f-3403-b3b6-aca0741f38b2
@@ -1533,7 +1533,7 @@ org.springframework.jdbc.support.MetaDataAccessException: Could not get Connecti
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at com.yxyk.UserApplication.main(UserApplication.java:23)
+	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
 Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Connections could not be acquired from the underlying database!
 	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
 	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:319)
@@ -1813,7 +1813,7 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown da
 2020-06-13 16:33:00.612 [main] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
 2020-06-13 16:33:00.655 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8031 (http) with context path ''
 2020-06-13 16:33:00.656 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8031
-2020-06-13 16:33:00.658 [main] INFO  com.yxyk.UserApplication - Started UserApplication in 231.729 seconds (JVM running for 232.598)
+2020-06-13 16:33:00.658 [main] INFO  com.yxyk.SensitiveApplication - Started SensitiveApplication in 231.729 seconds (JVM running for 232.598)
 2020-06-13 16:33:00.661 [main] INFO  com.yxyk.listener.ApplicationStartup - dev
 2020-06-13 16:33:00.661 [main] INFO  com.yxyk.listener.ApplicationStartup - ========================启动成功==========================
 2020-06-13 16:33:27.410 [http-nio-8031-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'

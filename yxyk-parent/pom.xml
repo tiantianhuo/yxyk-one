@@ -13,6 +13,9 @@
         <module>configServer</module>
         <module>order</module>
         <module>user</module>
+        <module>sensitive</module>
+        <module>sensitive</module>
+        <module>sensitives</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
