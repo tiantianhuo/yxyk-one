@@ -1,6 +1,8 @@
 server:
   port: 8031
 spring:
+  profiles:
+    active: databases-dev
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,15 +18,6 @@ spring:
 logging:
   config: classpath:logback-spring.xml
   path: yxyk-user-log
-#customer:
-#  upload:
-#    serviceUrl: http://39.100.87.147:8002
-#    gainUrl: /single/
-#    requestUrl: /singlefileuploadhandle
-#    downUrl: download/
-#    textUrl: /singleext/
-#  ueditor:
-#    resourceUrl: ueditor/jsp.zip
 c3p0:
   jdbcUrl: jdbc:mysql://127.0.0.1:3306/ssp_omp?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false
   user: root
