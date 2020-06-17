@@ -1,7 +1,7 @@
-/target/
-/target/**
+*/target/
+*/target/**
 *.iml
 *.iml
-.idea/
+*.idea/
 *.class
 .class
