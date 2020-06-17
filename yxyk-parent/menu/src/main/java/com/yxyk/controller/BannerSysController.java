@@ -26,7 +26,7 @@ import java.util.Optional;
  * @modified By：cw
  */
 @RestController
-@RequestMapping("banners")
+@RequestMapping("/banners")
 @AllArgsConstructor
 public class BannerSysController extends BaseController {
 
@@ -38,7 +38,7 @@ public class BannerSysController extends BaseController {
      * @param bannerSys 轮播图对象
      * @return result
      */
-    @PostMapping(value = "addBanner")
+    @PostMapping(value = "/addBanner")
     public JSONResponse addBanner(Banner bannerSys) {
         bannerSysService.save(bannerSys);
         return this.success();
@@ -51,7 +51,7 @@ public class BannerSysController extends BaseController {
      * @param id 轮播图id
      * @return json
      */
-    @PostMapping(value = "getBanner")
+    @PostMapping(value = "/getBanner")
     public JSONResponse getBanner(Long id) {
         Optional<Banner> byId = bannerSysService.findById(id);
         return this.success(byId.orElse(null));
@@ -63,7 +63,7 @@ public class BannerSysController extends BaseController {
      * @param id 轮播图id
      * @return json
      */
-    @PostMapping(value = "deleteBannerById")
+    @PostMapping(value = "/deleteBannerById")
     public JSONResponse deleteBannerById(Long id) {
         try {
             Optional<Banner> byId = bannerSysService.findById(id);
@@ -81,13 +81,11 @@ public class BannerSysController extends BaseController {
     /**
      * 上传轮播图
      *
-     * @param file 文件
      * @return Result
      */
-    @PostMapping(value = "uploadBanner")
-    public JSONResponse uploadBanner(MultipartFile file) throws Exception {
-
-        return this.success();
+    @PostMapping(value = "/uploadBanner")
+    public JSONResponse uploadBanner() throws Exception {
+        return this.success("hahahahaha");
     }
 
     /**
@@ -111,10 +109,9 @@ public class BannerSysController extends BaseController {
      */
     @PostMapping(value = "findAllBanner")
     public JSONResponse findAllBanner(VoBannerSys voBannerSys) {
-        Long procuratorId = this.getUser().getProcuratorId();
         LocalDateTime startTime = DateUtils.parseDateTime(voBannerSys.getStartTime());
         LocalDateTime endTime = DateUtils.parseDateTime(voBannerSys.getEndTime());
-        Page<Banner> all = bannerSysService.findAllBanner(startTime, endTime, voBannerSys.getName(), voBannerSys.getPageNum(), voBannerSys.getPageSize(), procuratorId,voBannerSys.getPid());
+        Page<Banner> all = bannerSysService.findAllBanner(startTime, endTime, voBannerSys.getName(), voBannerSys.getPageNum(), voBannerSys.getPageSize(),voBannerSys.getPid());
         return this.success(all);
     }
 

@@ -37,7 +37,7 @@ public class BannerSysServiceImpl implements BannerSysService {
     private final BannerSysRepository bannerSysRepository;
 
     @Override
-    public Page<Banner> findAllBanner(LocalDateTime startTime, LocalDateTime endTime, String name, int curr, int limit, Long procuratorId, Long pid) {
+    public Page<Banner> findAllBanner(LocalDateTime startTime, LocalDateTime endTime, String name, int curr, int limit, Long pid) {
         Map<Object, SearchFilter> filters = new HashMap<>();
         if (!("".equals(name))) {
             filters.put("name", new SearchFilter("name", SearchFilter.Operator.LIKE, name));

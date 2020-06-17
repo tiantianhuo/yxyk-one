@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  */
 public interface BannerSysService extends BaseService<Banner, Long> {
 
-    Page<Banner> findAllBanner(LocalDateTime startTime, LocalDateTime endTime, String procuratorateName, int curr, int limit, Long procuratorId, Long pid);
+    Page<Banner> findAllBanner(LocalDateTime startTime, LocalDateTime endTime, String Name, int curr, int limit, Long pid);
 
     Banner findBannerById(Long id);
 
