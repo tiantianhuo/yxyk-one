@@ -1,12 +1,12 @@
 package com.yxyk.controller;
 
 
+import com.yxyk.BaseController;
 import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.Banner;
 import com.yxyk.bean.vo.VoBannerSys;
-import com.yxyk.controller.common.BaseController;
 import com.yxyk.service.BannerSysService;
 import com.yxyk.utils.DateUtils;
 import lombok.AllArgsConstructor;

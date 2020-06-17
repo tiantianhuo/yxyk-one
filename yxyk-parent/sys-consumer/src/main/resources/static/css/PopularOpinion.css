@@ -1,0 +1,44 @@
+.thematic{
+	float: right;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	text-align: center;
+	line-height: 10px;
+	padding:12px 18px;
+	color:#fff;
+	border:1px solid #3299fe;
+	background: #3299fe;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-top:10px;
+}
+.textL{
+	max-width: 400px;
+	text-align: left !important;
+	padding-left: 20px !important;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.slh{
+	width:400px !important;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.layui-inline{
+	margin-left: 30px !important;
+}
+.chongzhi{
+	float: right;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	text-align: center;
+	line-height: 10px;
+	padding:12px 18px;
+	color:#fff;
+	border:1px solid #3299fe;
+	background: #3299fe;
+	border-radius: 5px;
+	margin-right: 10px;
+}

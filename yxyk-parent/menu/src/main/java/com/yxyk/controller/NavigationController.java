@@ -1,12 +1,11 @@
 package com.yxyk.controller;
 
+import com.yxyk.BaseController;
 import com.yxyk.bean.common.JSONResponse;
-import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.common.VoParams;
 import com.yxyk.bean.po.Navigation;
 import com.yxyk.bean.vo.VoNavigation;
-import com.yxyk.controller.common.BaseController;
 import com.yxyk.service.NavigationService;
 import com.yxyk.utils.RoChangeUtils;
 import lombok.AllArgsConstructor;

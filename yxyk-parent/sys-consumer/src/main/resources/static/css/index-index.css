@@ -1,0 +1,170 @@
+.customer-ul{
+	overflow: hidden;
+    cursor: pointer;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.customer-ul li{
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight:bold;
+}
+.customer-uls li {
+    font-size: 14px !important;
+    font-weight:normal !important;
+}
+.table>tbody+tbody{
+    border-top: none !important;
+}
+.table-banner tr td{
+	line-height: 44px !important;
+}
+.table tr td img{
+	width: 70px;
+}
+.selects{
+	border: none;
+    width: 66px;
+    margin-right: 0; 
+    background: none;
+}
+.yuan{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	background-color: #57f357;
+}
+.yuan2{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	background-color: red;
+}
+
+.first li {
+	font-size: 18px;
+}
+
+
+/*选项卡样式*/
+
+.layui-tab-brief>.first .layui-this {
+	color: #333;
+	font-weight: bold;
+}
+
+.layui-tab-brief>.layui-tab-more li.layui-this:after,
+.layui-tab-brief>.first .layui-this:after {
+	border-bottom: none;
+}
+
+.second {
+	overflow: hidden;
+	cursor: pointer;
+	margin:30px 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.second li {
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+}
+
+.active {
+	color: #1E9FFF;
+	border-bottom: 2px solid #1E9FFF;
+}
+
+.second-tab {
+	padding: 0 40px !important;
+}
+
+/*.show-title {
+	padding: 20px 0;
+}*/
+
+.show-title .input-box {
+	float: left;
+	margin-bottom: 20px;
+}
+
+.input-box .dome-main {
+	margin-right: 20px;
+}
+
+.show-title .input-box span {
+	line-height: 38px;
+}
+
+.img-box {
+	position: relative;
+}
+
+.img-box img {
+	position: absolute;
+	top: 10px;
+	right: 35px;
+	cursor: pointer;
+}
+
+.show-title .found {
+	float: right;
+	color: #fff;
+	background: #1E9FFF;
+	margin-bottom: 10px;
+}
+
+
+/*城市选择器*/
+
+.city-picker-selector li.caller.active {
+	background: #1E9FFF !important;
+}
+
+.select-city {
+	overflow: inherit !important;
+}
+
+.select-city .fromright {
+	margin-bottom: 20px;
+}
+
+.fromright .name{
+	width: 300px;
+    display: block;
+    margin-top: 10px;
+}
+
+/*模态框省份选择样式*/
+
+.select-city .fromright .city-picker-selector .selector-item {
+	width: 140px;
+}
+
+.select-citys .fromright .city-picker-selector .selector-item:first-child {
+	margin-left: 0;
+}
+
+.select-citys .fromright .city-picker-selector .selector-item {
+	width: 97px;
+	margin-left: 5px;
+}
+
+.edui-default .edui-editor-iframeholder{
+	height: 450px !important;
+}
+.td-c{
+	width: 163px;
+}
+.boxs-right{
+    margin-bottom: 20px;
+}
+.content-a p strong img{
+    /*width: 100%;*/
+    overflow: hidden;
+}

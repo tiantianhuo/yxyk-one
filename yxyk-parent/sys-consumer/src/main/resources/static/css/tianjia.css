@@ -1,0 +1,32 @@
+.layui-form-label{
+	width:70px;
+	color: #515c75;
+	font-size: 14px;
+	padding: 9px 0px;
+	text-align: left;
+}
+
+.layui-form-item{
+	padding: 24px 27px;
+	margin-bottom: 0px;
+}
+.layui-input-block{
+	margin-left: 75px;
+}
+
+.edui-default .edui-editor {
+	width: auto !important;
+	height: 100%  !important;
+	margin:0 27px;
+	margin-bottom: 20px;
+}
+.edui-default .edui-editor-iframeholder{
+	width: 100% !important;
+	font-size:14px;
+	color: #464e5a;
+	
+}
+.edui-default .edui-editor-bottomContainer td{
+	border-top: none !important;
+	display:none !important ;
+}

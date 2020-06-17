@@ -1,8 +1,6 @@
 server:
   port: 8031
 spring:
-  profiles:
-    active: databases-dev
   jpa:
     hibernate:
       ddl-auto: update
