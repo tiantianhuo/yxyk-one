@@ -1,6 +1,6 @@
 package com.yxyk;
 
-import com.yxyk.listener.ApplicationStartup;
+import com.yxyk.user.listener.ApplicationStartup;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
