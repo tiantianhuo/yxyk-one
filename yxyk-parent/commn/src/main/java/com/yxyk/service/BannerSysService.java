@@ -2,6 +2,7 @@ package com.yxyk.service;
 
 import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.po.Banner;
+import com.yxyk.bean.vo.VoBanner;
 import com.yxyk.service.common.BaseService;
 import org.springframework.data.domain.Page;
 
@@ -22,7 +23,10 @@ public interface BannerSysService extends BaseService<Banner, Long> {
 
     void changeSortIndex(Long id, Integer event) throws OperationException;
 
+    /**
+     * 保存修改banner
+     * @param voBanner voBanner
+     */
 
-
-
+    void saveBanner(VoBanner voBanner);
 }

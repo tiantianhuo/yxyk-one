@@ -1,36 +1,21 @@
 .modal_c{
-	width: 312px !important;
-	height: 157px !important;
-	top: 200px !important;
-	left: 145px !important;
-	color: #333 !important;
+	width: 312px;
+	height: 157px;
+	top: 200px;
+	left: 145px;
+	color: #333;
 }
 
 .annius{
 	width: 63% !important;
-	margin: auto;
-	margin-top: 30px;
-	border-color: none !important;
+	border-color: none;
 }
 .quxiaos{
-	background:#fff ;
-	color: #3299fe;
-	border-color: #3299fe;
 	padding: 3px 14px !important;
 }
 .quedings{
-	background:#3299fe ;
-	color: #fff;
-	border-color: #3299fe;
-	margin-right: 20px;
 	padding: 3px 14px !important;
 }
-.quedings:hover{
-	color: #fff;
-}
-.quxiaos:hover{
-	color: #3299fe;
-}
 .modal-b{
-	text-align: center !important;
+	text-align: center;
 }

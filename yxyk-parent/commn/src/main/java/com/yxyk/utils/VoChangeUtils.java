@@ -1,7 +1,9 @@
 package com.yxyk.utils;
 
+import com.yxyk.bean.po.Banner;
 import com.yxyk.bean.po.Navigation;
 import com.yxyk.bean.po.User;
+import com.yxyk.bean.vo.VoBanner;
 import com.yxyk.bean.vo.VoNavigation;
 import com.yxyk.bean.vo.VoUser;
 
@@ -34,5 +36,21 @@ public class VoChangeUtils {
             navigation.setId(voNavigation.getId());
         }
         return navigation;
+    }
+
+    public static Banner changeToBanner(VoBanner voBanner) {
+        Banner banner = new Banner();
+        if(voBanner.getId()!=null){
+            banner.setId(voBanner.getId());
+            banner.setOrderNumber(voBanner.getOrderNumber());
+        }else {
+            banner.setOrderNumber(System.currentTimeMillis());
+        }
+        banner.setName(voBanner.getName());
+        banner.setNavigationId(voBanner.getNavigationId());
+        banner.setOpenState(voBanner.getOpenState());
+        banner.setPath(voBanner.getPath());
+        return banner;
+
     }
 }

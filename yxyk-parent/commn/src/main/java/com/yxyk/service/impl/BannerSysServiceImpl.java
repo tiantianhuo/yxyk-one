@@ -3,10 +3,12 @@ package com.yxyk.service.impl;
 import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.Banner;
+import com.yxyk.bean.vo.VoBanner;
 import com.yxyk.reportory.BannerSysRepository;
 import com.yxyk.service.BannerSysService;
 import com.yxyk.utils.DynamicSpecifications;
 import com.yxyk.utils.SearchFilter;
+import com.yxyk.utils.VoChangeUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -105,6 +107,12 @@ public class BannerSysServiceImpl implements BannerSysService {
             Banner beBannerSys = bannerSysList.get(0);
             changeLocation(one, beBannerSys);
         }
+    }
+
+    @Override
+    public void saveBanner(VoBanner voBanner) {
+        Banner banner=VoChangeUtils.changeToBanner(voBanner);
+        bannerSysRepository.save(banner);
     }
 
     /***

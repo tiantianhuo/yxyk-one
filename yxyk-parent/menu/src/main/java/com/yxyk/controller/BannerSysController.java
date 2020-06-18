@@ -6,6 +6,7 @@ import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.Banner;
+import com.yxyk.bean.vo.VoBanner;
 import com.yxyk.bean.vo.VoBannerSys;
 import com.yxyk.service.BannerSysService;
 import com.yxyk.utils.DateUtils;
@@ -33,14 +34,14 @@ public class BannerSysController extends BaseController {
     private final BannerSysService bannerSysService;
 
     /**
-     * 添加轮播图
+     * 添加/修改轮播图
      *
-     * @param bannerSys 轮播图对象
+     * @param voBanner 轮播图对象
      * @return result
      */
     @PostMapping(value = "/addBanner")
-    public JSONResponse addBanner(Banner bannerSys) {
-        bannerSysService.save(bannerSys);
+    public JSONResponse addBanner(VoBanner voBanner) {
+        bannerSysService.saveBanner(voBanner);
         return this.success();
     }
 

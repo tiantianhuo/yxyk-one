@@ -109,8 +109,8 @@
 
 .checkbox-primary input[type="checkbox"]:indeterminate + label::before,
 .checkbox-primary input[type="radio"]:indeterminate + label::before {
-  background-color: #5bc0de;
-  border-color: #5bc0de;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 
 .checkbox-primary input[type="checkbox"]:indeterminate + label::after,
@@ -204,7 +204,8 @@
       transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
 .radio input[type="radio"] {
   opacity: 0;
-    z-index: 1; }
+    z-index: 1;
+  outline: none;}
 .radio input[type="radio"]:focus + label::before {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;

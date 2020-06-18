@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>查看模块列表</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/model.css"/>
+    <link rel="stylesheet" href="/css/zone.css"/>
+    <link rel="stylesheet" href="/css/delete.css"/>
+    <link rel="stylesheet" href="/css/customer.css"/>
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <!--城市三级联动-->
+    <link rel="stylesheet" type="text/css" href="/vonder/select-select/css/index.css"/>
+    <script src="/vonder/select-select/js/citydata.min.js"></script>
+    <script src="/vonder/select-select/js/cityPicker-2.0.3.js"></script>
+
+    <script src="/vonder/bootstrap-table/bootstrap-table.js"></script>
+    <script src="/vonder/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <style>
+        .jianjie {
+            width: 460px;
+        }
+
+        .jianjie p {
+            width: 460px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .td-c {
+            width: 15%;
+        }
+    </style>
+</head>
+
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<div class="wrapper ">
+    <div class="content">
+        <!--左侧开始-->
+        <#include "../common/menu.html"/>
+        <!--右侧开始-->
+        <div class="content-right">
+            <!--地域管理——内容-->
+            <div>
+                <ul class="customer-ul">
+                    <li>举报模块管理</li>
+                </ul>
+                <div class="second-tab">
+                    <div class="show-title">
+                        <button class="btn found " data-toggle="modal" data-target="#add">新建举报模块</button>
+                        <table class="p-table" id="user_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--地域管理——内容结束-->
+            <!--分页开始-->
+            <div id="demo" class="demo"></div>
+        </div>
+
+    </div>
+</div>
+<#include "../common/footer.html"/>
+<!--删除模态框开始-->
+<div class="modal fade modal-new results-sentencing assa" id="delete" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal_c">
+            <div class="modal-header modal_h">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close closes"></i>
+                </button>
+                <h4 class="modal-title modal_t">提示</h4>
+            </div>
+            <div class="modal-body modal-b">
+                <form>
+                    <div class="fromboxs">你确定要删除吗？</div>
+                    <div class="fromboxs anniu annius">
+                        <button class="queding quedings" data-dismiss="modal" type="button" onclick="deleteById()">确定
+                        </button>
+                        <button class="quxiao quxiaos" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--新建模态框-->
+<div class="modal fade modal-new results-sentencing" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close"></i>
+                </button>
+                <h4 class="modal-title">创建举报模块</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            模块名称：
+                        </div>
+                        <div class="fromright">
+                            <input type="text" placeholder="请输入模块名称" id="name_create_modal"/>
+                        </div>
+                    </div>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            模块说明 ：
+                        </div>
+                        <div class="fromright">
+                            <textarea placeholder="请输入备注信息" id="remarks_create_modal"></textarea>
+                        </div>
+                    </div>
+                    <div class="fromboxs anniu">
+                        <button class="queding" data-dismiss="modal" onclick="saveModular()">保存</button>
+                        <button class="quxiao" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--修改模态框-->
+<div class="modal fade modal-new results-sentencing" id="update" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close"></i>
+                </button>
+                <h4 class="modal-title">创建举报模块</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            模块名称：
+                        </div>
+                        <div class="fromright">
+                            <input type="text" placeholder="请输入模块名称" id="modularName"/>
+                            <input type="text" hidden id="modularId"/>
+                        </div>
+                    </div>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            模块说明 ：
+                        </div>
+                        <div class="fromright">
+                            <textarea placeholder="请输入模块说明" id="modularExplain"></textarea>
+                        </div>
+                    </div>
+                    <div class="fromboxs anniu">
+                        <button class="queding" data-dismiss="modal" onclick="editModular()">保存</button>
+                        <button class="quxiao" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+</body>
+<script>
+    var deleteId;
+
+    $("#report_modular").attr("class", "actives");
+
+    $(".return").click(function () {
+        window.location.href = "logout"
+    });
+
+    function initTable() {
+        $("#user_table").bootstrapTable('destroy');
+        var countyId = $("#county_select_table").val();
+        var userName = $("#input_text").val();
+
+        $("#user_table").bootstrapTable({
+            url: "/apis/reportModular/findAllModular",
+            method: "post",
+            contentType: "application/x-www-form-urlencoded",
+            ajax: undefined,
+            sidePagination: "server",
+            toolbar: '#toolbar',
+            striped: false,
+            cache: false,
+            pagination: true,
+            sortable: false,
+            sortOrder: "desc",
+            pageNumber: 1,
+            pageSize: 10,
+            pageList: [10, 20],
+            queryParams: function (params) {
+                return {
+                    pageNum: params.offset,
+                    pageSize: params.limit
+                };
+            },
+            onClickRow: function (row, $element) {
+            },
+            responseHandler: function (res) {
+                console.log(res)
+                return res.data;
+            },
+            columns: [{
+                field: 'id',
+                title: '序号'
+            }, {
+                field: 'modularName',
+                title: '名称'
+            }, {
+                field: 'modularExplain',
+                title: "内容",
+                cellStyle: {
+                    css: {
+                        "width": "460px",
+                        "text-align": "left"
+                    }
+                }, formatter: function (value) {
+                    return "<p style='overflow: hidden;\n" +
+                        "    text-overflow: ellipsis;\n" +
+                        "    white-space: nowrap;\n" +
+                        "    width: 460px;'>" + value + "</p>"
+                }
+            }, {
+                field: 'createTime',
+                title: '创建时间'
+            }, {
+                title: '操作内容',
+                formatter: function (value, row) {
+                    return '<span data-toggle="modal" data-target="#update" onclick="updateModular(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteModular(' + row.id + ')">删除</span>';
+                }
+            }]
+        });
+    }
+
+    //删除
+    function deleteById() {
+        $.post('/apis/reportModular/deleteModular', {id: deleteId}, function (result) {
+            initTable();
+        })
+    }
+
+    function deleteModular(id) {
+        deleteId = id;
+    }
+
+    //修改
+    function updateModular(id) {
+        $("#modularId").val(id);
+        $.post('/apis/reportModular/findModular', {id: id}, function (result) {
+            console.log(result);
+            var data = result.data;
+            $("#modularName").val(data.modularName);
+            $("#modularExplain").val(data.modularExplain);
+        })
+    }
+
+    function editModular() {
+        var id = $("#modularId").val();
+        var modularName = $("#modularName").val();
+        var modularExplain = $("#modularExplain").val();
+        $.post('/apis/reportModular/updateModular', {
+            id: id,
+            modularName: modularName,
+            modularExplain: modularExplain
+        }, function (result) {
+            console.log(result);
+            initTable();
+        })
+    }
+
+    //初始化
+    $(function () {
+        initTable();
+    })
+
+    //添加
+    function saveModular() {
+        var modularName = $("#name_create_modal").val();
+        var modularExplain = $("#remarks_create_modal").val();
+        $.post('/apis/reportModular/addReportModular', {
+            modularName: modularName,
+            modularExplain: modularExplain
+        }, function (result) {
+            console.log(result);
+            $("#name_create_modal").val("");
+            $("#remarks_create_modal").val("");
+            initTable();
+        })
+    }
+</script>
+</html>

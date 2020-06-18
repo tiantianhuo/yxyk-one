@@ -1,20 +1,20 @@
 app.controller("departmentController",function ($scope,$location,departmentService,$filter) {
     $scope.report = {} ; //选中的举报
     $scope.imgListSrc=[
-        "../../static/imgbox/img/yp2.png",
-        "../../static/imgbox/img/st2.png",
-        "../../static/imgbox/img/cc2.png",
-        "../../static/imgbox/img/td2.png",
-        "../../static/imgbox/img/ls2.png",
-        "../../static/imgbox/img/qt2.png"
+        "/imgbox/img/yp2.png",
+        "/imgbox/img/st2.png",
+        "/imgbox/img/cc2.png",
+        "/imgbox/img/td2.png",
+        "/imgbox/img/ls2.png",
+        "/imgbox/img/qt2.png"
     ];
     $scope.imgListSrcs=[
-        "../../static/imgbox/img/yp3.png",
-        "../../static/imgbox/img/st3.png",
-        "../../static/imgbox/img/cc3.png",
-        "../../static/imgbox/img/td3.png",
-        "../../static/imgbox/img/ls3.png",
-        "../../static/imgbox/img/qt3.png"
+        "/imgbox/img/yp3.png",
+        "/imgbox/img/st3.png",
+        "/imgbox/img/cc3.png",
+        "/imgbox/img/td3.png",
+        "/imgbox/img/ls3.png",
+        "/imgbox/img/qt3.png"
     ];
     //获取id
     $scope.voCondition={};

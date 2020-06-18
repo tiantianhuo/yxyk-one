@@ -4,35 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>回收站</title>
-    <link rel="stylesheet" href="../../static/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/vonder/bootstrap-table/bootstrap-table.min.css">
-    <link rel="stylesheet" href="../../static/vonder/jqueryStep/css/jquery.step.css">
-    <link rel="stylesheet" href="../../static/vonder/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../static/vonder/font_7grt4on8i7d/iconfont.css" media="all">
-    <link rel="stylesheet" href="../../static/css/common.css"/>
-    <link rel="stylesheet" href="../../static/css/bootstrap-dialog.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css">
 
-    <script src="../../static/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
-    <script src="../../static/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="../../static/vonder/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="../../static/vonder/layui/layui.js"></script>
-    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 
     <!--gonggao-->
-    <link rel="stylesheet" href="../../static/css/commonss.css"/>
-    <link rel="stylesheet" href="../../static/css/models.css"/>
-    <link rel="stylesheet" href="../../static/css/yuqing.css"/>
-    <script src="../../static/vonder/layui/layui.js"></script>
+    <link rel="stylesheet" href="/css/commonss.css"/>
+    <link rel="stylesheet" href="/css/models.css"/>
+    <link rel="stylesheet" href="/css/yuqing.css"/>
+    <script src="/vonder/layui/layui.js"></script>
 
     <!--bootstrap CheckBox美化-->
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/build.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/build.css"/>
 
     <!--富文本-->
-    <script src="../../static/vonder/ueditor/ueditor.config.js"></script>
-    <script src="../../static/vonder/ueditor/ueditor.all.min.js"></script>
-    <script src="../../static/vonder/ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script src="../../static/js/bootstrap-dialog.min.js"></script>
+    <script src="/vonder/ueditor/ueditor.config.js"></script>
+    <script src="/vonder/ueditor/ueditor.all.min.js"></script>
+    <script src="/vonder/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="/js/bootstrap-dialog.min.js"></script>
 
     <style>
         .table tr:nth-child(odd) {
@@ -208,7 +208,7 @@
                         '                        </tr>';
                 });
                 if (data === undefined || data === null || data.length === 0) {
-                    str += '<tr><td colspan="6" style="text-align: center"><div style="width:auto;margin:0 auto;margin-top: 20px;"><img  src="../../static/common/noneDate.png"></div></td></tr>';
+                    str += '<tr><td colspan="6" style="text-align: center"><div style="width:auto;margin:0 auto;margin-top: 20px;"><img  src="/common/noneDate.png"></div></td></tr>';
                 }
                 $("#dataContent").html(str);
                 page(res.total, res.pageNum, res.pageSize);

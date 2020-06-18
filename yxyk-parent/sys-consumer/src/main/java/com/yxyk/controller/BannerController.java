@@ -1,6 +1,8 @@
 package com.yxyk.controller;
 
 import com.yxyk.bean.common.JSONResponse;
+import com.yxyk.bean.common.VoParams;
+import com.yxyk.bean.vo.VoBanner;
 import com.yxyk.fegin.menu.MenuFeign;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +21,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class BannerController {
 
     private final MenuFeign menuFeign;
-    @PostMapping("nihao")
-    public JSONResponse nihao(){
-        return menuFeign.upload();
+
+    /**
+     * 保存修改banner
+     *
+     * @param voBanner vo
+     * @return JSONResponse
+     */
+    @PostMapping("save")
+    public JSONResponse save(VoBanner voBanner) {
+        return menuFeign.save(voBanner);
     }
+
+    /**
+     * 删除
+     *
+     * @param voParams id
+     * @return JSONResponse
+     */
+    @PostMapping
+    public JSONResponse deleteOne(VoParams voParams) {
+        return menuFeign.deleteOne(voParams);
+    }
+
+
+
 
 }

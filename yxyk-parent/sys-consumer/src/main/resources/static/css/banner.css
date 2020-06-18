@@ -17,7 +17,7 @@
 	background-color: #1E9FFF !important;
 }
 .radio.radio-inline{
-	margin-top: 10px !important;
+	margin-top: 13px !important;
 }
 
 .layui-upload img{
@@ -34,156 +34,28 @@
 /*链接样式*/
 .boxs{
 	width: 100%;
-	border-top: 1px dashed #ddd;
-    padding-top: 20px;
+	border-top: 1px dashed #ddd
 }
 .boxs-left {
-	width: 60%;
-	float: left;
-	padding-left: 4%;
+	width: 50%;
+	padding-left: 10%;
+}
+.boxs-left .from-left{
+	width: 70px;
+}
+.boxs-left .from-right{
+	width:76%;
+}
+textarea{
+	height: 150px !important;
 }
 
-
 .click{
-	width: 30%;
+	width: 70px;
 	margin: auto;
 }
 .click .save{
 	color: #fff;
 	background: #1E9FFF;
-	margin-right:10%;
-}
-.click .back{
-	color: #333;
-}
-/*boxs-right内容*/
-.boxs-right{
-	width: 36%;
-	height: auto;
-	float: left;
-    padding-top:36px;
-}
-.img-fromboxs{
-    margin-bottom: 30px;
-}
-.img-content{
-	width: 100%;
-	height: 620px;
-	margin-top: 20px;
-	background-image: url(../imgbox/img/phone.png);
-	background-size: contain;
-    background-repeat: no-repeat;
-    position: relative;
-}
-.img-content .contentbox{
-	position: absolute;
-    top: 124px;
-    left: 26px;
-    width: 252px;
-}
-.img-content .contentbox div{
-	width: 100%;
-	display: block;
-	margin-bottom: 5px;
 }
 
-.book{
-    font-weight: bold;
-	font-size: 16px;
-}
-.img-content div .book-a{
-	text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.img-content .content-a{
-	height: 360px;
-	overflow-y: auto;
-    overflow-x: hidden;
-    word-wrap: break-word;
-}
-
-.from-right input[type=password]{
-	width: 400px;
-}
-.from-right input[type=text]{
-	width: 81%;
-}
-.names{
-    width: 45% !important;
-}
-.from-right textarea{
-	width: 400px;
-	height: 300px;
-}
-
-.content-a::-webkit-scrollbar {/*滚动条整体样式*/
-    width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
-    height: 10px;
-    display: block;
-}
-.content-a::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-	height:10px;
-    border-radius: 10px;
-	background-color: #eee;
-	height:30px !important;
-    }
-.content-a::-webkit-scrollbar-track {/*滚动条里面轨道*/
-    background: none;
-    }
-
-/*举报指引样式*/
-
-.contentboxs {
-    position: absolute;
-    top: 107px;
-    left: 23px;
-    width: 231px;
-}
-
-.contentboxs .zhiyin {
-    width: 100%;
-    height: 380px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    word-wrap: break-word;
-}
-
-.zhiyin::-webkit-scrollbar {
-    /*滚动条整体样式*/
-    width: 5px;
-    /*高宽分别对应横竖滚动条的尺寸*/
-    height: 10px;
-    display: block;
-}
-
-.zhiyin::-webkit-scrollbar-thumb {
-    /*滚动条里面小方块*/
-    height: 10px;
-    border-radius: 10px;
-    background-color: #eee;
-    height: 30px !important;
-}
-
-.zhiyin::-webkit-scrollbar-track {
-    /*滚动条里面轨道*/
-    background: none;
-}
-.layui-laydate-content td.laydate-selected {
-    background: #e7f3ff !important;
-}
-.content-a p img{
-    max-width: 100%;
-}
-.content-a p video{
-    width: 100%;
-    height:100%;
-}
-
-.zhiyin p img{
-    max-width: 100%;
-}
-.zhiyin p video{
-    width: 100%;
-    height: 100%;
-}

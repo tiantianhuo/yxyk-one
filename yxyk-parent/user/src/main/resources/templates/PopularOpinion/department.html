@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>线索管理</title>
-    <link rel="stylesheet" href="../../static/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/vonder/bootstrap-table/bootstrap-table.min.css">
-    <link rel="stylesheet" href="../../static/vonder/jqueryStep/css/jquery.step.css">
-    <link rel="stylesheet" href="../../static/vonder/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../static/vonder/font_7grt4on8i7d/iconfont.css" media="all">
-    <link rel="stylesheet" href="../../static/css/common.css"/>
-    <link rel="stylesheet" href="../../static/css/configure.css"/>
-    <link rel="stylesheet" href="../../static/css/publiclist.css"/>
-    <link rel="stylesheet" href="../../static/js/angularjs/pagination.css"/>
-    <link rel="stylesheet" href="../../static/css/bootstrap-dialog.min.css"/>
-    <link href="../../static/vonder/iCheck/skins/all.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/configure.css"/>
+    <link rel="stylesheet" href="/css/publiclist.css"/>
+    <link rel="stylesheet" href="/js/angularjs/pagination.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css"/>
+    <link href="/vonder/iCheck/skins/all.css" rel="stylesheet" type="text/css"/>
 
 
-    <script src="../../static/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="../../static/js/angularjs/angular.min.js"></script>
-    <script type="text/javascript" src="../../static/js/base.js"></script>
-    <script type="text/javascript" src="../../static/js/angularjs/tm.pagination.js"></script>
-    <script type="text/javascript" src="../../static/js/service/departmentService.js"></script>
-    <script type="text/javascript" src="../../static/js/controller/departmentController.js"></script>
-    <script src="../../static/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="../../static/js/bootstrap-dialog.min.js"></script>
-    <script src="../../static/vonder/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="../../static/vonder/jqueryStep/js/jquery.step.min.js"></script>
-    <script src="../../static/vonder/layui/layui.js"></script>
-    <script src="../../static/vonder/iCheck/icheck.js"></script>
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="/js/base.js"></script>
+    <script type="text/javascript" src="/js/angularjs/tm.pagination.js"></script>
+    <script type="text/javascript" src="/js/service/departmentService.js"></script>
+    <script type="text/javascript" src="/js/controller/departmentController.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-dialog.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/jqueryStep/js/jquery.step.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script src="/vonder/iCheck/icheck.js"></script>
 
-    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 
 </head>
 <style>
@@ -115,7 +115,7 @@
                                     <div class="layui-input-inline">
                                         <input type="text" class="layui-input" id="test6" placeholder=" 请选择起止日期范围 "
                                                style="width:220px;">
-                                        <img src="../../static/images/guanli/bluexl.png" alt="" class="bluexl"/>
+                                        <img src="/images/guanli/bluexl.png" alt="" class="bluexl"/>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                  <!--筛选开始-->
                 <div class="selectboxs">
                     <input ng-model="voCondition.searchKey" type="text" placeholder="请输入要搜索的内容" class="inp"/>
-                    <img src="../../static/images/guanli/search.png" alt="" ng-click="findall()" class="search"/>
+                    <img src="/images/guanli/search.png" alt="" ng-click="findall()" class="search"/>
                 </div>
                 <!--筛选结束-->
 
@@ -159,7 +159,7 @@
                         <span class="names">举报人：{{item.reportPersonName}}</span>
                         <div class="rightcz">
                             <@shiro.hasAnyPermissions name="10202">
-                            <span class="caozuos"><img src="../../static/images/guanli/del.png" title="删除" ng-click="delete(item.id)"
+                            <span class="caozuos"><img src="/images/guanli/del.png" title="删除" ng-click="delete(item.id)"
                                                        alt=""/></span>
                             <span class="caozuos" ng-click="addInspect(item.id)">开始核查</span>
                             <select name="" id="{{item.id}}" class="selectcss" ng-change="changem(item.id)" ng-model="a" >
@@ -173,7 +173,7 @@
                 </div>
                 <tm-pagination conf="paginationConf" style="float:right"></tm-pagination>
                 <div style="margin: 8% auto; text-align: center">
-                  <img src="../../static/common/noneDate.png" ng-show="paginationConf.totalItems<=0" >
+                  <img src="/common/noneDate.png" ng-show="paginationConf.totalItems<=0" >
                 </div>
             </div>
             <!--列表结束-->

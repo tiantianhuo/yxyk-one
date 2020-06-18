@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>舆情专报</title>
-    <link rel="stylesheet" href="../../static/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/vonder/bootstrap-table/bootstrap-table.min.css">
-    <link rel="stylesheet" href="../../static/vonder/jqueryStep/css/jquery.step.css">
-    <link rel="stylesheet" href="../../static/vonder/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../static/vonder/font_7grt4on8i7d/iconfont.css" media="all">
-    <link rel="stylesheet" href="../../static/css/common.css"/>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
     <!--gonggao-->
-    <link rel="stylesheet" href="../../static/css/commonss.css"/>
-    <link rel="stylesheet" href="../../static/css/delete.css"/>
-    <link rel="stylesheet" href="../../static/css/models.css"/>
-    <link rel="stylesheet" href="../../static/css/index-index.css"/>
-    <link rel="stylesheet" href="../../static/css/banner.css"/>
-    <link rel="stylesheet" href="../../static/css/yuqing.css"/>
+    <link rel="stylesheet" href="/css/commonss.css"/>
+    <link rel="stylesheet" href="/css/delete.css"/>
+    <link rel="stylesheet" href="/css/models.css"/>
+    <link rel="stylesheet" href="/css/index-index.css"/>
+    <link rel="stylesheet" href="/css/banner.css"/>
+    <link rel="stylesheet" href="/css/yuqing.css"/>
 
-    <script src="../../static/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
-    <script src="../../static/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="../../static/vonder/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="../../static/vonder/layui/layui.js"></script>
-    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 
 
 </head>
@@ -53,14 +53,14 @@
                                 <div class="layui-input-inline">
                                     <input type="text" class="layui-input" id="test1"
                                            placeholder=" 请输入筛选时间 ">
-                                    <img src="../../static/imgbox/img/data.png"/>
+                                    <img src="/imgbox/img/data.png"/>
                                 </div>
                             </div>
                         </div>
                         <div class="input-box img-box">
                             <input type="text" placeholder="请输入关键词搜索" class="layui-input" id="searchKey"
                                    oninput="initTable(1,10)"/>
-                            <img src="../../static/imgbox/img/search.png" alt=""/>
+                            <img src="/imgbox/img/search.png" alt=""/>
                         </div>
                         <table class="table" id="dataContent">
                             <!--<tr>-->
@@ -212,7 +212,7 @@
                     '\t\t\t\t\t\t\t\t\t</tr>';
             });
             if(obj===undefined||obj===null||obj.length===0){
-                str+='<tr><td colspan="3" style="text-align: center"><div><img style="width:auto;margin:0 auto;margin-top: 20px;" src="../../static/common/noneDate.png"></div></td></tr>';
+                str+='<tr><td colspan="3" style="text-align: center"><div><img style="width:auto;margin:0 auto;margin-top: 20px;" src="/common/noneDate.png"></div></td></tr>';
             }
             $("#dataContent").html(str);
             page(res.total, res.pageNum, res.pageSize);

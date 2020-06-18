@@ -1,0 +1,608 @@
+    <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>地域行政单位管理-机构管理</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.css">
+
+
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/model.css"/>
+    <link rel="stylesheet" href="/css/zone.css"/>
+    <link rel="stylesheet" href="/css/delete.css"/>
+    <link rel="stylesheet" type="text/css" href="/vonder/select-select/css/index.css"/>
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/vonder/select-search/jquery.searchableSelect.css"/>
+    <script src="/select-search/jquery.searchableSelect.js"></script>
+
+    <!--城市三级联动-->
+    <script src="/vonder/select-select/js/citydata.min.js"></script>
+    <script src="/vonder/select-select/js/cityPicker-2.0.3.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.js"></script>
+    <script src="/vonder/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <style>
+        .select-search {
+            overflow: inherit !important;
+        }
+
+        .select-search .fromright .searchable-select {
+            width: 300px !important;
+            margin-bottom: 20px;
+        }
+
+        .searchable-select-input {
+            width: 290px !important;
+        }
+
+        .searchable-scroll {
+            max-height: 177px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<div class="wrapper ">
+    <div class="content">
+        <!--左侧开始-->
+        <#include "../common/menu.html"/>
+
+        <!--右侧开始-->
+        <div class="content-right">
+            <!--机构管理——内容开始-->
+            <div class="">
+                <ul class="customer-ul">
+                    <li>机构管理</li>
+                </ul>
+                <div class="second-tab">
+                    <div class="show-title">
+                        <div class="input-box">
+                            <span>筛选：</span>
+                        </div>
+                        <div class="input-box">
+                            <!--省份选择-->
+                            <select id="province_select_table" onchange="initCity()">
+                                <option value="0">请选择省份</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <!--省份选择-->
+                            <select id="city_select_table" onchange="initCounty()">
+                                <option value="0">请选择市级</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <!--省份选择-->
+                            <select id="county_select_table" onchange="initTable()">
+                                <option value="0">请选择区县</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="test2"
+                                           placeholder=" 2019-01-02 - 2019-05-10 ">
+                                    <img src="/images/img/data.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-box img-box">
+                            <input type="text" placeholder="请输入行政单位名称筛选" class="layui-input " id="text_input"
+                                   onblur="initTable()"/>
+                            <img src="/images/img/search.png" alt=""/>
+                        </div>
+                        <button class="btn found" data-toggle="modal" data-target="#add" value=""
+                                onclick="clearModal()">新建机构
+                        </button>
+                        <table class="p-table" id="company_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--分页开始-->
+            <div id="demo" class="demo"></div>
+        </div>
+
+    </div>
+</div>
+<!--footer-->
+<#include "../common/footer.html"/>
+<!--新建机构模态框开始-->
+<div class="modal fade modal-new results-sentencing" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close"></i>
+                </button>
+                <h4 class="modal-title">新建机构</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            机构名称：
+                        </div>
+                        <div class="fromright">
+                            <input type="text" placeholder="请输入机构名称" id="name"/>
+                        </div>
+                    </div>
+                    <div class="fromboxs select-city">
+                        <div class="fromleft">
+                            所在地 ：
+                        </div>
+                        <div class="fromright">
+                            <!--省份选择-->
+                            <select id="province_select_modal" onchange="initModalCity()">
+                                <option value="0">请选择省份</option>
+                            </select>
+                            <select id="city_select_modal" onchange="initModalCounty()">
+                                <option value="0">请选择城市</option>
+                            </select>
+                            <select id="county_select_modal">
+                                <option value="0">请选择区县</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="fromboxs select-search">
+                        <div class="fromleft">
+                            上级机构 ：
+                        </div>
+                        <div class="fromright">
+                            <select id="select_company">
+                                <option value="">请选择机构</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            备注 ：
+                        </div>
+                        <div class="fromright">
+                            <textarea placeholder="请输入备注信息" id="remarks"/></textarea>
+                        </div>
+                    </div>
+                    <div class="fromboxs tishi-box">
+                        <div class="fromleft">
+                            &nbsp;
+                        </div>
+                        <div class="fromright">
+                            <img src="/images/img/tishi.png"/>&nbsp;&nbsp;提示:所在地请谨慎选择，一经选择不可修改
+                        </div>
+                    </div>
+                    <div class="fromboxs anniu">
+                        <button class="queding" data-dismiss="modal" type="button" onclick="saveCompany()">保存</button>
+                        <button class="quxiao" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--新建机构模态框结束-->
+
+<!--修改机构模态框开始-->
+<div class="modal fade modal-new results-sentencing" id="edit" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close"></i>
+                </button>
+                <h4 class="modal-title">修改机构</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            机构名称：
+                        </div>
+                        <div class="fromright">
+                            <input type="text" placeholder="请输入机构名称"/>
+                        </div>
+                    </div>
+                    <div class="fromboxs select-city select-citys">
+                        <div class="fromleft">
+                            所在地 ：
+                        </div>
+                        <div class="fromright">
+                            <!--省份选择-->
+                            <div class="dome-main">
+                                <select id="province_select_modal_update" onchange="initUpdateCity()">
+                                    <option value="0">请选择省份</option>
+                                </select>
+                                <select id="city_select_modal_update" onchange="initUpdateCounty()">
+                                    <option value="0">请选择城市</option>
+                                </select>
+                                <select id="county_select_modal_update">
+                                    <option value="0">请选择区县</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            备注 ：
+                        </div>
+                        <div class="fromright">
+                            <textarea placeholder="请输入备注信息"></textarea>
+                        </div>
+                    </div>
+                    <div class="fromboxs anniu">
+                        <button class="queding" data-dismiss="modal">保存</button>
+                        <button class="quxiao" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--修改机构模态框结束-->
+
+<!--删除模态框开始-->
+<div class="modal fade modal-new results-sentencing assa" id="delete" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal_c">
+            <div class="modal-header modal_h">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close closes"></i>
+                </button>
+                <h4 class="modal-title modal_t">提示</h4>
+            </div>
+            <div class="modal-body modal-b">
+                <form>
+                    <div class="fromboxs">你确定要删除吗？</div>
+                    <div class="fromboxs anniu annius">
+                        <button class="queding quedings" data-dismiss="modal" type="button"
+                                onclick="deleteCompanyById()">确定
+                        </button>
+                        <button class="quxiao quxiaos" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--删除模态框-结束-->
+</body>
+
+</html>
+<script>
+
+    //删除单位id
+    var companyId;
+    var updateId;
+    var company_obj;
+
+    //日期范围
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //日期范围
+        laydate.render({
+            elem: '#test1',
+            range: true
+        });
+        laydate.render({
+            elem: '#test2',
+            range: "~",
+            done: function (value, date, endDate) {
+                $("#test2").val(value);
+                initTable();
+            }
+        });
+    });
+
+    $(".return").click(function () {
+        window.location.href = "logout"
+    });
+
+    $("#li_jggl").attr("class", "actives");
+
+    initTable();
+    initProvince();
+    initModalProvince();
+
+    function initTable() {
+
+        var provinceId = $("#province_select_table").val();
+        var cityId = $("#city_select_table").val();
+        var countyId = $("#county_select_table").val();
+        var startTime = "";
+        var endTime = "";
+        if ($("#test2").val() !== "") {
+            startTime = $("#test2").val().split("~")[0];
+            endTime = $("#test2").val().split("~")[1];
+        }
+
+        $("#company_table").bootstrapTable('destroy');
+        var procuratorateName = $("#text_input").val();
+        $("#company_table").bootstrapTable({
+            url: "/apis/procuratorate/findProcuratoratePage",
+            method: "post",
+            contentType: "application/x-www-form-urlencoded",
+            ajax: undefined,
+            sidePagination: "server",
+            queryParams: function (params) {
+                return {
+                    pageNum: params.offset,
+                    pageSize: params.limit,
+                    provinceId: provinceId,
+                    cityId: cityId,
+                    countyId: countyId,
+                    startTime: startTime,
+                    endTime: endTime,
+                    procuratorateName: procuratorateName
+                };
+            },
+            toolbar: '#toolbar',
+            striped: false,
+            cache: false,
+            pagination: true,
+            sortable: false,
+            sortOrder: "desc",
+            pageNumber: 1,
+            pageSize: 10,
+            pageList: [10, 20],
+            onClickRow: function (row, $element) {
+            },
+            responseHandler: function (res) {
+                return res.data;
+            },
+            columns: [{
+                field: 'id',
+                title: '序号'
+            }, {
+                field: 'name',
+                title: '机构名称'
+            }, {
+                field: 'addressStr',
+                title: "所在地"
+            }, {
+                field: 'remarks',
+                title: '备注'
+            }, {
+                field: 'createTime',
+                title: '创建时间'
+            }, {
+                title: '操作内容',
+                formatter: function (value, row) {
+                    return '<span data-toggle="modal" data-target="#add" onclick="updateCompany(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteCompany(' + row.id + ')">删除</span>';
+                }
+            }]
+        });
+    }
+
+    function initProvince() {
+        $.post("/apis/procuratorate/findProvince", function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择省份</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.provinceName + "</option>"
+                });
+                $("#province_select_table").html(optionStr);
+                $("#province_select_modal_update").html(optionStr);
+            }
+        })
+    }
+
+    function initCity() {
+        var provinceId = $("#province_select_table").val();
+        $.post("/apis/procuratorate/findCity", {provinceId: provinceId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择城市</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.cityName + "</option>"
+                });
+                $("#city_select_table").html(optionStr);
+            }
+        });
+        initTable();
+
+    }
+
+    function initCounty() {
+        var cityId = $("#city_select_table").val();
+        $.post("/apis/procuratorate/findCounty", {cityId: cityId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择区(县)</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.countyName + "</option>"
+                });
+                $("#county_select_table").html(optionStr);
+            }
+        });
+        initTable();
+    }
+
+    function initUpdateCity() {
+        var provinceId = $("#province_select_modal_update").val();
+        $.post("/apis/procuratorate/findCity", {provinceId: provinceId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择城市</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.cityName + "</option>"
+                });
+                $("#city_select_modal_update").html(optionStr);
+            }
+        })
+    }
+
+    function initUpdateCounty() {
+        var cityId = $("#city_select_modal_update").val();
+        $.post("/apis/procuratorate/findCounty", {cityId: cityId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择区(县)</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.countyName + "</option>"
+                });
+                $("#county_select_modal_update").html(optionStr);
+            }
+        })
+    }
+
+    function initModalProvince() {
+        $.post("/apis/procuratorate/findProvince", function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择省份</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.provinceName + "</option>"
+                });
+                $("#province_select_modal").html(optionStr);
+            }
+        })
+    }
+
+    function initModalCity() {
+        var provinceId = $("#province_select_modal").val();
+        $.post("/apis/procuratorate/findCity", {provinceId: provinceId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择城市</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.cityName + "</option>"
+                });
+                $("#city_select_modal").html(optionStr);
+            }
+        });
+    }
+
+    function initModalCounty() {
+        var cityId = $("#city_select_modal").val();
+        $.post("/apis/procuratorate/findCounty", {cityId: cityId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择区(县)</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.countyName + "</option>"
+                });
+                $("#county_select_modal").html(optionStr);
+            }
+        });
+    }
+
+    function clearModal() {
+        updateId = 0;
+        $("#name").val("");
+        $("#province_select_modal").val(0);
+        $("#city_select_modal").val(0);
+        $("#county_select_modal").val(0);
+        $("#remarks").val("");
+    }
+
+    function saveCompany() {
+
+        var name = $("#name").val();
+        var provinceId = $("#province_select_modal").val();
+        var cityId = $("#city_select_modal").val();
+        var countyId = $("#county_select_modal").val();
+        var remarks = $("#remarks").val();
+        var parentId = $("#select_company").val();
+
+        $.post("/apis/procuratorate/saveProcuratorate", {
+            id: updateId,
+            name: name,
+            provinceId: provinceId,
+            cityId: cityId,
+            countyId: countyId,
+            remarks: remarks,
+            parentId: parentId
+        }, function (result) {
+            if (result.success) {
+                initTable();
+            }
+        })
+    }
+
+    function deleteCompany(id) {
+        companyId = id;
+    }
+
+    function updateCompany(id) {
+        updateId = id;
+        $.post("/apis/procuratorate/findById", {
+            id: id
+        }, function (result) {
+            if (result.success) {
+                $("#name").val(result.data.name);
+                $("#province_select_modal").val(result.data.provinceId);
+                $("#select_company").val(result.data.parentId);
+                destorySelect();
+                $('#select_company').searchableSelect();
+                $.post("/apis/procuratorate/findCity", {provinceId: result.data.provinceId}, function (result1) {
+                    if (result1.success) {
+                        var optionStr = "<option value='0'>请选择城市</option>";
+                        $(result1.data).each(function (i, obj) {
+                            optionStr += "<option value='" + obj.id + "'>" + obj.cityName + "</option>"
+                        });
+                        $("#city_select_modal").html(optionStr);
+                        $("#city_select_modal").val(result.data.cityId);
+                    }
+                });
+                $.post("/apis/procuratorate/findCounty", {cityId: result.data.cityId}, function (result1) {
+                    if (result1.success) {
+                        var optionStr = "<option value='0'>请选择区(县)</option>";
+                        $(result1.data).each(function (i, obj) {
+                            optionStr += "<option value='" + obj.id + "'>" + obj.countyName + "</option>"
+                        });
+                        $("#county_select_modal").html(optionStr);
+                        $("#county_select_modal").val(result.data.countyId);
+                    }
+                });
+                $("#remarks").val(result.data.remarks);
+            }
+        })
+    }
+
+    function deleteCompanyById() {
+        $.post("/apis/procuratorate/deleteProcuratorate", {id: companyId}, function (result) {
+            if (result.success) {
+                initTable();
+            }
+        });
+    }
+
+    function destorySelect() {
+        $(".searchable-select").each(function (i, obj) {
+            $(obj).remove();
+        });
+    }
+
+    initCompany();
+
+    function initCompany() {
+
+        $.post("/apis/procuratorate/findAll", function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择用户所在单位</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.name + "</option>"
+                });
+                $("#select_company").html(optionStr);
+                destorySelect();
+                $('#select_company').searchableSelect();
+
+            }
+        })
+    }
+
+
+</script>

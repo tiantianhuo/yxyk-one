@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>客户账号管理</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/model.css"/>
+    <link rel="stylesheet" href="/css/zone.css"/>
+    <link rel="stylesheet" href="/css/delete.css"/>
+    <link rel="stylesheet" href="/css/customer.css"/>
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <!--城市三级联动-->
+    <link rel="stylesheet" type="text/css" href="/vonder/select-select/css/index.css"/>
+    <script src="/vonder/select-select/js/citydata.min.js"></script>
+    <script src="/vonder/select-select/js/cityPicker-2.0.3.js"></script>
+
+    <script src="/vonder/bootstrap-table/bootstrap-table.js"></script>
+    <script src="/vonder/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+</head>
+
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<div class="wrapper ">
+    <div class="content">
+        <!--左侧开始-->
+        <#include "../common/menu.html"/>
+        <!--右侧开始-->
+        <div class="content-right">
+            <!--地域管理——内容-->
+            <div>
+                <ul class="customer-ul">
+                    <li>客户账号管理</li>
+                </ul>
+                <div class="second-tab">
+                    <div class="show-title">
+                        <div class="input-box">
+                            <span>筛选：</span>
+                        </div>
+                        <div class="input-box province-select">
+                            <!--省份选择-->
+                            <div class="dome-main">
+                                <select id="province_select_table" onchange="initCity()">
+                                    <option value="0">请选择省份</option>
+                                </select>
+                                <select id="city_select_table" onchange="initCounty()">
+                                    <option value="0">请选择城市</option>
+                                </select>
+                                <select id="county_select_table" onchange="initTable()">
+                                    <option value="0">请选择区县</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="test1"
+                                           placeholder="请选择用户有效时间">
+                                    <img src="/images/img/data.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-box img-box">
+                            <input type="text" placeholder="请输入所属机构名称筛选" class="layui-input " id="input_text"
+                                   onblur="initTable()"/>
+                            <img src="/images/img/search.png" alt=""/>
+                        </div>
+                        <button class="btn found add">新建管理员</button>
+                        <table class="p-table" id="user_table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--地域管理——内容结束-->
+            <!--分页开始-->
+            <div id="demo" class="demo"></div>
+        </div>
+
+    </div>
+</div>
+<#include "../common/footer.html"/>
+<!--删除模态框开始-->
+<div class="modal fade modal-new results-sentencing assa" id="delete" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal_c">
+            <div class="modal-header modal_h">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close closes"></i>
+                </button>
+                <h4 class="modal-title modal_t">提示</h4>
+            </div>
+            <div class="modal-body modal-b">
+                <form>
+                    <div class="fromboxs">你确定要删除吗？</div>
+                    <div class="fromboxs anniu annius">
+                        <button class="queding quedings" data-dismiss="modal" type="button" onclick="deleteById()">确定
+                        </button>
+                        <button class="quxiao quxiaos" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!--删除模态框-结束-->
+</body>
+</html>
+<script>
+    var deleteId;
+
+    $("#li_khzh").attr("class", "actives");
+    $(".add").click(function () {
+        window.location.href = "accountDetail";
+    });
+    $(".edit").click(function () {
+        window.location.href = "accountDetail";
+    });
+
+    //市级行政单位——省份选择
+    var selector1 = $('#city-picker-selector1').cityPicker({
+        dataJson: cityData,
+        renderMode: true,
+        search: false,
+        autoSelected: true,
+        keyboard: true,
+        level: 3,
+        onChoiceEnd: function () {
+            console.log(this.values)
+        }
+    });
+
+    //日期范围
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //日期范围
+        laydate.render({
+            elem: '#test1',
+            range: "~",
+            done: function (value) {
+                $("#test1").val(value);
+                initTable();
+            }
+        });
+        laydate.render({
+            elem: '#test2',
+            range: "~"
+        });
+    });
+
+    $(".return").click(function () {
+        window.location.href = "logout"
+    });
+
+    initTable();
+    initProvince();
+
+    function initProvince() {
+        $.post("/apis/procuratorate/findProvince", function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择省份</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.provinceName + "</option>"
+                });
+                $("#province_select_table").html(optionStr);
+                $("#province_select_modal_update").html(optionStr);
+            }
+        })
+    }
+
+    function initCity() {
+        var provinceId = $("#province_select_table").val();
+        $.post("/apis/procuratorate/findCity", {provinceId: provinceId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择城市</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.cityName + "</option>"
+                });
+                $("#city_select_table").html(optionStr);
+            }
+        });
+        initTable();
+    }
+
+    function initCounty() {
+        var cityId = $("#city_select_table").val();
+        $.post("/apis/procuratorate/findCounty", {cityId: cityId}, function (result) {
+            if (result.success) {
+                var optionStr = "<option value='0'>请选择区(县)</option>";
+                $(result.data).each(function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'>" + obj.countyName + "</option>"
+                });
+                $("#county_select_table").html(optionStr);
+            }
+        });
+        initTable();
+    }
+
+    function initTable() {
+
+        var startTime = "";
+        var endTime = "";
+
+        if ($("#test1").val() !== "") {
+            startTime = $("#test1").val().split("~")[0];
+            endTime = $("#test1").val().split("~")[1];
+        }
+
+        $("#user_table").bootstrapTable('destroy');
+
+        var countyId = $("#county_select_table").val();
+        var cityId = $("#city_select_table").val();
+        var provinceId = $("#province_select_table").val();
+        var userName = $("#input_text").val();
+
+        $("#user_table").bootstrapTable({
+            url: "/apis/user/findUserPage",
+            method: "post",
+            contentType: "application/x-www-form-urlencoded",
+            ajax: undefined,
+            sidePagination: "server",
+            queryParams: function (params) {
+                return {
+                    pageNum: params.offset,
+                    pageSize: params.limit,
+                    startTime: startTime,
+                    endTime: endTime,
+                    countyId: countyId,
+                    userName: userName,
+                    provinceId: provinceId,
+                    cityId: cityId
+                };
+            },
+            toolbar: '#toolbar',
+            striped: false,
+            cache: false,
+            pagination: true,
+            sortable: false,
+            sortOrder: "desc",
+            pageNumber: 1,
+            pageSize: 10,
+            pageList: [10, 20],
+            onClickRow: function (row, $element) {
+            },
+            responseHandler: function (res) {
+                return res.data;
+            },
+            columns: [{
+                field: 'id',
+                title: '序号'
+            }, {
+                field: 'userName',
+                title: '账号'
+            }, {
+                field: 'companyName',
+                title: "所属机构名称"
+            }, {
+                field: 'effectiveDays',
+                title: '有效时间',
+                formatter: function (value) {
+                    return value + "天";
+                }
+            }, {
+                field: 'createTime',
+                title: '创建时间'
+            }, {
+                title: '操作内容',
+                formatter: function (value, row) {
+                    return '<span data-toggle="modal" data-target="#add" onclick="updateCompany(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteCompany(' + row.id + ')">删除</span>';
+                }
+            }]
+        });
+    }
+
+    function deleteCompany(id) {
+        deleteId = id;
+    }
+
+    function deleteById() {
+        $.post("/apis/user/deleteById", {
+            id: deleteId
+        }, function (result) {
+            if (result.success) {
+                initTable();
+            }
+        })
+    }
+
+    function updateCompany(id) {
+        window.location.href = "/accountDetail?id=" + id;
+    }
+</script>
