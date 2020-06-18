@@ -19,6 +19,7 @@ import org.springframework.cache.annotation.EnableCaching;
 public class SensitiveApplication {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(SensitiveApplication.class);
+        springApplication.addListeners(new ApplicationStartup());
         springApplication.run(args);
     }
 }

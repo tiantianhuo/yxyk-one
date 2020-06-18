@@ -725,7 +725,7 @@ java.lang.IllegalStateException: Could not locate PropertySource and the fail fa
 	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:364)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305)
 	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8088/sensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8088/adminSensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:696)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:644)
 	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:564)
@@ -1283,7 +1283,7 @@ java.lang.IllegalStateException: Could not locate PropertySource and the fail fa
 	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:364)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305)
 	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8088/sensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8088/adminSensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:696)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:644)
 	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:564)
@@ -1353,7 +1353,7 @@ java.lang.IllegalStateException: Could not locate PropertySource and the fail fa
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
 	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8088/sensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8088/adminSensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:696)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:644)
 	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:564)
@@ -1423,7 +1423,7 @@ java.lang.IllegalStateException: Could not locate PropertySource and the fail fa
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
 	at com.yxyk.SensitiveApplication.main(SensitiveApplication.java:23)
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8080/sensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8080/adminSensitive/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:696)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:644)
 	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:564)

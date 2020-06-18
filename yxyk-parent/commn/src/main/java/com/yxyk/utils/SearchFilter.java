@@ -52,7 +52,6 @@ public class SearchFilter {
 			}
 			String filedName = names[1];
 			Operator operator = Operator.valueOf(names[0]);
-
 			// 创建searchFilter
 			SearchFilter filter = new SearchFilter(filedName, operator, value);
 			filters.put(key, filter);

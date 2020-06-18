@@ -1,8 +1,9 @@
 package com.yxyk.utils;
 
 
-import com.yxyk.bean.po.Sensitive;
-import com.yxyk.bean.vo.VoSensitive;
+import com.yxyk.bean.po.AdminSensitive;
+import com.yxyk.bean.vo.VoAdminSensitive;
+
 
 /**
  * created with IntelliJ IDEA
@@ -13,11 +14,11 @@ import com.yxyk.bean.vo.VoSensitive;
  */
 public class ChangeUtils {
 
-    public static Sensitive changeToSen(VoSensitive voSensitive) {
-        Sensitive sensitive = new Sensitive();
-        sensitive.setSensitiveword(voSensitive.getSensitiveword());
-        sensitive.setCreatePerson(voSensitive.getCreatePerson());
-        sensitive.setId(voSensitive.getId());
-        return sensitive;
+    public static AdminSensitive changeToSen(VoAdminSensitive voSensitive) {
+        AdminSensitive adminSensitive = new AdminSensitive();
+        adminSensitive.setSensitiveword(voSensitive.getSensitiveword());
+        adminSensitive.setCreatePerson("USER");
+        //adminSensitive.setId(voSensitive.getId());
+        return adminSensitive;
     }
 }

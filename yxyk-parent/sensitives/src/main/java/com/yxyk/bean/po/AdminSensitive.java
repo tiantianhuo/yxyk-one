@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,8 +15,8 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-@Table(name = "")
-public class Sensitive extends IdEntity {
+@Table(name = "admin_sensitive")
+public class   AdminSensitive extends IdEntity {
 
     private String sensitiveword; //敏感词
     private String replaceto;   //替换词
@@ -36,8 +35,8 @@ public class Sensitive extends IdEntity {
      */
     @UpdateTimestamp
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime updateTime;
     private String createPerson; //创建人
-    private int states;  //状态0正常，1删除
+    private String updataPerson; //修改人
+   // private int states;  //状态0正常，1删除
 
 }

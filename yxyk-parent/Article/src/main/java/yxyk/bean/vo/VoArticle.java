@@ -1,4 +1,6 @@
 package yxyk.bean.vo;
 
-public class VoArticle {
+import yxyk.bean.po.AdminArticle;
+
+public class VoArticle  extends AdminArticle {
 }

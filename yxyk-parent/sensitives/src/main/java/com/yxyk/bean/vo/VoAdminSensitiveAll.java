@@ -2,14 +2,15 @@ package com.yxyk.bean.vo;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.yxyk.bean.po.Sensitive;
+import com.yxyk.bean.po.AdminSensitive;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.validation.constraints.NotNull;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class VoSensitiveAll extends Sensitive {
+public class VoAdminSensitiveAll extends AdminSensitive {
     /**
      * 开始时间
      */
