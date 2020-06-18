@@ -1,0 +1,128 @@
+.content{
+	background-image: url('../images/denglu/2.jpg');
+	background-size: 100% 100%;
+}
+.center{
+    width: 100%;
+	height: auto;
+	font-family: '微软雅黑';
+	overflow: hidden;
+	padding:0 20%;
+}
+.c_left{
+    padding: 50% 0px;  
+}
+.left{
+	float: left;
+	overflow: hidden;
+	width: 23%;
+	padding-top: 29px;
+}
+.right{
+	float: right;
+    width: 70%;
+}
+.right p{
+	font-size: 31px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 12px 0;
+}
+.right span{
+	font-size: 12px;
+	color: #e3efff;
+	letter-spacing: 1.5px;
+}
+.c_right{
+	padding: 70% 0px;
+}
+.r_right{
+	background:#c5e4fe ;
+	height:420px;
+	width: 416px;
+	padding-left: 50px;
+	border-radius: 4px;
+	padding-top: 20px;
+	box-shadow: 0px 0px 20px rgba(15,78,194,0.3);
+}
+.r_right p{
+	padding:20px 20px;
+	
+}
+.p{
+	border-bottom: 1px solid #e6e9f0;
+	width: 316px;
+	position: relative;
+	background: #fff;
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+.p img{
+	position: absolute;
+	top:20px;
+	left:20px;
+}
+.c_right input{
+	width:230px;
+	border: 1px solid #e6e9f0;
+	/*height: 18px;*/
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    /*padding-left:10px;*/
+}
+p:last-child{
+	margin-top: 26px !important;
+}
+p:nth-child(2){
+	margin-bottom: 14px;
+}
+p:nth-child(4){
+	padding:8px 0 !important;
+}
+.r_right button{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	background: #3299fe;
+	color:#fff;
+	line-height: 14px;
+	padding:16px 0;
+}
+button:hover{
+	color: #fff !important;
+}
+.hide{
+	display: none;
+}
+@media screen and (min-width: 900px) and (max-width: 1366px) {
+	.c_right {
+		padding: 40% 0px;
+	}
+}
+
+@media screen and (min-width: 1367px) and (max-width: 1440px) {
+	.c_right {
+		padding: 60% 0px;
+	}
+}
+
+@media screen and (min-width: 1441px) and (max-width: 1600px) {
+	.c_right {
+		padding: 58% 0px;
+	}
+}
+
+@media screen and (min-width: 1601px) and (max-width: 1920px) {
+	.c_right {
+		padding: 70% 0px;
+	}
+}
+.spans {
+	color: #2568c3;
+	font-size: 26px;
+	font-weight: bold;
+	margin-bottom: 16px;
+	letter-spacing: 1px;
+}
