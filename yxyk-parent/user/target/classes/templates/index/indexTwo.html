@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页设置</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/commonss.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <!--index-->
+    <link rel="stylesheet" href="/css/commonss.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/configure.css" />
+    <link rel="stylesheet" href="/css/models.css"/>
+    <link rel="stylesheet" href="/css/delete.css"/>
+    <link rel="stylesheet" href="/css/index-index.css"/>
+    <link rel="stylesheet" href="/css/banner.css"/>
+
+    <!--富文本-->
+    <script src="/vonder/ueditor/ueditor.config.js"></script>
+    <script src="/vonder/ueditor/ueditor.all.min.js"></script>
+    <script src="/vonder/ueditor/ueditor.all.js"></script>
+    <script src="/vonder/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="/js/homePage/homePage.js"></script>
+    <script src="/vonder/ueditor/xiumi-ue-dialog-v5.js"></script>
+    <style type="text/css">
+        .edui-default .edui-dialog {
+            top: 70px;
+        }
+
+        .edui-button.edui-for-xiumi-connect .edui-button-wrap .edui-button-body .edui-icon {
+            background-image: url("http://xiumi.us/connect/ue/xiumi-connect-icon.png") !important;
+            background-size: contain;
+        }
+    </style>
+
+
+</head>
+
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<script>
+    $(function () {
+        $("#li_bgyy").addClass('active')
+    });
+</script>
+<!--头end-->
+<div class="wrapper ">
+    <div class="content">
+<!--        左侧开始-->
+        <div class="contentleft">
+            <ul class="listleft">
+                <a href="../robot?liNumber=0" class="listlefta actives">
+                    <li>
+                        <img src="/images/guanli/9.png" alt="" class="onesty"/>
+                        <img src="/images/guanli/10.png" alt="" class="twosty"/>
+                        <span class="spantext">首页设置</span>
+                    </li>
+                </a>
+                <a href="../regulations" class="listlefta ">
+                    <li>
+                        <img src="/images/guanli/7.png" alt="" class="onesty"/>
+                        <img src="/images/guanli/8.png" alt="" class="twosty"/>
+                        <span class="spantext">法律法规</span>
+                    </li>
+                </a>
+                <a href="regulations/case" class="listlefta">
+                    <li>
+                        <img src="/images/guanli/11.png" alt="" class="onesty"/>
+                        <img src="/images/guanli/12.png" alt="" class="twosty"/>
+                        <span class="spantext">以案释法</span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+<!--        左侧结束-->
+        <!--右侧开始-->
+        <div class="contentright">
+            <!--内容-->
+            <div>
+<!--                <ul class="customer-ul customer-uls ">-->
+<!--                    <li>当前位置：办公应用-机器人管理</li>-->
+<!--                </ul>-->
+                <div class="cookie">
+                    当前位置：
+                    <span><a href="">机器人管理</a></span>-
+                    <span><a href="">首页设置</a></span>
+                </div>
+                <ul class="second">
+                    <li class="active" value="0" id="bannerId">banner设置</li>
+                    <li value="1" id="afficheId">公告设置</li>
+                </ul>
+                <div class="second-tab tab-one">
+                    <div class="layui-tab-item layui-show show-title">
+                        <div class="input-box">
+                            <span>筛选：</span>
+                        </div>
+                        <div class="input-box">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="test6" style="width:220px;"
+                                           placeholder="请选择时间" lay-key="1">
+                                    <img src="/imgbox/img/data.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-box img-box">
+                            <input type="text" placeholder="请输入名称搜索" oninput="findAll(1,10,null)" class="layui-input "
+                                   id="name"/>
+                            <img src="/imgbox/img/search.png" alt=""/>
+                        </div>
+                        <button class="btn found banner">添加banner图</button>
+                        <table class="table table-bordered table-hover table-banner">
+                            <tr>
+                                <th>序号</th>
+                                <th>图片缩略图</th>
+                                <th>文章</th>
+                                <th>链接</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            <tbody id="bannerBody">
+                            <tr>
+                                <td colspan="6" style="line-height: 200px">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--banner设置内容结束-->
+                <!--公告设置内容-->
+                <div class="second-tab tab-two hide">
+                    <div class="layui-tab-item layui-show show-title">
+                        <div class="input-box">
+                            <span>筛选：</span>
+                        </div>
+                        <div class="input-box">
+                            <select id="isTop" onchange="findAllAffiche(1,10,null,1)">
+                                <option value="-1">全部公告</option>
+                                <option value="1">置顶公告</option>
+                                <option value="0">未置顶公告</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="test2" style="width:220px;"
+                                           placeholder="请选择时间">
+                                    <img src="/imgbox/img/data.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-box img-box">
+                            <input type="text" placeholder="请输入关键词搜索" class="layui-input" id="searchAffiche"
+                                   oninput="findAllAffiche(1,10,null,1)"/>
+                            <img src="/imgbox/img/search.png" alt=""/>
+                        </div>
+                        <button class="btn found gonggao">新建公告</button>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>序号</th>
+                                <th>公告标题</th>
+                                <th>概要</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            <tbody id="afficheBody">
+                            <tr>
+                                <td colspan="5" style="line-height: 200px">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--公告设置结束-->
+                <!--举报指引开始-->
+                <div class="second-tab tab-four hide">
+                    <div class="show-title">
+                        <div class="boxs" style="border-top: none;">
+                            <div class="boxs-left">
+                                <div class="fromboxs">
+                                    <div class="from-left">
+                                内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：
+                            </div>
+                                    <div class="from-right">
+                                        <textarea id="editor" type="text/plain"
+                                                  style="width:90%;height:500px;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="click">
+                                    <button class="btn save" onclick="saveGuidance()" style="margin-left: 25%;">发布
+                                    </button>
+                                </div>
+                            </div>
+                            <!--box-left结束-->
+
+                            <!--box-right开始-->
+                            <div class="boxs-right" style="padding-top: 0;margin-top: -3px;">
+                                <p style="margin-left: 13px;">文章预览（预览模式模拟手机型号为iPhone6）</p>
+                                <div class="img-content" style="height: 566px;">
+                                    <div class="contentboxs">
+                                        <div id="book-a" class="zhiyin"></div>
+                                        <!--<span id="content-a" class="content-a"></span>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--boxs内容结束-->
+
+                    </div>
+                </div>
+                <!--举报指引结束-->
+            </div>
+            <!--内容结束-->
+            <!--分页开始-->
+            <div id="demo" class="demo"></div>
+        </div>
+    </div>
+    <input type="hidden" value="${liNumber}" id="liNumber">
+
+</div>
+</body>
+
+</html>
+
+<script>
+    //新建banner
+    $(".banner").click(function () {
+        window.location.href = "/Index/addBanner?type=1"
+    })
+    //查看banner
+    $(".look-one").click(function () {
+        window.location.href = "/banner"
+    })
+    //新建公告
+    $(".gonggao").click(function () {
+        window.location.href = "/Index/addAffiche?type=1"
+    })
+
+
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+
+    //富文本初始化
+    let ueditor_config = {
+        autoHeightEnabled: false
+    };
+    var ue = UE.getEditor('editor', ueditor_config);
+    // var ue = UE.getEditor('editor');
+    UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+    UE.Editor.prototype.getActionUrl = function (action) {
+        if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage' || action == 'uploadvideo') {
+            return '/uploadimage';//指定访问路径
+        }
+        if (action == 'catchimage') {
+            return "/ueditor?_csrf={{ ctx.csrf | safe }}";
+        } else {
+            return this._bkGetActionUrl.call(this, action);
+        }
+    }
+    //查看公告
+    booka = document.getElementById('book-a');
+    ue.addListener("selectionchange", function () {
+        booka.innerHTML = ue.getContent();
+    })
+    $(function () {
+        var liNumber = $("#liNumber").val();
+        $(".second").find("li").each(function (i) {
+            this.index = liNumber;
+            $(this).on('click', function () {
+                var self = this;
+                $(this).addClass('active').siblings().removeClass('active');
+                console.log(this.value);
+                if ($(this).val() == 0) {
+                    findAllBanner(1, 10, null, 1);
+                    $(".tab-one").removeClass('hide');
+                    $(".tab-two").addClass('hide');
+                    $(".tab-three").addClass('hide');
+                    $(".tab-four").addClass('hide');
+                    $(".demo").removeClass('hide');
+
+                } else if ($(this).val() == 1) {
+                    findAllAffiche(1, 10, null,1);
+                    $(".tab-one").addClass('hide');
+                    $(".tab-two").removeClass('hide');
+                    $(".tab-three").addClass('hide');
+                    $(".tab-four").addClass('hide');
+                    $(".demo").removeClass('hide');
+
+                }
+            })
+        })
+//页面初始根据liNumber显示table
+        if (liNumber == 0) {
+            $("#bannerId").addClass('active').siblings().removeClass('active');
+            findAllBanner(1, 10, null, 1);
+            $(".tab-one").removeClass('hide');
+            $(".tab-two").addClass('hide');
+            $(".tab-three").addClass('hide');
+            $(".tab-four").addClass('hide');
+            $(".demo").removeClass('hide');
+
+        } else if (liNumber == 1) {
+            $("#afficheId").addClass('active').siblings().removeClass('active');
+            findAllAffiche(1, 10, null,1);
+            $(".tab-one").addClass('hide');
+            $(".tab-two").removeClass('hide');
+            $(".tab-three").addClass('hide');
+            $(".tab-four").addClass('hide');
+            $(".demo").removeClass('hide');
+
+        } else if (liNumber == 2) {
+            $(".tab-one").addClass('hide');
+            $(".tab-two").addClass('hide');
+            $(".tab-three").addClass('hide');
+            $(".tab-four").removeClass('hide');
+            $(".demo").addClass('hide');
+
+        } else {
+            $(".tab-one").addClass('hide');
+            $(".tab-two").addClass('hide');
+            $(".tab-three").removeClass('hide');
+            $(".tab-four").addClass('hide');
+            $(".demo").removeClass('hide');
+        }
+    })
+
+    //日期范围
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //日期范围
+        laydate.render({
+            elem: '#test6'
+            , theme: '#3299fe'
+            , range: '~'
+            , done: function (value, date, endDate) {
+                if (value == "") {
+                    findAllBanner(1, 10, null, 1);
+                } else {
+                    findAllBanner(1, 10, value, 1);
+                }
+            }
+        });
+        laydate.render({
+            elem: '#test2',
+            theme: '#3299fe'
+            , range: '~'
+            , done: function (value, date, endDate) {
+                if (value == "") {
+                    findAllAffiche(1, 10, null,1);
+                } else {
+                    findAllAffiche(1, 10, value,1);
+                }
+            }
+        });
+        laydate.render({
+            elem: '#test3',
+            range: true
+        });
+    });
+
+    /*分页*/
+    layui.use(['laypage', 'layer', 'laydate', 'element'], function () {
+        var laypage = layui.laypage,
+            layer = layui.layer;
+        //完整功能
+        laypage.render({
+            elem: 'demo',
+            count: 100,
+            layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+            jump: function (obj) {
+                console.log(obj)
+            }
+        });
+
+    });
+
+</script>

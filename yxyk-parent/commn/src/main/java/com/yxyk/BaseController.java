@@ -2,6 +2,9 @@ package com.yxyk;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yxyk.bean.common.JSONResponse;
+import com.yxyk.bean.common.SysConst;
+import com.yxyk.bean.po.User;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.util.ResourceUtils;
 
@@ -104,4 +107,22 @@ public abstract class BaseController {
         }
         return upload.getPath() + File.separatorChar;
     }
+    /**
+     * 获取当前shiro用户对象
+     *
+     * @return user
+     */
+    public User getUser() {
+        return (User) SecurityUtils.getSubject().getSession().getAttribute(SysConst.SHIRO_USER_SESSION_NAME);
+    }
+    /**
+     * 获取当前登录用户id
+     *
+     * @return Long
+     */
+    public Long getUserId() {
+        return getUser().getId();
+    }
+
+
 }

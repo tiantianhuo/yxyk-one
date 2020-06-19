@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/vonder/font_vd3aqmjjve/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="/vonder/iCheck/skins/minimal/_all.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+
+    <!--icheck-->
+    <script src=/js/icheck.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="nav clearfix">
+    <div class="login-box">
+        <div class="login">
+            <div class="login-title">
+                <p class="title">忆乡忆客运营系统</p>
+                <p class="title">Intelligent cloud platform management system</p>
+            </div>
+            <div class="login-con">
+                <div class="accept tag">
+                    <span class="iconfont icon-zhanghao"></span>
+                    <input type="text" placeholder="请输入账号" id="username_text"/>
+                </div>
+                <div class="password tag">
+                    <span class="iconfont icon-pasword"></span>
+                    <input type="password" placeholder="请输入密码" id="password_text">
+                </div>
+                <div class="password remember">
+                    <input type="checkbox" class="newcheck"/>记住密码
+                </div>
+                <button type="button" class="btn btn-login" onclick="loginUser()">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function () {
+
+        plot();
+
+        function plot() {
+            var BowerHeight = $(window).height();
+            console.log(BowerHeight);
+            $(document.body).height(BowerHeight)
+        }
+
+        $(window).resize(function () {
+            plot()
+        });
+
+        $("input").on('focus', function () {
+            var index = $("input").index(this);
+            $("input").eq(index).parent().css("border-bottom", "1px solid #0dae99").siblings(".tag").css("border-bottom", "1px solid #a7a8a8");
+            $("input").eq(index).siblings("span").css("color", "#0dae99");
+            $("input").eq(index).parent().siblings(".tag").find("span").css("color", "#a7a8a8");
+        });
+    });
+
+    $(".newcheck").iCheck({
+        checkboxClass: 'icheckbox_minimal-green'
+    });
+
+    function loginUser() {
+
+        var userName = $("#username_text").val();
+        var password = $("#password_text").val();
+
+        if ($.trim(userName) === "") {
+            alert("请输入正确的用户名称!");
+            return false;
+        }
+
+        if ($.trim(password) === "") {
+            alert("请输入正确的用户密码!");
+            return false;
+        }
+
+        $.post("/apis/user/loginUser", {
+            userName: userName,
+            passWord: password
+        }, function (result) {
+            if (result.success) {
+                window.location.href = "/regionManger";
+            } else {
+                alert(result.msg);
+            }
+        })
+    }
+</script>
+
+</html>

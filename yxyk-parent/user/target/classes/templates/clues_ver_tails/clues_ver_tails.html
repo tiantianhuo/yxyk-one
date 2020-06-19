@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>线索管理详情</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/vonder/iCheck/skins/all.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/xqlabel.css"/>
+    <link rel="stylesheet" href="/css/Re_clues.css"/>
+    <link rel="stylesheet" href="/css/clues_ver.css"/>
+    <link rel="stylesheet" href="/css/yuqing.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css"/>
+    <link rel="stylesheet" href="/vonder/yuyin/yuyin.css">
+    <link href="/vonder/iCheck/skins/all.css" rel="stylesheet" type="text/css"/>
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/jqueryStep/js/jquery.step.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.imgZoom.js"></script>
+    <script type="text/javascript" src="/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/js/jquery.drag.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script src="/vonder/iCheck/icheck.js"></script>
+    <script type="text/javascript" src="/js/xqlabel.js"></script>
+    <script type="text/javascript" src="/js/data.js"></script>
+    <script src="/js/bootstrap-dialog.min.js"></script>
+
+    <script type="text/javascript" src="/vonder/yuyin/weixinaudio.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+</head>
+<style type="text/css">
+    /*视频*/
+    .video {
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    .videolist {
+        position: relative;
+        float: left;
+        width: 140px;
+        height: 100px;
+        margin-right: 50px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        background: #333;
+    }
+
+    .videolist:hover {
+        cursor: pointer;
+    }
+
+    .videoed {
+        display: block;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 35%;
+        top: 25%;
+        z-index: 99;
+        border-radius: 100%;
+        background: #333;
+    }
+
+    .videos {
+        display: none;
+        border: 1px solid #080808;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: -320px;
+        margin-top: -249px;
+        z-index: 100;
+        width: 640px;
+        height: 500px;
+        background: #333;
+
+    }
+
+    .vclose {
+        position: absolute;
+        right: 1%;
+        top: 1%;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+
+    /*音频*/
+    .yuyin {
+        margin: .1rem 0;
+        color: #999999;
+        height: 34px;
+        max-width: 200px;
+        min-width: 80px;
+        background-color: #e8f8e6;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        position: relative;
+    }
+
+    /* 右侧样式 */
+    .yuyin_img {
+        position: absolute;
+        width: 30px;
+        height: 34px;
+        background: url(//static.xxt.cn/nb/zx/message/img/yuyin.png);
+        background-size: 115px 34px;
+        background-repeat: no-repeat;
+        background-position: -3px;
+        animation: bofang 1s steps(1) infinite;
+        -moz-animation: bofang 1s steps(1) infinite;
+        -webkit-animation: bofang 1s steps(1) infinite;
+        -o-animation: bofang 1s steps(1) infinite;
+        animation-play-state: paused;
+    }
+
+    .yuyin_img_l {
+        left: 5px;
+    }
+
+    .yuyin_img_r {
+        right: 5px;
+        transform: rotate(180deg);
+    }
+
+    .yuyin_txt {
+        position: absolute;
+        color: lightgray;
+        line-height: 34px;
+    }
+
+    .yy_txt_r {
+        left: 5px;
+    }
+
+    .yy_txt_l {
+        right: 5px;
+    }
+
+    @keyframes bofang {
+        25% {
+            background-position: -33px;
+        }
+        50% {
+            background-position: -59px;
+        }
+        75% {
+            background-position: -84px;
+        }
+        100% {
+            background-position: 0px;
+        }
+    }
+
+    .btnbox {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .jiaru {
+        background: #3299fe;
+        color: #fff;
+        padding: 8px 13px;
+        border-radius: 5px;
+        margin-left: 20px;
+    }
+
+    .jiaru:hover, .btn:focus {
+        background: #3299fe;
+        color: #fff;
+        padding: 8px 13px;
+        border-radius: 5px;
+        margin-left: 20px;
+    }
+
+    .inputcss {
+        height: 110px;
+    }
+
+    .btnboxtwo {
+        width: 30%;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .qxbtn {
+        background: #808080;
+    }
+
+    .qxbtn:hover {
+        background: #808080;
+    }
+
+    #content {
+        width: 100%;
+        border-radius: 6px;
+        border-color: #eee;
+        padding: 10px 18px;
+        text-indent: 32px;
+        line-height: 25px;
+
+    }
+
+    .contentright {
+        float: none;
+    }
+
+    .contentss {
+        padding: 0 !important;
+    }
+</style>
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<!--头end-->
+<div class="wrapper ">
+    <div class="content contentss">
+        <div class="contentright cl_verleft" style="padding-top: 20px;">
+            <div class="biaozhu">
+                <div class="clues_verleft" style="width: 100%;">
+                    <div class="Re_c_ctit clearfix">
+                        <div class="Re_c_ctit clearfix">
+                            <span class="Re_c_ctxt">线索详情：</span>
+
+                        </div>
+                        <div class="Re_c_rmess clearfix">
+                            <ul class="Re_c_rmess1 clearfix">
+                                <li>
+                                    <span>举报人姓名：</span>
+                                    <span id="report_person_name"></span>
+                                </li>
+                                <li>
+                                    <span>联 系 电 话：</span>
+                                    <span id="phone">183****2468</span>
+                                </li>
+<!--                                <li class="uuid">-->
+<!--                                    <span>查询码：</span>-->
+<!--                                    <span id="uuid">183****2468</span>-->
+<!--                                </li>-->
+
+                            </ul>
+                            <ul class="Re_c_rmess2 clearfix">
+                                <li>
+                                    <span>类<span style="padding-left: 3em;"></span>别：</span>
+                                    <span id="modular_name"></span>
+                                </li>
+                                <li>
+                                    <span>线索发生地：</span>
+                                    <span id="address"></span>
+                                </li>
+                                <!--<li>
+                                    <span>举报时间：</span>
+                                    <span>2018年12月12日</span>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Re_c_rcot clearfix" style="height: auto;">
+                        <div class="Re_c_rcot">
+                            <span class="Re_c_ctxt w100">问题描述：</span>
+                            <p class="Re_c_cp" id="despriction" style="border:1px solid #e6e9f0;min-height:300px">
+
+                            </p>
+                            <div class="me">
+                                <span class="Re_c_ctxt w100">图片展示：</span>
+                                <div class="Re_c_cimg" id="imageList">
+
+                                </div>
+                                <span class="Re_c_ctxt w100">音频展示：</span>
+                                <div class="Re_c_cimg" id="mp3list">
+                                    <p class="weixinAudio">
+                                        <audio src="" id="media" width="1" height="1" preload></audio>
+                                        <span id="audio_area" class="db audio_area">
+                                    <span class="audio_wrp db">
+                                    <span class="audio_play_area">
+                                    <i class="icon_audio_default"></i>
+                                    <i class="icon_audio_playing"></i>
+                                    </span>
+                                    <span id="audio_length" class="audio_length tips_global"></span>
+                                    <span class="db audio_info_area">
+                                    </span>
+                                    <span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+                                    </span>
+                                    </span>
+                                    </p>
+                                </div>
+                                <span class="Re_c_ctxt w100">视频展示：</span>
+                            </div>
+
+
+                            <div class="video">
+                                <div class="container" style=" margin-left:0;padding-left: 0;" id="mp4List">
+                                    <!--												<div class="videolist" vpath="/images/Re_clues/v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">-->
+                                    <!--													<img src="/images/Re_clues/v1.jpg" width="163px" height="127px" />-->
+                                    <!--													<img src="/images/Re_clues/play.png" class="videoed"/>-->
+                                    <!--												</div>-->
+                                    <!--												<div class="videolist" vpath="../../images/Re_clues/v2.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/AnimatedShots/Overwatch_AnimatedShot_CinematicTrailer.mp4">-->
+                                    <!--													<img src="/images/Re_clues/v2.jpg" width="163px" height="127px" />-->
+                                    <!--													<img src="/images/Re_clues/play.png" class="videoed"/>-->
+                                    <!--												</div>-->
+                                    <div class="videos"></div>
+                                </div>
+                            </div>
+                            <span class="Re_c_ctxt w100">回复：</span>
+                            <div class="Re_c_cimg">
+                                <textarea id="content" type="text" class="inputcss"
+                                          placeholder="请对该线索处理情况进行反馈"
+
+
+                                          style="padding-top: 10px;"/></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="btnbox">
+                            <@shiro.hasAnyPermissions name="10102">
+                            <button class="btn jiaru" type="button" onclick="saveGl(2)">不予处理</button>
+                            <button class="btn jiaru" type="button" onclick="saveGl(1)">加入核查</button>
+                        </@shiro.hasAnyPermissions>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <#include "/common/footer.html"/>
+</div>
+
+<!-- 回复开始 -->
+
+
+<!-- 新建用户 结束-->
+
+
+</div>
+</div>
+
+</body>
+
+</html>
+
+
+<script>
+    function fada() {
+        $(".Re_c_cimg").find("img").imgZoom();
+    }
+
+    $("#li_xsgl").attr("class", "active");
+    initData();
+    var status = 0;
+
+    function saveGl(num) {
+        status = num;
+        if (num == 2) {
+            BootstrapDialog.show({
+                title: '确认',
+                message: '你确认要不予处理吗？',
+                onshow: function (dialog) {
+                },
+                buttons: [{
+                    label: '确认',
+                    action: function (dialogItself) {
+                        save();
+                        dialogItself.close();
+                    }
+                }, {
+                    label: '取消',
+                    action: function (dialogItself) {
+                        dialogItself.close();
+                    }
+                }]
+            });
+        } else {
+            BootstrapDialog.show({
+                title: '确认',
+                message: '你确认要加入核查吗？',
+                onshow: function (dialog) {
+                },
+                buttons: [{
+                    label: '确认',
+                    action: function (dialogItself) {
+                        save();
+                        dialogItself.close();
+                    }
+                }, {
+                    label: '开始核查',
+                    action: function (dialogItself) {
+                        savell();
+                        dialogItself.close();
+                    }
+                }]
+            });
+        }
+
+    }
+
+    function save() {
+        $.post("/thread/reply", {
+            reportId: getUrlParam("id"),
+            transaction: status,
+            content: $("#content").val()
+        }, function (result) {
+            window.location.href = "/PopularOpinion/networklist"
+        });
+    }
+
+    function savell() {
+        $.post("/thread/reply", {
+            reportId: getUrlParam("id"),
+            transaction: status,
+            content: $("#content").val()
+        }, function (result) {
+            var req = getUrlParam("id");
+            window.location.href = "/PopularOpinion/departmentDetails?id=" + req;
+        });
+    }
+
+    function initData() {
+        $.post("/thread/reportDetails", {
+            reportId: getUrlParam("id")
+        }, function (result) {
+            if (result.success) {
+                if (result.data.transactionState > 0) {
+                    $(".jiaru").hide();
+                }
+                $("#report_person_name").text(result.data.reportUserName);
+                $("#phone").text(result.data.phone);
+                $("#modular_name").text(result.data.modularName);
+                $("#address").text(result.data.addressName);
+                $("#despriction").text(result.data.description);
+
+                var optionStr = "";
+                $.each(result.data.imageUrls, function (i, obj) {
+                    optionStr += "<img onclick='fada()' src=\"" + obj + "\" draggable=\"true\">";
+                });
+                $("#content").val(result.data.feedbackContent);
+                debugger;
+                if (result.data.type == 0) {
+                    $(".me").hide();
+                    // $("#uuid").text(result.data.uuId)
+                } else {
+                    $("#imageList").html(optionStr);
+                    var mp3Str = "";
+                    $.each(result.data.mp3Url, function (i, obj) {
+                        mp3Str += "<p class=\"weixinAudio" + i + "\">\n" +
+                            "                        <audio src=\"\" id=\"media" + i + "\" width=\"1\" height=\"1\" preload></audio>\n" +
+                            "                    <span id=\"audio_area" + i + "\" class=\"db audio_area\">\n" +
+                            "                        <span class=\"audio_wrp db\">\n" +
+                            "                        <span class=\"audio_play_area\">\n" +
+                            "                        <i class=\"icon_audio_default\"></i>\n" +
+                            "                        <i class=\"icon_audio_playing\"></i>\n" +
+                            "                        </span>\n" +
+                            "                        <span id=\"audio_length" + i + "\" class=\"audio_length tips_global\"></span>\n" +
+                            "                        <span class=\"db audio_info_area\">\n" +
+                            "                        </span>\n" +
+                            "                        <span id=\"audio_progress" + i + "\" class=\"progress_bar\" style=\"width: 0%;\"></span>\n" +
+                            "                        </span>\n" +
+                            "                        </span>\n" +
+                            "                        </p>"
+
+                    });
+                    $("#mp3list").html(mp3Str);
+                    for (var i = 0; i < result.data.mp3Url.length; i++) {
+                        $('.weixinAudio' + i).weixinAudio({
+                            autoplay: false,
+                            src: result.data.mp3Url[i].src
+                        }, i);
+                    }
+
+                    var mp4Url = "";
+                    $.each(result.data.mp4Url, function (i, obj) {
+                        mp4Url += '<div class="videolist" vpath=""\n' +
+                            '                                         ipath="' + obj + '">\n' +
+                            '                                        \n' +
+                            '                                        <img src="/images/Re_clues/play.png" class="videoed"/>\n' +
+                            '                                    </div>';
+                    });
+                    $("#mp4List").html(mp4Url + '<div class="videos"></div>');
+                    initVideos();
+                }
+
+            }
+        })
+    }
+
+    function initVideos() {
+        //	视频播放
+        $('.videolist').each(function () { //遍历视频列表
+            $(this).hover(function () { //鼠标移上来后显示播放按钮
+                $(this).find('.videoed').show();
+            }, function () {
+                $(this).find('.videoed').hide();
+            });
+            $(this).click(function () { //这个视频被点击后执行
+                var img = $(this).attr('vpath');//获取视频预览图
+                var video = $(this).attr('ipath');//获取视频路径
+                $('.videos').html("<video id=\"video\" poster='" + img + "' style='width: 100%;height: 100%' src='" + video + "' preload=\"auto\" controls=\"controls\" autoplay=\"autoplay\"></video><img onClick=\"close1()\" class=\"vclose\" src=\"/images/Re_clues/gb.png\" width=\"25\" height=\"25\"/>");
+                $('.videos').show();
+            });
+        });
+    }
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return r[2];
+        return "";
+    }
+
+    var wh = $(window).height();
+    var hh = $(".navbar").height();
+    var fh = $(".footer").height();
+    var rh = $(".Re_c_ctit").height();
+    var ch = $(".clues_verulbox").height();
+    var lh = $(".clues_verright").height();
+    var ah = $(".arrowbox1").height();
+    var Re_ch = lh - rh - ah - 80;
+    $(".clues_verulbox").css("height", ch);
+    $(".clues_verright1").css("height", lh);
+
+    $(".look").click(function () {
+        $(".clues_verright1").css("display", "block");
+        $(".clues_verright").css("display", "none");
+    })
+    $(".closebtn").click(function () {
+        $(this).parents(".zhailu").remove();
+    })
+    $(".hidetwo").click(function () {
+        $(".clues_verright").css("display", "block");
+        $(".clues_verright1").css("display", "none");
+    })
+
+    /*收藏*/
+    $(".shoucang").click(function () {
+        $(".shoucang").hide();
+        $(".shoucangtwo").show();
+    })
+    $(".shoucangtwo").click(function () {
+        $(".shoucangtwo").hide();
+        $(".shoucang").show();
+    })
+
+    /*icheck*/
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue',
+        increaseArea: '20%' // optional
+    });
+
+    /*鼠标抬起和取消事件*/
+    $('.Re_c_rcot').mouseup(function (e) {
+        var txt = window.getSelection ? window.getSelection() : document.selection.createRange().text;
+        var w = window.getSelection().focusOffset;
+        var xx = e.originalEvent.x || e.originalEvent.layerX || 0;
+        var yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+        var wh = $(window).height();
+        var alerth = $('.alertbox').height();
+        var cw = $('.Re_c_rcot').outerWidth() + 20;
+        if (xx + 150 > cw) {
+            $(".alertbox").css({"top": yy + 'px', "left": (xx - 150) + 'px', "display": "block"});
+        } else if (yy < (wh - alerth)) {
+            $('.alertbox').css("top", yy);
+            $('.alertbox').css("left", xx);
+            $('.alertbox').css("display", "block");
+        } else {
+            $('.alertbox').css("top", yy - alerth);
+            $('.alertbox').css("left", xx);
+            $('.alertbox').css("display", "block");
+        }
+
+        var nowSelect = window.getSelection();
+        static_text = nowSelect.toString();
+        if (static_text == null || static_text.length == 0) {
+            $(".alertbox").hide();
+            return false;
+        }
+        $(".add_close").click(function () {
+            $(".alertbox").hide();
+            return false;
+        })
+
+
+    })
+
+
+    $(".excerpt").click(function () {
+        $(this).parents(".alertbox").hide();
+        $(".clues_verright1").css("display", "block");
+        $(".clues_verright").css("display", "none");
+    })
+
+
+    $(document).on("click", ".addimg", function () {
+        $(".addform").append($(".addclone:hidden").clone().show());
+    })
+    $(document).on("click", ".jianimg", function () {
+        $(this).parents(".addtab").remove();
+    })
+
+
+    /*关闭模态框*/
+    $(".closeimg").click(function () {
+        $(".new").modal('hide');  //手动关闭
+    })
+
+    //	视频播放
+
+
+    function close1() {
+        var v = document.getElementById('video');//获取视频节点
+        $('.videos').hide();//点击关闭按钮关闭暂停视频
+        v.pause();
+        $('.videos').html();
+    }
+
+    //  音频播放控制播放暂停：
+    var curPlayId = null; // 当前播放语音标识
+    function addAudioEvent() {
+        $('.yuyin').click(function () {
+            var $this = $(this);
+            var $audio = $this.children("audio")[0];
+            if (curPlayId == null) {
+                $audio.play();
+                curPlayId = $this.attr('id');
+            } else {
+                if ($this.attr('id') == curPlayId) { // 点击当前播放中的语音，暂停播放
+                    $audio.pause();
+                    curPlayId = null;
+                } else {
+                    // 先暂停当前播放语音
+                    $('#' + curPlayId).children("audio")[0].pause();
+                    // 播放点击语音
+                    $audio.play();
+                    curPlayId = $this.attr('id');
+                }
+            }
+        });
+    }
+
+    //audio事件监听--改变动画：
+    $('audio').bind('play', function () {
+        $(this).next().css('animation-play-state', 'running');
+    });
+    $('audio').bind('ended', function () {
+        $(this).next().css('animation-play-state', 'paused');
+    });
+    $('audio').bind('pause', function () {
+        $(this).next().css('animation-play-state', 'paused');
+    });
+
+
+</script>

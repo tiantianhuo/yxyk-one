@@ -1,0 +1,29 @@
+<div class="contentleft">
+    <ul class="listleft">
+        <a href="/PeiZhi/pingGu" class="listlefta" id="xspgpz">
+            <li>
+                <img src="/images/guanli/7.png" alt="" class="onesty"/>
+                <img src="/images/guanli/8.png" alt="" class="twosty"/>
+                <span class="spantext">线索评估配置</span>
+            </li>
+        </a>
+        <@shiro.hasAnyPermissions name="10501">
+        <a href="/PeiZhi/user" class="listlefta" id="yhgl">
+            <li>
+                <img src="/images/guanli/9.png" alt="" class="onesty"/>
+                <img src="/images/guanli/10.png" alt="" class="twosty"/>
+                <span class="spantext">用户管理</span>
+            </li>
+        </a>
+    </@shiro.hasAnyPermissions>
+    <@shiro.hasAnyPermissions name="10502">
+    <a href="/PeiZhi/role" class="listlefta " id="jsgl">
+        <li>
+            <img src="/images/guanli/11.png" alt="" class="onesty"/>
+            <img src="/images/guanli/12.png" alt="" class="twosty"/>
+            <span class="spantext">角色管理</span>
+        </li>
+    </a>
+</@shiro.hasAnyPermissions>
+</ul>
+</div>

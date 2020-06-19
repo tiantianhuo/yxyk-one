@@ -1,0 +1,112 @@
+ .box{
+ 	/*position:relative;*/
+ }
+ .tishi {
+ 	width: 344px;
+ 	height: 174px;
+ 	border: 1px solid #eee;
+ 	position: absolute;
+ 	top: 200px;
+ 	right: 0;
+ 	transition: all 4s;
+ 	background: #fff;
+ 	overflow: hidden;
+ 	border-radius: 5px;
+ 	display: none;
+ 	box-shadow:0px 6px 12px rgb(37,71,149,0.3);
+ }
+ 
+ img {
+ 	width: 7%;
+ }
+ .box_content ul li p img{
+ 	margin-right: 10px;
+ }
+ .box_title {
+ 	height: 40px;
+ 	background: #3299fe;
+ 	color: #fff;
+ 	line-height: 40px;
+ 	padding: 0 13px;
+ 	font-size: 16px;
+ }
+ 
+ .box_title img {
+ 	float: right;
+ 	margin-top: 10px;
+ 	opacity: 1;
+ }
+ .box_content {
+ 	padding: 15px;
+ 	font-size: 16px;
+ 	max-height: 210px;
+ 	overflow: auto;
+ }
+ .box_content ul li{
+ 	margin-bottom: 10px;
+ }
+ .box_content ul li span:first-child {
+ 	color: #FF9966;
+ }
+ 
+ .box_content ul li b {
+ 	color: #66CC99;
+ 	font-weight: normal;
+ }
+ 
+ .box_content ul li span:last-child {
+ 	color: #999999;
+ 	font-size: 14px;
+ }
+ 
+ 
+ .box_content ul li p{
+ 	width: 80%;
+ 	height: 22px;
+ 	text-overflow: ellipsis;
+ 	white-space: nowrap;
+ 	overflow: hidden;
+ 	float: left;
+ 	
+ }
+
+
+
+
+/*圆圈*/
+.circle{
+	 width: 60px;
+	 height: 60px;
+	 background:#497fe7;
+	 border-radius: 50%;
+	 -moz-border-radius: 50%;
+	 -webkit-border-radius: 50%;  
+	 position: absolute;
+	 top:118px;
+	 right:29px;
+	 box-shadow: 0px 7px 17px rgb(37,71,149,0.51);
+}
+.circle img{
+	width: 60%;
+	margin-top: -6px;
+	margin-left: 12px;
+}
+.badge{
+	float: right;
+	background: red;
+}
+
+/*滚动条样式*/
+.box_content::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+.box_content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+    border-radius: 10px;
+	background-color: rgb(0,0,0,0.1);
+	height:30px !important;
+    }
+.box_content::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }

@@ -37,6 +37,7 @@
             <artifactId>shiro-freemarker-tags</artifactId>
             <version>0.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>commn</artifactId>

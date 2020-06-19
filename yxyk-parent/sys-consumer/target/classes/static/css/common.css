@@ -1,0 +1,211 @@
+html,body{
+	height: 100%;
+}
+header{
+	height: 60px;
+}
+footer{
+	/*height: 55px;*/
+}
+
+.return{
+	cursor: pointer;
+}
+/*按钮*/
+.click button{
+	width: 70px;
+}
+
+a:hover{
+	text-decoration: none;
+}
+a:link{
+	text-decoration: none;
+}
+/*头*/
+.nav-top {
+	margin-bottom: 0;
+	height: 60px;
+	border: none;
+	background-image: linear-gradient(to right, #3049c6, #5599f7);
+
+}
+.navbar-header {
+	color: #fff;
+	line-height: 60px;
+	font-size: 18px;
+}
+.navbar-right li{
+	color: #fff;
+	line-height: 60px;
+	padding: 0 15px;
+}
+/*头end*/
+
+/*内容*/
+
+.content{
+	overflow: auto;
+}
+/*左侧开始*/
+.contentleft{
+	float: left;
+	width:20%;
+	height:auto;
+	background: #fff;
+	overflow: scroll;
+}
+.contentleft::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+    display: none;
+}
+.contentleft::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	height:10px;
+  border-radius: 10px;
+	background-color: #4f5bd3;
+	height:30px !important;
+    }
+.contentleft::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background: none;
+    }
+.userbox{
+	width:100%;
+	height:175px;
+	padding-top:30px;
+	position: relative;
+	border-bottom: 1px solid #e6e9f0;
+}
+
+.footer{
+  width:100%;
+  height:60px;
+  position: absolute;
+  bottom:0;
+  background-color: #292f43;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color:#fff;
+  line-height: 60px;
+  text-align: center;
+}
+
+/*左侧导航*/
+.layui-side{
+	top: 60px;
+	bottom: 60px;
+	width: 15%;
+}
+.layui-side-scroll{
+	width: 100% !important;
+}
+.layui-nav-tree{
+	width: 100%;
+}
+
+/*右侧内容*/
+.content-right{
+	width: 85%;
+	overflow: auto;
+	float: right;
+	padding: 20px 0;
+}
+.table {
+	text-align: center;
+}
+
+.table tr th {
+	font-weight: normal;
+	text-align: center;
+	background: #f4f4f4;
+	padding: 15px 0 !important;
+}
+
+.table tr td {
+	padding: 15px 0 !important;
+}
+
+.table tr td span {
+	color: #1E9FFF;
+	margin: 0 5px;
+	cursor: pointer;
+}
+select {
+	width: 160px;
+	height: 38px;
+	margin-right: 20px;
+	border-color: #ddd;
+	padding-left: 10px;
+	border-radius: 4px;
+}
+
+.layui-input {
+	width: 205px;
+	border-radius: 4px;
+	margin-right: 20px;
+	display: inline-block;
+	border-color:#ddd;
+}
+
+.layui-input-inline img {
+	position: absolute;
+	top: 12px;
+	right: 40px;
+}
+.demo{
+	float: right;
+	margin-right: 20px;
+}
+.actives{
+	background: #79b5f0;
+	color: #fff !important;
+}
+
+
+/*子级*/
+.layui-nav-child dd:first-child{
+	border-bottom: 1px solid #ddd;
+}
+.layui-nav-child dd a:hover{
+	color: #1E9FFF !important;
+}
+
+/*左侧li样式*/
+
+.layui-nav-itemed>.layui-nav-child{
+	background: #fff !important;
+}
+.layui-nav-tree .layui-nav-item{
+	border-bottom: 1px solid #ddd;
+}
+.layui-nav-tree .layui-nav-item:hover{
+	background: #79b5f0 !important;
+}
+.layui-nav-tree .layui-this{
+	background: #79b5f0;
+	color: #fff !important;
+}
+.layui-nav-tree .layui-nav-item a{
+	height: 54px;
+	line-height: 54px;
+}
+.layui-bg-black{
+	background-color: #eee !important;
+}
+.layui-nav{
+	color: #333;
+	background-color: #eee !important;
+}
+.layui-nav .layui-nav-item a{
+	color: #333;
+}
+
+
+/*左竖条*/
+.layui-nav-tree .layui-nav-bar{
+	background: #1E9FFF;
+}
+/*分页*/
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+	background-color:#1E9FFF ;
+}

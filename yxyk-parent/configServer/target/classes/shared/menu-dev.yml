@@ -1,0 +1,20 @@
+server:
+  port: 8032
+spring:
+  profiles:
+    active: databases-dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+#  freemarker:
+#    suffix: .html
+#    templateEncoding: UTF-8
+#    templateLoaderPath: classpath:/templates/
+#    content-type: text/html
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+logging:
+  config: classpath:logback-spring.xml
+  path: yxyk-menu-log

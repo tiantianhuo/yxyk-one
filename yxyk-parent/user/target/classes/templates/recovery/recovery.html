@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>回收站</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css">
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <!--gonggao-->
+    <link rel="stylesheet" href="/css/commonss.css"/>
+    <link rel="stylesheet" href="/css/models.css"/>
+    <link rel="stylesheet" href="/css/yuqing.css"/>
+    <script src="/vonder/layui/layui.js"></script>
+
+    <!--bootstrap CheckBox美化-->
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/build.css"/>
+
+    <!--富文本-->
+    <script src="/vonder/ueditor/ueditor.config.js"></script>
+    <script src="/vonder/ueditor/ueditor.all.min.js"></script>
+    <script src="/vonder/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="/js/bootstrap-dialog.min.js"></script>
+
+    <style>
+        .table tr:nth-child(odd) {
+            background: #fff !important;
+        }
+
+        .table tr:nth-child(odd):hover {
+            background: #ddd !important;
+        }
+
+        table {
+            table-layout: auto !important;
+        }
+
+        .table tr th:first-child {
+            text-align: center !important;
+            padding-left: 0 !important;
+        }
+
+        .table tr td:first-child {
+            text-align: center !important;
+            padding-left: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<script>
+    $("#li_bgyy").addClass('active');
+</script>
+<!--头end-->
+<div class="wrapper">
+    <div class="content" style="background: #eee;">
+        <span>当前位置：</span>
+        <span>办公应用</span>-
+        <span>回收站</span>
+        <div class="yuqing">
+            <div style="margin-bottom: 20px;overflow: hidden">
+                筛选：<select id="modularSelect" onblur=" tableData(1, 5)">
+                <option value="">请选择线索类别</option>
+            </select>
+                <select id="sortField" onblur=" tableData(1, 5)">
+                    <option value="">请选择排序方式</option>
+                    <option value="createTime#Asc">按照举报时间正序排序</option>
+                    <option value="createTime#Desc">按照举报时间倒序排序</option>
+                    <option value="deleteTime#Asc">按照删除时间正序排序</option>
+                    <option value="deleteTime#Desc">按照删除时间倒序排序</option>
+                </select>
+                <input type="text" placeholder="请输入线索描述" class="layui-input" id="reportDesc" onblur=" tableData(1, 5)">
+            </div>
+            <div>
+                <table class="table table-bordered table-hover" id="dataContent">
+                    <tr>
+                        <th>id</th>
+                        <th>描述</th>
+                        <th>举报日期</th>
+                        <th>删除日期</th>
+                        <th>举报人</th>
+                        <th>操作</th>
+                    </tr>
+                </table>
+            </div>
+            <!--分页开始-->
+            <div id="demo" class="demo"></div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+
+    $(function () {
+        findAll();
+        tableData(1, 5);
+        $("td").on("mouseenter", function () {
+            if (this.offsetWidth < this.scrollWidth) {
+                var text = $(this).text();
+                $(this).attr('title', text);
+            }
+        });
+    });
+
+    function my_upload() {
+        window.location.href = "/yuqing/myupload"
+    }
+
+    layui.use('upload', function () {
+        var $ = layui.jquery,
+            upload = layui.upload;
+        upload.render({ //允许上传的文件后缀
+            elem: '#uploads',
+            url: '/apis/specialReport/uploadSpecialReport',
+            auto: false, //设置非自动上传
+            bindAction: '#uploadbtn',  //设置上传按钮
+            multiple: true,
+            accept: 'file' //普通文件
+            ,
+            exts: 'zip|rar|doc|docx|pdf|png|jpg' //只允许上传压缩文件
+            ,
+            done: function (res) {
+                console.log(res);
+                window.location.reload()
+            }
+        });
+    });
+
+    // pageCount(数据总条数),pageNum(起始页), limit(每页显示条数)
+    function page(pageCount, pageNum, limit) {
+        /*分页*/
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage;
+            //完整功能
+            laypage.render({
+                elem: 'demo'
+                , count: pageCount
+                , curr: pageNum
+                , limit: limit
+                , limits: [5, 10, 20]
+                , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                , jump: function (obj, first) {
+                    currPage = obj.curr;
+                    limitSize = obj.limit;
+                    if (!first) {
+                        tableData(currPage, limitSize);
+                    }
+                }
+            });
+        });
+    }
+
+    function tableData(pageNum, pageSize) {
+
+        var modularId = $("#modularSelect").val();
+        var sortFiled = $("#sortField").val();
+        var reportDesc = $("#reportDesc").val();
+
+
+        var param = {
+            pageNum: pageNum,
+            pageSize: pageSize,
+            modularId: modularId,
+            sortFiled: sortFiled,
+            reportDesc: reportDesc
+        };
+        $.ajax({
+            url: '/thread/findRecoveryPage',
+            type: 'post',
+            async: false,
+            data: param,
+            success: function (result) {
+                var res = result.data;
+                var data = res.data;
+                var str = '<tr>\n' +
+                    '                        <th>id</th>\n' +
+                    '                        <th>描述</th>\n' +
+                    '                        <th>线索类型</th>\n' +
+                    '                        <th>举报日期</th>\n' +
+                    '                        <th>删除日期</th>\n' +
+                    '                        <th>举报人</th>\n' +
+                    '                        <th>操作</th>\n' +
+                    '                    </tr>';
+                $(data).each(function (index, obj) {
+                    str += '<tr>\n' +
+                        '                            <td>' + obj.id + '</td>\n' +
+                        '                            <td>' + obj.content + '</td>\n' +
+                        '                            <td>' + obj.modularName + '</td>\n' +
+                        '                            <td>' + obj.createTime + '</td>\n' +
+                        '                            <td>' + obj.deleteTime + '</td>\n' +
+                        '                            <td>' + obj.reportPersonName + '</td>\n' +
+                        '                            <td><span><a href="javascript:void(0)" onclick="revertClue(' + obj.id + ')">还原</a></span><span> <a href="javascript:void(0)" onclick="deleteClue(' + obj.id + ')">永久删除</a></span></td>\n' +
+                        '                        </tr>';
+                });
+                if (data === undefined || data === null || data.length === 0) {
+                    str += '<tr><td colspan="6" style="text-align: center"><div style="width:auto;margin:0 auto;margin-top: 20px;"><img  src="/common/noneDate.png"></div></td></tr>';
+                }
+                $("#dataContent").html(str);
+                page(res.total, res.pageNum, res.pageSize);
+                console.log(result);
+            }
+        })
+    }
+
+    //还原
+    function revertClue(id) {
+
+        BootstrapDialog.show({
+            title: '确认',
+            message: '你确认要还原吗？',
+            onshow: function (dialog) {
+            },
+            buttons: [{
+                label: '确认',
+                action: function (dialogItself) {
+                    $.post("/thread/revertReportClue", {id: id}, function (result) {
+                        if (result.success) {
+                            tableData(1, 5);
+                            dialogItself.close();
+                        }
+                    });
+                    dialogItself.close();
+                }
+            }, {
+                label: '取消',
+                action: function (dialogItself) {
+                    dialogItself.close();
+                }
+            }]
+        });
+    }
+
+    //永久删除
+    function deleteClue(id) {
+        BootstrapDialog.show({
+            title: '确认',
+            message: '你确认要删除吗？',
+            onshow: function (dialog) {
+            },
+            buttons: [{
+                label: '确认',
+
+                action: function (dialogItself) {
+
+                    $.post("/thread/deleteByRecovery", {id: id}, function (result) {
+                        if (result.success) {
+                            tableData(1, 5);
+                            dialogItself.close();
+                        }
+                    });
+                    dialogItself.close();
+                }
+            }, {
+                label: '取消',
+                action: function (dialogItself) {
+                    dialogItself.close();
+                }
+            }]
+        });
+    }
+
+    function findAll() {
+        $.post("/apis/clueCheck/findModular", function (result) {
+            if (result.success) {
+                var optionStr = "<option value=''>请选择线索类型</option>"
+                $.each(result.data, function (i, obj) {
+                    optionStr += "<option value='" + obj.id + "'> " + obj.modularName + "</option>"
+                });
+                $("#modularSelect").html(optionStr);
+            }
+        })
+    }
+</script>
+<#include "/common/footer.html"/>
+</html>
+

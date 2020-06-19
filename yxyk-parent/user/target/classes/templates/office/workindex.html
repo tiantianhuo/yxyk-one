@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>配置管理-办公应用</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/vonder/jqueryStep/css/jquery.step.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/work.css" />
+    <link rel="stylesheet" href="/vonder/zTree_v3/css/demo.css" type="text/css">
+    <link rel="stylesheet" href="/vonder/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css"/>
+    <link href="/vonder/iCheck/skins/square/blue.css" rel="stylesheet">
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/vonder/jqueryStep/js/jquery.step.min.js"></script>
+    <script src="/js/bootstrap-dialog.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script src="/vonder/iCheck/icheck.js"></script>
+    <script type="text/javascript" src="/js/book.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+</head>
+
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<script>
+    $(function () {
+        $("#li_bgyy").addClass('active')
+    });
+</script>
+<!--头end-->
+<div class="wrapper " style="overflow: auto">
+    <div class="content">
+        <div class="doc_man_tit">
+            <p>我们为您量身定制了几款应用供您使用！</p>
+        </div>
+
+        <div class="doc_man_cont">
+            <div class="row">
+                <@shiro.hasAnyPermissions name="10401">
+                <input value="0" id="permission1" type="hidden">
+                 </@shiro.hasAnyPermissions>
+                <@shiro.hasAnyPermissions name="10402">
+                <input value="1" id="permission2" type="hidden">
+                </@shiro.hasAnyPermissions>
+                <@shiro.hasAnyPermissions name="10408">
+                <input value="2" id="permission3" type="hidden">
+                </@shiro.hasAnyPermissions>
+
+                <@shiro.hasAnyPermissions name="10401,10402,10408">
+                <div class="col-md-3 fenxi">
+                    <div class="doc_man_contbox shouye guandian">
+                        <div class="dmc_left">
+                            <img src="/images/work/weixin.png"/>
+                        </div>
+                        <div class="dmc_right">
+                            <p class="dmc_right_p1">小程序管理</p>
+                            <p class="dmc_right_p2">提供收集群众提供线索，推送相关公益诉讼信息</p>
+                        </div>
+                    </div>
+                </div>
+              </@shiro.hasAnyPermissions>
+                <@shiro.hasAnyPermissions name="10404">
+                <div class="col-md-3 gefang">
+                    <div class="doc_man_contbox yuqing guandian">
+                        <div class="dmc_left">
+                            <img src="/images/work/yuqing.png"/>
+                        </div>
+                        <div class="dmc_right">
+                            <p class="dmc_right_p1">舆情专报</p>
+                            <p class="dmc_right_p2">省院舆情专报下达，及时了解最新消息</p>
+                        </div>
+                    </div>
+                </div>
+               </@shiro.hasAnyPermissions>
+               <@shiro.hasAnyPermissions name="10406">
+                <div class="col-md-3 book">
+                    <div class="doc_man_contbox peizhi guandian">
+                        <div class="dmc_left">
+                            <img src="/images/work/work3.png"/>
+                        </div>
+                        <div class="dmc_right">
+                            <p class="dmc_right_p1">法律法规</p>
+                            <p class="dmc_right_p2">系统收集各地省、市、区级法律法规，目前有3464万条法律法规支持</p>
+                        </div>
+                    </div>
+                </div>
+                </@shiro.hasAnyPermissions>
+                <@shiro.hasAnyPermissions name="10407">
+                <div class="col-md-3 book">
+                    <div class="doc_man_contbox peizhi guandian">
+                        <div class="dmc_left">
+                            <img src="/images/work/work7.png"/>
+                        </div>
+                        <div class="dmc_right">
+                            <p class="dmc_right_p1">全国案例库</p>
+                            <p class="dmc_right_p2">提供用户线索搜集、线索处理情况的数据分析报告</p>
+                        </div>
+                    </div>
+                </div>
+                </@shiro.hasAnyPermissions>
+                <div class="col-md-3 book">
+                    <div class="doc_man_contbox guandian" id="recovery" >
+                        <div class="dmc_left">
+                            <img src="/images/work/work4.png"/>
+                        </div>
+                        <div class="dmc_right">
+                            <p class="dmc_right_p1">回收站</p>
+                            <p class="dmc_right_p2">系统会回收一个月内被删除或者不予处理的线索</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 fenxi" onclick="jump()">
+                    <div class="doc_man_contbox  guandian">
+                        <div class="dmc_left">
+                            <img src="/images/work/weixin.png"/>
+                        </div>
+                        <div class="dmc_right" >
+                            <p class="dmc_right_p1">机器人管理</p>
+                            <p class="dmc_right_p2">提供收集群众提供线索，推送相关公益诉讼信息</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="doc_man_contbox guandian">
+                        <div class="dmc_left">
+                            <img src="/images/work/更多期待.png"/>
+                        </div>
+                        <div class="dmc_right">
+                            <p class="dmc_right_p3" >更多应用，敬请期待~~</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<#include "/common/footer.html"/>
+</div>
+</body>
+
+</html>
+<script>
+    $(".shouye").click(function(){
+        var permission1 = $("#permission1").val();
+        var permission2 = $("#permission2").val();
+        var permission3 = $("#permission3").val();
+        var num;
+        //根据权限判断进入哪一个li
+        if (permission1!=undefined){
+            num=0;
+        }else if (permission2!=undefined){
+            num=1;
+        }else if (permission3!=undefined){
+            num=2;
+        }
+        window.open("../Index/index?liNumber="+num);
+    });
+    $(".yuqing").click(function(){
+        window.location.href="../yuqing/yuqingIndex";
+    });
+    $(".peizhi").click(function(){
+        window.open("http://zjxfkj.natapp1.cc/");
+    });
+    $("#recovery").click(function (obj) {
+        window.location.href = "recovery/recovery";
+    })
+    function jump() {
+        window.location.href = "../robot?liNumber=0";
+    }
+
+
+</script>
