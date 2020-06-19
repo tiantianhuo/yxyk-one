@@ -12,10 +12,7 @@ import com.yxyk.service.BannerSysService;
 import com.yxyk.utils.DateUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -40,7 +37,7 @@ public class BannerSysController extends BaseController {
      * @return result
      */
     @PostMapping(value = "/addBanner")
-    public JSONResponse addBanner(VoBanner voBanner) {
+    public JSONResponse addBanner(@RequestBody VoBanner voBanner) {
         bannerSysService.saveBanner(voBanner);
         return this.success();
     }
@@ -98,7 +95,7 @@ public class BannerSysController extends BaseController {
      * @return json
      */
     @PostMapping(value = "changeBannerIndex")
-    public JSONResponse changeBannerIndex(Long id, Integer event) throws OperationException {
+    public JSONResponse changeBannerIndex(@RequestParam("id") Long id, @RequestParam("event") Integer event) throws OperationException {
         bannerSysService.changeSortIndex(id, event);
         return this.success();
     }
@@ -109,10 +106,10 @@ public class BannerSysController extends BaseController {
      * @return Result
      */
     @PostMapping(value = "findAllBanner")
-    public JSONResponse findAllBanner(VoBannerSys voBannerSys) {
+    public JSONResponse findAllBanner(@RequestBody VoBannerSys voBannerSys) {
         LocalDateTime startTime = DateUtils.parseDateTime(voBannerSys.getStartTime());
         LocalDateTime endTime = DateUtils.parseDateTime(voBannerSys.getEndTime());
-        Page<Banner> all = bannerSysService.findAllBanner(startTime, endTime, voBannerSys.getName(), voBannerSys.getPageNum(), voBannerSys.getPageSize(),voBannerSys.getPid());
+        Page<Banner> all = bannerSysService.findAllBanner(voBannerSys);
         return this.success(all);
     }
 
@@ -123,7 +120,7 @@ public class BannerSysController extends BaseController {
      * @return Result
      */
     @PostMapping(value = "findBannerById")
-    public JSONResponse findByUserId(Long id) {
+    public JSONResponse findBannerById(Long id) {
         Banner bannerSys = bannerSysService.findBannerById(id);
         return this.success(bannerSys);
     }

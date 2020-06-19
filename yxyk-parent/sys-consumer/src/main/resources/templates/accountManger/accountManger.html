@@ -40,42 +40,30 @@
             <!--地域管理——内容-->
             <div>
                 <ul class="customer-ul">
-                    <li>客户账号管理</li>
+                    <li>banner</li>
                 </ul>
                 <div class="second-tab">
                     <div class="show-title">
                         <div class="input-box">
                             <span>筛选：</span>
                         </div>
-                        <div class="input-box province-select">
-                            <!--省份选择-->
-                            <div class="dome-main">
-                                <select id="province_select_table" onchange="initCity()">
-                                    <option value="0">请选择省份</option>
-                                </select>
-                                <select id="city_select_table" onchange="initCounty()">
-                                    <option value="0">请选择城市</option>
-                                </select>
-                                <select id="county_select_table" onchange="initTable()">
-                                    <option value="0">请选择区县</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="input-box">
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
                                     <input type="text" class="layui-input" id="test1"
-                                           placeholder="请选择用户有效时间">
+                                           placeholder="请选择发布时间">
                                     <img src="/images/img/data.png"/>
                                 </div>
                             </div>
                         </div>
                         <div class="input-box img-box">
-                            <input type="text" placeholder="请输入所属机构名称筛选" class="layui-input " id="input_text"
+                            <input type="text" placeholder="请输入名称筛选" class="layui-input " id="input_text"
                                    onblur="initTable()"/>
                             <img src="/images/img/search.png" alt=""/>
                         </div>
-                        <button class="btn found add">新建管理员</button>
+                        <button class="btn found" data-toggle="modal" data-target="#add" value=""
+                                onclick="">新建banner
+                        </button>
                         <table class="p-table" id="user_table">
                         </table>
                     </div>
@@ -89,6 +77,66 @@
     </div>
 </div>
 <#include "../common/footer.html"/>
+
+<!--新建模态框-->
+<div class="modal fade modal-new results-sentencing" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close"></i>
+                </button>
+                <h4 class="modal-title">新建机构</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            机构名称：
+                        </div>
+                        <div class="fromright">
+                            <input type="text" placeholder="请输入机构名称" id="name"/>
+                        </div>
+                    </div>
+                    <div class="fromboxs select-search">
+                        <div class="fromleft">
+                            上级机构 ：
+                        </div>
+                        <div class="fromright">
+                            <select id="select_company">
+                                <option value="">请选择机构</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="fromboxs">
+                        <div class="fromleft">
+                            备注 ：
+                        </div>
+                        <div class="fromright">
+                            <textarea placeholder="请输入备注信息" id="remarks"/></textarea>
+                        </div>
+                    </div>
+                    <div class="fromboxs tishi-box">
+                        <div class="fromleft">
+                            &nbsp;
+                        </div>
+                        <div class="fromright">
+                            <img src="/images/img/tishi.png"/>&nbsp;&nbsp;提示:所在地请谨慎选择，一经选择不可修改
+                        </div>
+                    </div>
+                    <div class="fromboxs anniu">
+                        <button class="queding" data-dismiss="modal" type="button" onclick="saveCompany()">保存</button>
+                        <button class="quxiao" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
 <!--删除模态框开始-->
 <div class="modal fade modal-new results-sentencing assa" id="delete" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -129,18 +177,7 @@
         window.location.href = "accountDetail";
     });
 
-    //市级行政单位——省份选择
-    var selector1 = $('#city-picker-selector1').cityPicker({
-        dataJson: cityData,
-        renderMode: true,
-        search: false,
-        autoSelected: true,
-        keyboard: true,
-        level: 3,
-        onChoiceEnd: function () {
-            console.log(this.values)
-        }
-    });
+
 
     //日期范围
     layui.use('laydate', function () {
@@ -165,49 +202,6 @@
     });
 
     initTable();
-    initProvince();
-
-    function initProvince() {
-        $.post("/apis/procuratorate/findProvince", function (result) {
-            if (result.success) {
-                var optionStr = "<option value='0'>请选择省份</option>";
-                $(result.data).each(function (i, obj) {
-                    optionStr += "<option value='" + obj.id + "'>" + obj.provinceName + "</option>"
-                });
-                $("#province_select_table").html(optionStr);
-                $("#province_select_modal_update").html(optionStr);
-            }
-        })
-    }
-
-    function initCity() {
-        var provinceId = $("#province_select_table").val();
-        $.post("/apis/procuratorate/findCity", {provinceId: provinceId}, function (result) {
-            if (result.success) {
-                var optionStr = "<option value='0'>请选择城市</option>";
-                $(result.data).each(function (i, obj) {
-                    optionStr += "<option value='" + obj.id + "'>" + obj.cityName + "</option>"
-                });
-                $("#city_select_table").html(optionStr);
-            }
-        });
-        initTable();
-    }
-
-    function initCounty() {
-        var cityId = $("#city_select_table").val();
-        $.post("/apis/procuratorate/findCounty", {cityId: cityId}, function (result) {
-            if (result.success) {
-                var optionStr = "<option value='0'>请选择区(县)</option>";
-                $(result.data).each(function (i, obj) {
-                    optionStr += "<option value='" + obj.id + "'>" + obj.countyName + "</option>"
-                });
-                $("#county_select_table").html(optionStr);
-            }
-        });
-        initTable();
-    }
-
     function initTable() {
 
         var startTime = "";
@@ -220,15 +214,11 @@
 
         $("#user_table").bootstrapTable('destroy');
 
-        var countyId = $("#county_select_table").val();
-        var cityId = $("#city_select_table").val();
-        var provinceId = $("#province_select_table").val();
         var userName = $("#input_text").val();
-
         $("#user_table").bootstrapTable({
-            url: "/apis/user/findUserPage",
+            url: "/apis/banner/findAllBanner",
             method: "post",
-            contentType: "application/x-www-form-urlencoded",
+            contentType: "application/json",
             ajax: undefined,
             sidePagination: "server",
             queryParams: function (params) {
@@ -237,10 +227,8 @@
                     pageSize: params.limit,
                     startTime: startTime,
                     endTime: endTime,
-                    countyId: countyId,
-                    userName: userName,
-                    provinceId: provinceId,
-                    cityId: cityId
+                    name: userName,
+                    pid:0
                 };
             },
             toolbar: '#toolbar',
@@ -261,17 +249,14 @@
                 field: 'id',
                 title: '序号'
             }, {
-                field: 'userName',
-                title: '账号'
+                field: 'name',
+                title: '名称'
             }, {
-                field: 'companyName',
-                title: "所属机构名称"
+                field: 'path',
+                title: "轮播图跳转地址"
             }, {
-                field: 'effectiveDays',
-                title: '有效时间',
-                formatter: function (value) {
-                    return value + "天";
-                }
+                field: 'openState',
+                title: '开启状态'
             }, {
                 field: 'createTime',
                 title: '创建时间'

@@ -4,12 +4,15 @@ import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.Banner;
 import com.yxyk.bean.vo.VoBanner;
+import com.yxyk.bean.vo.VoBannerSys;
 import com.yxyk.reportory.BannerSysRepository;
 import com.yxyk.service.BannerSysService;
+import com.yxyk.utils.DateUtils;
 import com.yxyk.utils.DynamicSpecifications;
 import com.yxyk.utils.SearchFilter;
 import com.yxyk.utils.VoChangeUtils;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -17,7 +20,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,23 +41,19 @@ public class BannerSysServiceImpl implements BannerSysService {
     private final BannerSysRepository bannerSysRepository;
 
     @Override
-    public Page<Banner> findAllBanner(LocalDateTime startTime, LocalDateTime endTime, String name, int curr, int limit, Long pid) {
+    public Page<Banner> findAllBanner(VoBannerSys voBannerSys) {
         Map<Object, SearchFilter> filters = new HashMap<>();
-        if (!("".equals(name))) {
-            filters.put("name", new SearchFilter("name", SearchFilter.Operator.LIKE, name));
+        if (StringUtils.isNotBlank(voBannerSys.getName())) {
+            filters.put("name", new SearchFilter("name", SearchFilter.Operator.LIKE, voBannerSys.getName()));
         }
         filters.put("deleteState", new SearchFilter("deleteState", SearchFilter.Operator.EQ, SysConst.DeletedState.UN_DELETE_STATE.getCode()));
-        // 开始时间
-        if (startTime != null) {
-            filters.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, startTime));
+        if (StringUtils.isNotBlank(voBannerSys.getStartTime()) && StringUtils.isNotBlank(voBannerSys.getEndTime())) {
+            filters.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, DateUtils.dateToFirstTime(DateUtils.parseDate(voBannerSys.getStartTime()))));
+            filters.put("endTime", new SearchFilter("createTime", SearchFilter.Operator.LTE, DateUtils.dateToLastTime(DateUtils.parseDate(voBannerSys.getEndTime()))));
         }
-        // 结束时间
-        if (endTime != null) {
-            filters.put("endTime", new SearchFilter("updateTime", SearchFilter.Operator.LTE, endTime));
-        }
-        filters.put("pId", new SearchFilter("pId", SearchFilter.Operator.EQ, pid));
+        filters.put("navigationId", new SearchFilter("navigationId", SearchFilter.Operator.EQ, voBannerSys.getPid()));
         Specification<Banner> specification = DynamicSpecifications.bySearchFilter(filters.values(), Banner.class);
-        PageRequest of = PageRequest.of(curr - 1, limit, new Sort(Sort.Direction.ASC, "orderNumber"));
+        PageRequest of = PageRequest.of(voBannerSys.getPageNum(), voBannerSys.getPageSize(), new Sort(Sort.Direction.ASC, "orderNumber"));
         return bannerSysRepository.findAll(specification, of);
     }
 
@@ -111,7 +109,7 @@ public class BannerSysServiceImpl implements BannerSysService {
 
     @Override
     public void saveBanner(VoBanner voBanner) {
-        Banner banner=VoChangeUtils.changeToBanner(voBanner);
+        Banner banner = VoChangeUtils.changeToBanner(voBanner);
         bannerSysRepository.save(banner);
     }
 
