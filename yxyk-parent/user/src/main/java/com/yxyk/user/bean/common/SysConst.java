@@ -92,7 +92,7 @@ public class SysConst {
     }
 
     /**
-     * 用户删除状态
+     * 删除状态
      */
     @Getter
     @AllArgsConstructor
