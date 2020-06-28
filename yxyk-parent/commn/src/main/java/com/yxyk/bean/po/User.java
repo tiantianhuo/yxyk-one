@@ -52,25 +52,7 @@ public class User extends IdEntity {
      */
     private Long parentId;
 
-    /**
-     * 标注分类
-     */
-    private String tagClass;
 
-    /**
-     * 网络线索 已读 未读
-     */
-    private String networkReadState;
-
-    /**
-     * 举报线索  已读 未读
-     */
-    private String reportReadState;
-
-    /**
-     * 头像后缀
-     */
-    private String headerSuffix;
 
     /**
      * 检察院id

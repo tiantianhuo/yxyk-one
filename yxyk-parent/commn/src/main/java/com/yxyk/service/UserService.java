@@ -1,12 +1,13 @@
 package com.yxyk.service;
 
+
 import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.po.User;
+import com.yxyk.bean.vo.VoUserSearch;
 import com.yxyk.service.common.BaseService;
 import org.springframework.data.domain.Page;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Optional;
 
 /**
  * created with IntelliJ IDEA
@@ -17,19 +18,17 @@ import java.util.List;
  */
 public interface UserService extends BaseService<User, Long> {
 
-    void saveUser(User user, User loginUser) throws OperationException;
+    /**
+     * 保存或者修改用户
+     *
+     * @param user 用户对象
+     * @throws OperationException 自定义对象
+     */
+    void saveUser(User user) throws OperationException;
 
-    List<User> findByRoleId(Long id);
+    Page<User> findUserPage(VoUserSearch voUserSearch);
 
-    Page<User> findAll(LocalDateTime startTime, LocalDateTime endTime, String username, Long departmentId, Integer pageNum, Integer pageSize, Long procuratorId);
+    void deleteUser(Long id) throws OperationException;
 
-    User findByIdAndDeleteState(Long id);
-
-    boolean delUser(User user);
-
-    void updatePassword(Long userId, String password, String newPassword, String homeUrl) throws OperationException;
-
-    List<User> findByProcuratorIdAndDeleteState(Long item, int code);
-
-    List<User> findAllByProcuratorIdAndAdminState(Long procuratorId,Integer adminState);
+    Optional<User> findById(Long id);
 }

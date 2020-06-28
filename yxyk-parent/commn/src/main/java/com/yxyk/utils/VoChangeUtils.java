@@ -29,7 +29,7 @@ public class VoChangeUtils {
     public static Navigation changeToNavigation(VoNavigation voNavigation) {
         Navigation navigation = new Navigation();
         navigation.setNavigationName(voNavigation.getNavigationName());
-        navigation.setPermissionCode(voNavigation.getPermissionCode());
+        navigation.setPermissionId(voNavigation.getPermissionId());
         navigation.setPId(voNavigation.getPId());
         navigation.setSort(voNavigation.getSort());
         if(voNavigation.getId()!=null){

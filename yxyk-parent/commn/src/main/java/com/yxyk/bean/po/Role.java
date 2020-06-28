@@ -34,14 +34,5 @@ public class Role extends IdEntity {
      */
     private String permissions;
 
-    /**
-     * 父级
-     */
-    private Long pid;
-
-    /**
-     * 所属检察院
-     */
     private Long procuratorId;
-
 }

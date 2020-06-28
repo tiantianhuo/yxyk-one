@@ -18,9 +18,9 @@ public class SysConst {
 
     public final static String SPLIT_TAG = ",";
 
-    public final static String SHIRO_USER_SESSION_NAME = "ssp_omp_user";
+    public final static String SHIRO_USER_SESSION_NAME = "admin_user";
 
-    public static final String COOKIE_SUFFIX = "SSP_OMP_COOKIE_ID";    //cookie前缀
+    public static final String COOKIE_SUFFIX = "admin_COOKIE_ID";    //cookie前缀
 
     public final static Long SHIRO_SESSION_TIMEOUT = -1L;
 
@@ -40,6 +40,7 @@ public class SysConst {
     public static final String SUCCESS = "操作成功";
     public static final String DEL_SUCCESS = "删除成功";
     public static final String UPDATE_SUCCESS = "修改成功";
+
 
 
     /**

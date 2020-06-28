@@ -15,3 +15,15 @@
         </div>
     </nav>
 </header>
+<script>
+    $(".return").click(function () {
+        $.post("/apis/user/logout", {
+            id: deleteId
+        }, function (result) {
+            if (result.success) {
+                window.location.href = "login"
+            }
+        })
+
+    })
+</script>

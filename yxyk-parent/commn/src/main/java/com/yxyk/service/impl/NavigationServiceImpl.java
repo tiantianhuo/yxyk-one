@@ -38,7 +38,7 @@ public class NavigationServiceImpl implements NavigationService {
         List<Navigation> navigations = navigationRepository.findByDeleteState(SysConst.DeletedState.UN_DELETE_STATE.getCode());
         for (Navigation navigation : navigations) {
             for (String permission : permissionLists) {
-                if (navigation.getPermissionCode().equals(permission)) {
+                if (navigation.getPermissionId().equals(permission)) {
                     returnList.add(navigation);
                 }
             }

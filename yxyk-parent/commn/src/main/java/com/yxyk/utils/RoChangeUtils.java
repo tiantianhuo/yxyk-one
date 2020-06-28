@@ -19,11 +19,11 @@ public class RoChangeUtils {
         List<VoNavigation> list = new ArrayList();
         for (Navigation navigation : navigationList) {
             VoNavigation roNavigation = new VoNavigation();
-            roNavigation.setPermissionCode(navigation.getPermissionCode());
+            roNavigation.setPermissionId(navigation.getPermissionId());
             roNavigation.setNavigationName(navigation.getNavigationName());
             roNavigation.setPId(navigation.getPId());
             roNavigation.setSort(navigation.getSort());
         }
-        return null;
+        return list;
     }
 }
