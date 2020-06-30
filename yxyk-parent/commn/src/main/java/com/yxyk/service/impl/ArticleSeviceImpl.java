@@ -48,6 +48,7 @@ public class ArticleSeviceImpl implements ArticleService {
             map.put("title", new SearchFilter("title", SearchFilter.Operator.LIKE, keyword));
             map.put("content", new SearchFilter("content", SearchFilter.Operator.LIKE, keyword));
         }
+        map.put("deleteState", new SearchFilter("deleteState", SearchFilter.Operator.EQ, SysConst.DeletedState.UN_DELETE_STATE.getCode()));
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         PageRequest pageReq = PageRequest.of(pageNum - 1, pageSize, sort);
         Page<AdminArticle> page = articleRepository.findAll(pageReq);
@@ -130,4 +131,7 @@ public class ArticleSeviceImpl implements ArticleService {
     public AdminArticle sortDown(Long sort) {
         return articleRepository.ArticleBySortDown(sort);
     }
+
+    @Override
+    public AdminArticle findArticleById(Long id) { return articleRepository.findArticleById(id); }
 }

@@ -18,4 +18,6 @@ public interface ArticleRepository extends JpaRepository<AdminArticle, Long>, Jp
     AdminArticle ArticleBySortDown(Long  sort);
     @Query(value=" UPDATE admin_article SET sort=#{sort} WHERE id=#{id}",nativeQuery = true)
     AdminArticle updateBySort(Long  sort,Long  id);
+    @Query(value="SELECT * from admin_article  WHERE WHERE id=#{id}",nativeQuery = true)
+    AdminArticle findArticleById(Long id);
 }

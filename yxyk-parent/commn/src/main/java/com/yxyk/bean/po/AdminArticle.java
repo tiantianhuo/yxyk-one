@@ -22,7 +22,8 @@ public class AdminArticle extends IdEntity {
     @Lob //longtext
     @Column(columnDefinition="longtext")
     private String content;
-
+    private String startTime;
+    private String endTime;
     private String createPerson;
     private String updatePersn;
     private String channelName;

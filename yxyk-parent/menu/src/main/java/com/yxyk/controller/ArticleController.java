@@ -5,6 +5,7 @@ import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.AdminArticle;
+import com.yxyk.bean.po.Banner;
 import com.yxyk.bean.vo.VoArticle;
 import com.yxyk.bean.vo.VoArticleAll;
 import com.yxyk.service.ArticleService;
@@ -14,10 +15,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -26,7 +24,7 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping(value = "/apis/Article/")
 public class ArticleController extends BaseController {
-    @Autowired
+
     private final ArticleService articleService;
     public ArticleController(ArticleService articleService) {
         this.articleService = articleService;
@@ -34,13 +32,13 @@ public class ArticleController extends BaseController {
 
 
     /**
-     * 添加
+     * 添加/修改
      * @param voArticle 文章参数
      * @return JSONResponse
      * @throws OperationException 自定义异常信息
      */
     @PostMapping("saveArticle")
-    public JSONResponse saveSensitive(@Valid VoArticle voArticle) throws OperationException {
+    public JSONResponse saveSensitive(@RequestBody VoArticle voArticle) throws OperationException {
         articleService.saveArticle(ArticleChangeUtils.changeToAr(voArticle));
         return this.success();
     }
@@ -67,7 +65,7 @@ public class ArticleController extends BaseController {
      * @return JSONResponse
      */
     @PostMapping("findAllArticle")
-    public JSONResponse findAllArticle(VoArticleAll voArticle) {
+    public JSONResponse findAllArticle(@RequestBody VoArticleAll voArticle) {
         LocalDateTime startTime = DateUtils.parseDateTime(voArticle.getStartTime());
         LocalDateTime endTime = DateUtils.parseDateTime(voArticle.getEndTime());
         Page<AdminArticle> all = articleService.findAll(startTime, endTime, voArticle.getKeyword(), voArticle.getPageNum(), voArticle.getPageSize());
@@ -80,7 +78,7 @@ public class ArticleController extends BaseController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/courseSortUpdate",method = RequestMethod.GET,produces = {"text/html;charset=UTF-8"})
+    @RequestMapping(value = "/courseSortUpdate",method = RequestMethod.GET  )
     public JSONResponse courseSortUpdate(HttpServletRequest request){
         String sort=request.getParameter("sort");
         String sort1=sort.substring(0,sort.length()-1);
@@ -99,9 +97,17 @@ public class ArticleController extends BaseController {
         }
         return this.success();
     }
-    @PostMapping("/toArticleListHtml")
-    String toArticleList() {
-        return "ArticleList";
+
+    /**
+     * 修改回显:通过id查询
+     *
+     * @param id 请求参数
+     * @return Result
+     */
+    @PostMapping(value = "findArticleById")
+    public JSONResponse findArticleById(Long id) {
+        AdminArticle article = articleService.findArticleById(id);
+        return this.success(article);
     }
 
 }
