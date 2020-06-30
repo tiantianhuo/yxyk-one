@@ -129,7 +129,7 @@ public class ShiroConfig {
     private void loadShiroFilterChain(ShiroFilterFactoryBean factoryBean) {
         Map<String, String> filterChainMap = new LinkedHashMap<String, String>();
         filterChainMap.put("/logout", "anon");  //退出
-        filterChainMap.put("/apis/user/loginUser", "anon");//登录请求
+         filterChainMap.put("/apis/user/loginUser", "anon");//登录请求
 
 //        //小程序接口
 //        filterChainMap.put("/banners/findBannerWX", "anon");//查询所有banner

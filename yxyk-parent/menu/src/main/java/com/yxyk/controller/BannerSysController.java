@@ -36,7 +36,7 @@ public class BannerSysController extends BaseController {
      * @param voBanner 轮播图对象
      * @return result
      */
-    @PostMapping(value = "/addBanner")
+    @PostMapping(value = "/save")
     public JSONResponse addBanner(@RequestBody VoBanner voBanner) {
         bannerSysService.saveBanner(voBanner);
         return this.success();
