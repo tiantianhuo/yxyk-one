@@ -38,14 +38,4 @@ public class FileSystemController  {
         return fileSystemService.upload(multipartFile);
     }
 
-
-    /**
-     * 上传文件
-     * @param multipartFile
-     * @return
-     */
-    @PostMapping("/upload2")
-    public String upload2(MultipartFile multipartFile) {
-        return HttpRequestUtil.uploadFile("http://localhost:9280/fastdfs/filesystem/upload",multipartFile,"test", Maps.newHashMap(), Maps.newHashMap());
-    }
 }

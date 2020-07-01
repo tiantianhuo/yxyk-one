@@ -31,5 +31,5 @@ public class Navigation extends IdEntity {
     /**
      * 权限码
      */
-    private Long permissionId;
+    private Long permissionCode;
 }
