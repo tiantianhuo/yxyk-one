@@ -6,17 +6,13 @@ import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.common.VoParams;
 import com.yxyk.bean.po.Navigation;
 import com.yxyk.bean.vo.VoNavigation;
-import com.yxyk.service.NavigationService;
-import com.yxyk.service.RoleService;
-import com.yxyk.utils.RoChangeUtils;
+import com.yxyk.fegin.navigation.NavigationFeigen;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @Classname NavigationController
@@ -25,13 +21,14 @@ import java.util.List;
  * @Created by cw
  */
 @RestController
-@RequestMapping(value = "/navigation/")
+@RequestMapping(value = "/apis/navigation/")
 @AllArgsConstructor
 public class NavigationController extends BaseController {
 
-    private final NavigationService navigationService;
 
-    private final RoleService roleService;
+    private final NavigationFeigen navigationFeigen;
+
+
     /**
      * 查询栏目
      *
@@ -39,9 +36,7 @@ public class NavigationController extends BaseController {
      */
     @PostMapping("findAll")
     public JSONResponse findAllNavigation() {
-        List<Navigation> navigationList = navigationService.findAllByAuthority(roleService.findByIdAndDeleteState(getUser().getRoleId()).getPermissions());
-        List<VoNavigation> navigations = RoChangeUtils.changToRoNavigation(navigationList);
-        return this.success(navigations);
+        return this.success(navigationFeigen.findAll());
     }
 
     /**
@@ -51,8 +46,8 @@ public class NavigationController extends BaseController {
      * @return JSONResponse
      */
     @PostMapping("save")
-    public JSONResponse save(@RequestBody @Valid VoNavigation voNavigation) {
-        navigationService.saveNavigation(voNavigation);
+    public JSONResponse save(@Valid VoNavigation voNavigation) {
+        navigationFeigen.saveNavigation(voNavigation);
         return this.success(SysConst.SUCCESS);
     }
 
@@ -64,7 +59,7 @@ public class NavigationController extends BaseController {
      */
     @PostMapping("delete")
     public JSONResponse deleteById(VoParams voParams) {
-        navigationService.deleteById(voParams);
+        navigationFeigen.deleteById(voParams);
         return this.success(SysConst.DEL_SUCCESS);
     }
 
@@ -76,23 +71,8 @@ public class NavigationController extends BaseController {
      */
     @PostMapping("findOne")
     public JSONResponse findOne(VoParams voParams) {
-       Navigation navigation=navigationService.findOne(voParams.getId());
-       return this.success(navigation);
+        Navigation navigation = navigationFeigen.findOne(voParams.getId());
+        return this.success(navigation);
     }
-
-
-//    /**
-//     * 栏目上移、下移、置顶、置底
-//     * 更改banner的排序位置
-//     *
-//     * @param id    banner 的id
-//     * @param event 操作（1、上移 2、下移 3、置顶 4、置底）
-//     * @return json
-//     */
-//    @PostMapping(value = "changeBannerIndex")
-//    public JSONResponse changeBannerIndex(Long id, Integer event) throws OperationException {
-//        navigationService.changeSortIndex(id, event);
-//        return this.success(SysConst.SUCCESS);
-//    }
 
 }

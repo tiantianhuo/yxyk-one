@@ -24,5 +24,5 @@ public interface RoleService extends BaseService<Role, Long> {
 
     boolean savePermission(Long id, String permission);
 
-    List<Role> findByProcuratorIdAndDeleteState(Long procuratorId, int deleteState);
+    List<Role> findByDeleteState(int deleteState);
 }

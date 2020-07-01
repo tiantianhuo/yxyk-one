@@ -23,5 +23,5 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 
     Role findByIdAndDeleteState(Long id, int deleteState);
 
-    List<Role> findByProcuratorIdAndDeleteState(Long procuratorId, int deleteState);
+    List<Role> findByDeleteState( int deleteState);
 }

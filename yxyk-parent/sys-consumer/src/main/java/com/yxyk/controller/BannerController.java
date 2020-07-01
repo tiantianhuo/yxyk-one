@@ -52,7 +52,7 @@ public class BannerController {
      * @return JSONResponse
      */
     @PostMapping("changBannerIndex")
-    public JSONResponse changBannerIndex( Long id, Integer event) {
+    public JSONResponse changBannerIndex(@RequestParam(value = "id") Long id, @RequestParam(value = "event" )Integer event) {
         return menuFeign.changBannerIndex(id, event);
     }
 
@@ -75,7 +75,7 @@ public class BannerController {
      * @return JSONResponse
      */
     @PostMapping("findBannerById")
-    public JSONResponse findBannerById(Long id) {
+    public JSONResponse findBannerById(@RequestParam(value = "id")Long id) {
         return menuFeign.findBannerById(id);
     }
 }

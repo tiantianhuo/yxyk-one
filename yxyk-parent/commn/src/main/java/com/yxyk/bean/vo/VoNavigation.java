@@ -43,5 +43,5 @@ public class VoNavigation {
      * 权限码
      */
     @NotNull(message = "权限码不能为空")
-    private Long permissionId;
+    private String permissionCodes;
 }

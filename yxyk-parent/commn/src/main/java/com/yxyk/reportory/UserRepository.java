@@ -30,5 +30,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUserNameAndDeleteState(String userName, int deleteState);
 
-    List<User> findAllByProcuratorIdAndDeleteStateAndAdminState(Long procuratorId,Integer deleteState,Integer adminState);
+
 }

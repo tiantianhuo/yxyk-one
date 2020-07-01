@@ -2,20 +2,12 @@ package com.yxyk.fegin.article;
 
 
 import com.yxyk.bean.common.JSONResponse;
-import com.yxyk.bean.common.VoParams;
-import com.yxyk.bean.po.AdminArticle;
 import com.yxyk.bean.vo.VoArticle;
 import com.yxyk.bean.vo.VoArticleAll;
-import com.yxyk.bean.vo.VoBanner;
-import com.yxyk.bean.vo.VoBannerSys;
-import com.yxyk.utils.DateUtils;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.time.LocalDateTime;
 
 @FeignClient(value = "article")
 public interface ArticleFeign {

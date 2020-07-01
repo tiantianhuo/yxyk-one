@@ -26,19 +26,6 @@ public class MappingController {
         return "login/login";
     }
 
-    /**
-     * 登出
-     *
-     * @return String
-     */
-    @GetMapping("logout")
-    public String logout() {
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.isAuthenticated()) {
-            subject.logout();
-        }
-        return "login/login";
-    }
 
     /**
      * 机构管理
@@ -82,10 +69,11 @@ public class MappingController {
 
     /**
      * 举报模块管理
+     *
      * @return
      */
     @GetMapping("modular_table")
-    public String modularTable(){
+    public String modularTable() {
         return "modular/modular_table";
     }
 }

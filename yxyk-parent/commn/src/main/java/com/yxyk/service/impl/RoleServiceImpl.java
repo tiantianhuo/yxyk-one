@@ -85,8 +85,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Role> findByProcuratorIdAndDeleteState(Long procuratorId, int i) {
-        return roleRepository.findByProcuratorIdAndDeleteState(procuratorId, SysConst.DeletedState.UN_DELETE_STATE.getCode());
+    public List<Role> findByDeleteState(int deleteState) {
+        return roleRepository.findByDeleteState(SysConst.DeletedState.UN_DELETE_STATE.getCode());
     }
 
 }

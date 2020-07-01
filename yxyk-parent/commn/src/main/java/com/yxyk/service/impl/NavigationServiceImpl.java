@@ -38,7 +38,7 @@ public class NavigationServiceImpl implements NavigationService {
         List<Navigation> navigations = navigationRepository.findByDeleteState(SysConst.DeletedState.UN_DELETE_STATE.getCode());
         for (Navigation navigation : navigations) {
             for (String permission : permissionLists) {
-                if (navigation.getPermissionId().equals(permission)) {
+                if (navigation.getPermissionCode().equals(permission)) {
                     returnList.add(navigation);
                 }
             }
@@ -60,6 +60,6 @@ public class NavigationServiceImpl implements NavigationService {
 
     @Override
     public Navigation findOne(Long id) {
-        return navigationRepository.findByIdAndDeleteState(id,SysConst.DeletedState.UN_DELETE_STATE.getCode());
+        return navigationRepository.findByIdAndDeleteState(id, SysConst.DeletedState.UN_DELETE_STATE.getCode());
     }
 }
