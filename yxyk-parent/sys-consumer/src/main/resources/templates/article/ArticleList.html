@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="/css/zone.css"/>
     <link rel="stylesheet" href="/css/delete.css"/>
     <link rel="stylesheet" href="/css/customer.css"/>
+    <!--ztree-->
+    <link rel="stylesheet" href="/vonder/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <script src="/vonder/zTree_v3/js/jquery.ztree.all.js"></script>
+    <script src="/vonder/zTree_v3/js/jquery.ztree.core.js"></script>
+    <script src="/vonder/zTree_v3/js/jquery.ztree.excheck.js"></script>
+    <script src="/vonder/zTree_v3/js/jquery.ztree.exedit.js"></script>
+    <script src="/vonder/zTree_v3/js/jquery.ztree.exhide.js"></script>
+
 
     <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
     <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -31,16 +39,28 @@
 <body>
 <!--头-->
 <#include "../common/header.html"/>
+
 <div class="wrapper ">
     <div class="content">
         <!--左侧开始-->
         <#include "../common/menu.html"/>
-        <!--右侧开始-->
+        <div class="col-sm-3 col-xs-4 ui-layout-content">
+            <div style="margin-top: 40px;height: 80%;">
+                <div style="margin:20px 10px 20px 20px">
+                    <div style="color: #333;border-bottom: 1px solid #8b8b8b;">
+                        <h3>栏目</h3>
+                    </div>
+                    <div class="ui-layout-content">
+                        <ul id="tree" class="ztree"></ul>
+                    </div>
+                    <input type="hidden" value="栏目" id="input_hidden"/>
+                </div>
+            </div>
+        </div>
         <div class="content-right">
-            <!--地域管理——内容-->
             <div>
                 <ul class="customer-ul">
-                    <li>banner</li>
+                    <li>article</li>
                 </ul>
                 <div class="second-tab">
                     <div class="show-title">
@@ -51,7 +71,7 @@
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
                                     <input type="text" class="layui-input" id="test1"
-                                           placeholder="请选择发布时间">
+                                           placeholder="请选择时间">
                                     <img src="/images/img/data.png"/>
                                 </div>
                             </div>
@@ -75,7 +95,6 @@
     </div>
 </div>
 <#include "../common/footer.html"/>
-</div>
 </body>
 </html>
 <script>
@@ -164,6 +183,14 @@
                 , {
                     field: 'channelName',
                     title: '所在栏目'
+                }
+                , {
+                    field: 'state',
+                    title: '是否发布',
+                formatter:function(value){
+                if(value=='0'){return '未发布'}
+                else if(value=='1'){return '已发布'}
+        }
                 }, {
                 field: 'createTime',
                 title: '创建时间'
@@ -204,5 +231,77 @@
 
     function updateCompany(id) {
         window.location.href = "/accountDetail?id=" + id;
+    }
+
+    $(function () {
+        //1.初始化Table
+        var oTable = new TableInit();
+        oTable.Init();
+        var setting = {
+            view: {
+            },
+            check: {
+            },
+            edit: {
+            },
+            async: {
+                enable: true,
+                url: "/apis/navigation/findAll",
+                type: 'post',
+                autoParam: ["id"],
+            },
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pId",
+                    rootPId: 0
+                }
+            },
+            callback: {
+                onClick: function (event, treeId, treeNode, clickFlag) {
+                    if (!treeNode.isParent) {
+                        $("#input_hidden").attr("value", treeNode.name);
+                        oTable.Init();
+                    }
+                    if (treeNode.isParent) {
+                        $("#input_hidden").attr("value", treeNode.name);
+                        oTable.Init();
+                    }
+                },
+                onAsyncError: zTreeOnAsyncError,
+                onAsyncSuccess: function (event, treeId, treeNode, msg) {
+
+                }
+            }
+        };
+
+        function filter(treeId, parentNode, childNodes) {
+            if (!childNodes) {
+                return null;
+            }
+            for (var i = 0, l = childNodes.length; i < l; i++) {
+                childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+            }
+            return childNodes;
+        }
+
+        function zTreeOnAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+            alert("加载错误：" + XMLHttpRequest);
+        }
+
+        $(document).ready(function () {
+            $.fn.zTree.init($("#tree"), setting);
+        });
+    })
+    //得到查询的参数
+    function queryParams(params) {
+        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+            pageNum: Math.round((params.offset + params.limit) / params.limit),
+            pageSize: params.limit,
+            //树的名称
+            input: $("#input_hidden").val(),
+        };
+        return temp;
     }
 </script>
