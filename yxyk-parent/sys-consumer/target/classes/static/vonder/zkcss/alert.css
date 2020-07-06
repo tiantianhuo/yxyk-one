@@ -1,0 +1,64 @@
+/*独立部署版本的弹框*/
+.modal-body{
+	border-top: 1px solid #5584ff;
+}
+.modal-footer{
+	border-top: none;
+}
+.alertbtn{
+	border:1px solid #5584ff;
+	background: #fff;
+	padding: 5px 20px;
+	color: #5584ff;
+	border-radius: 2px !important;
+	margin-left:30px;
+}
+.alertbtn:active,.alertbtn:focus,.alertbtn:hover,.alertbtn:visited{
+	border:1px solid #5584ff;
+	background: #5584ff !important;
+	padding: 5px 20px;
+	color: #fff;
+	border-radius: 2px !important;
+}
+textarea{
+	resize: none;
+             height:70px;
+             border: 1px solid #dce0e2;
+             padding: 5px;
+}
+.show{
+	display: block;
+}
+.hide{
+	display: none;
+}
+.complexMode{
+	display: none;
+}
+.lowhigh{
+	display: inline-block;
+	padding: 0px 4px;
+}
+
+/*背景版弹框样式*/
+.modal-dialog-tag{/*大号*/
+	background: url("../images/bigAlertBg.png") no-repeat;
+	background-size: 100% 100%;
+	width: 700px;
+	height:400px;
+	margin-top: 160px;
+	padding: 20px 30px;
+}
+.modal-dialog-tag-sm{/*小号*/
+	background: url("../images/bigAlertBg.png") no-repeat;
+	background-size: 100% 100%;
+	width: 600px;
+	height:330px;
+	margin-top: 200px;
+	padding: 20px 30px;
+}
+.close{
+	color: #fff !important;
+	font-size: 30px !important;
+}
+/*背景版弹框样式 end*/
