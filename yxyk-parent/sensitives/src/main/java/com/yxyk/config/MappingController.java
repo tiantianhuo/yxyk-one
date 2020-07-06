@@ -1,6 +1,6 @@
 package com.yxyk.config;
 
-import com.yxyk.controller.common.BaseController;
+import com.yxyk.BaseController;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

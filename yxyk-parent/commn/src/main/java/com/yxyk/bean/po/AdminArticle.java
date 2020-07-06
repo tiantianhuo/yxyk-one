@@ -18,7 +18,7 @@ public class AdminArticle extends IdEntity {
     private Long sort;
     private Long channel;
     private String title;
-
+    private String state;
     @Lob //longtext
     @Column(columnDefinition="longtext")
     private String content;
