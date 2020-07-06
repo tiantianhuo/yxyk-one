@@ -19,7 +19,7 @@ public class RoChangeUtils {
         List<VoNavigation> list = new ArrayList();
         for (Navigation navigation : navigationList) {
             VoNavigation roNavigation = new VoNavigation();
-            roNavigation.setPermissionId(navigation.getPermissionId());
+            roNavigation.setPermissionCodes(navigation.getPermissionCode());
             roNavigation.setNavigationName(navigation.getNavigationName());
             roNavigation.setPId(navigation.getPId());
             roNavigation.setSort(navigation.getSort());

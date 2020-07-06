@@ -9,19 +9,15 @@ import com.yxyk.bean.vo.VoUserSearch;
 import com.yxyk.service.UserService;
 import com.yxyk.utils.VoChangeUtils;
 import lombok.AllArgsConstructor;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * created with IntelliJ IDEA

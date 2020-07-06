@@ -15,11 +15,7 @@ import lombok.Setter;
 @Getter
 public class VoUserSearch extends VoPage {
 
-    private Long provinceId;
 
-    private Long cityId;
-
-    private Long countyId;
 
     private String startTime;
 

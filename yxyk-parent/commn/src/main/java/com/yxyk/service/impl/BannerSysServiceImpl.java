@@ -48,10 +48,10 @@ public class BannerSysServiceImpl implements BannerSysService {
         }
         filters.put("deleteState", new SearchFilter("deleteState", SearchFilter.Operator.EQ, SysConst.DeletedState.UN_DELETE_STATE.getCode()));
         if (StringUtils.isNotBlank(voBannerSys.getStartTime()) && StringUtils.isNotBlank(voBannerSys.getEndTime())) {
-            filters.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, DateUtils.dateToFirstTime(DateUtils.parseDate(voBannerSys.getStartTime()))));
-            filters.put("endTime", new SearchFilter("createTime", SearchFilter.Operator.LTE, DateUtils.dateToLastTime(DateUtils.parseDate(voBannerSys.getEndTime()))));
+            filters.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, DateUtils.parseDateTime(voBannerSys.getStartTime())));
+            filters.put("endTime", new SearchFilter("createTime", SearchFilter.Operator.LTE, DateUtils.parseDateTime(voBannerSys.getEndTime())));
         }
-        filters.put("navigationId", new SearchFilter("navigationId", SearchFilter.Operator.EQ, voBannerSys.getPid()));
+       // filters.put("navigationId", new SearchFilter("navigationId", SearchFilter.Operator.EQ, voBannerSys.getPid()));
         Specification<Banner> specification = DynamicSpecifications.bySearchFilter(filters.values(), Banner.class);
         PageRequest of = PageRequest.of(voBannerSys.getPageNum(), voBannerSys.getPageSize(), new Sort(Sort.Direction.ASC, "orderNumber"));
         return bannerSysRepository.findAll(specification, of);

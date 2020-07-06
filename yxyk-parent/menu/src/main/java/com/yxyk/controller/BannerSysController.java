@@ -62,7 +62,7 @@ public class BannerSysController extends BaseController {
      * @return json
      */
     @PostMapping(value = "/deleteBannerById")
-    public JSONResponse deleteBannerById(Long id) {
+    public JSONResponse deleteBannerById(@RequestParam("id") Long id) {
         try {
             Optional<Banner> byId = bannerSysService.findById(id);
             byId.ifPresent(bannerSys -> {
@@ -107,8 +107,7 @@ public class BannerSysController extends BaseController {
      */
     @PostMapping(value = "findAllBanner")
     public JSONResponse findAllBanner(@RequestBody VoBannerSys voBannerSys) {
-        LocalDateTime startTime = DateUtils.parseDateTime(voBannerSys.getStartTime());
-        LocalDateTime endTime = DateUtils.parseDateTime(voBannerSys.getEndTime());
+
         Page<Banner> all = bannerSysService.findAllBanner(voBannerSys);
         return this.success(all);
     }

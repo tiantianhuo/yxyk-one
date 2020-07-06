@@ -74,16 +74,6 @@ public class DateUtils {
     /**
      * 时间格式字符串转换为时间
      *
-     * @param dateTime 日期
-     * @return LocalDate
-     */
-    public static LocalDate parseDate(String dateTime) {
-        return parseDate(dateTime, DATE_FORMAT);
-    }
-
-    /**
-     * 时间格式字符串转换为时间
-     *
      * @param dateTime   日期
      * @param dateFormat 时间规格字符
      * @return LocalDate
@@ -95,6 +85,16 @@ public class DateUtils {
             result = LocalDate.parse(dateTime, formatter);
         }
         return result;
+    }
+
+    /**
+     * 时间格式字符串转换为时间
+     *
+     * @param dateTime 日期
+     * @return LocalDate
+     */
+    public static LocalDate parseDate(String dateTime) {
+        return parseDate(dateTime,DATE_TIME_FORMAT );
     }
 
     /**

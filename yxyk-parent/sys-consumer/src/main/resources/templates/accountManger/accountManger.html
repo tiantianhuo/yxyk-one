@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>客户账号管理</title>
+    <title>后台账号管理</title>
     <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.css">
     <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
@@ -79,63 +79,63 @@
 <#include "../common/footer.html"/>
 
 <!--新建模态框-->
-<div class="modal fade modal-new results-sentencing" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
-                    <i class="layui-icon layui-icon-close"></i>
-                </button>
-                <h4 class="modal-title">新建机构</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="fromboxs">
-                        <div class="fromleft">
-                            机构名称：
-                        </div>
-                        <div class="fromright">
-                            <input type="text" placeholder="请输入机构名称" id="name"/>
-                        </div>
-                    </div>
-                    <div class="fromboxs select-search">
-                        <div class="fromleft">
-                            上级机构 ：
-                        </div>
-                        <div class="fromright">
-                            <select id="select_company">
-                                <option value="">请选择机构</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="fromboxs">
-                        <div class="fromleft">
-                            备注 ：
-                        </div>
-                        <div class="fromright">
-                            <textarea placeholder="请输入备注信息" id="remarks"/></textarea>
-                        </div>
-                    </div>
-                    <div class="fromboxs tishi-box">
-                        <div class="fromleft">
-                            &nbsp;
-                        </div>
-                        <div class="fromright">
-                            <img src="/images/img/tishi.png"/>&nbsp;&nbsp;提示:所在地请谨慎选择，一经选择不可修改
-                        </div>
-                    </div>
-                    <div class="fromboxs anniu">
-                        <button class="queding" data-dismiss="modal" type="button" onclick="saveCompany()">保存</button>
-                        <button class="quxiao" data-dismiss="modal">取消</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal -->
-</div>
+<!--<div class="modal fade modal-new results-sentencing" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">-->
+<!--                    <i class="layui-icon layui-icon-close"></i>-->
+<!--                </button>-->
+<!--                <h4 class="modal-title">新建机构</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form>-->
+<!--                    <div class="fromboxs">-->
+<!--                        <div class="fromleft">-->
+<!--                            机构名称：-->
+<!--                        </div>-->
+<!--                        <div class="fromright">-->
+<!--                            <input type="text" placeholder="请输入机构名称" id="name"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="fromboxs select-search">-->
+<!--                        <div class="fromleft">-->
+<!--                            上级机构 ：-->
+<!--                        </div>-->
+<!--                        <div class="fromright">-->
+<!--                            <select id="select_company">-->
+<!--                                <option value="">请选择机构</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="fromboxs">-->
+<!--                        <div class="fromleft">-->
+<!--                            备注 ：-->
+<!--                        </div>-->
+<!--                        <div class="fromright">-->
+<!--                            <textarea placeholder="请输入备注信息" id="remarks"/></textarea>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="fromboxs tishi-box">-->
+<!--                        <div class="fromleft">-->
+<!--                            &nbsp;-->
+<!--                        </div>-->
+<!--                        <div class="fromright">-->
+<!--                            <img src="/images/img/tishi.png"/>&nbsp;&nbsp;提示:所在地请谨慎选择，一经选择不可修改-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="fromboxs anniu">-->
+<!--                        <button class="queding" data-dismiss="modal" type="button" onclick="saveCompany()">保存</button>-->
+<!--                        <button class="quxiao" data-dismiss="modal">取消</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; /.modal-content &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; /.modal &ndash;&gt;-->
+<!--</div>-->
 
 <!--删除模态框开始-->
 <div class="modal fade modal-new results-sentencing assa" id="delete" tabindex="-1" role="dialog"
@@ -206,13 +206,13 @@
         var endTime = "";
 
         if ($("#test1").val() !== "") {
-            startTime = $("#test1").val().split("~")[0];
-            endTime = $("#test1").val().split("~")[1];
+            startTime = $("#test1").val().split("~")[0]+"00:00:00";
+            endTime = ($("#test1").val().split("~")[1]+" 23:59:59").substr(1);
         }
 
         $("#user_table").bootstrapTable('destroy');
 
-        var userName = $("#input_text").val();
+        var Name = $("#input_text").val();
         $("#user_table").bootstrapTable({
             url: "/apis/banner/findAllBanner",
             method: "post",
@@ -221,11 +221,11 @@
             sidePagination: "server",
             queryParams: function (params) {
                 return {
-                    pageNum: params.offset,
+                    pageNum: params.offset/params.limit,
                     pageSize: params.limit,
                     startTime: startTime,
                     endTime: endTime,
-                    name: userName,
+                    name: Name,
                     pid:0
                 };
             },
@@ -241,7 +241,11 @@
             onClickRow: function (row, $element) {
             },
             responseHandler: function (res) {
-                return res.data;
+                 return  {
+
+                    rows: res.data.rows,
+                    total: res.data.total
+                };
             },
             columns: [{
                 field: 'id',
@@ -272,7 +276,7 @@
     }
 
     function deleteById() {
-        $.post("/apis/user/deleteById", {
+        $.post("/apis/banner/deleteOne", {
             id: deleteId
         }, function (result) {
             if (result.success) {

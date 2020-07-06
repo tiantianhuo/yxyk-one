@@ -77,10 +77,10 @@ public abstract class BaseController {
      */
     protected JSONResponse success(Page page) {
         Map<String, Object> map = new HashMap<>();
-        map.put("totalCount", page.getTotalElements());
-        map.put("list", page.getContent());
+        map.put("total", page.getTotalElements());
+        map.put("rows", page.getContent());
         map.put("pageSize", page.getSize());
-        map.put("pageNum", page.getNumber());
+        map.put("pageNumber", page.getNumber());
         return JSONResponse.Create(Boolean.TRUE, "success", map);
     }
 

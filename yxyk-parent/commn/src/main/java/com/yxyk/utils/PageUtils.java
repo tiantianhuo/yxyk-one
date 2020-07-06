@@ -23,7 +23,7 @@ public class PageUtils {
      * @return PageRequest
      */
     public static PageRequest buildPageRequest(int page, int size, Sort sort) {
-        return new PageRequest(page - 1, size, sort);
+        return new PageRequest(page, size, sort);
     }
 
     /**

@@ -93,10 +93,10 @@ public class UserServiceImpl implements UserService {
 //            filterMap.put("procuratorId", new SearchFilter("procuratorId", SearchFilter.Operator.EQ, -1L));
 //        }
         if (StringUtils.isNotBlank(voUserSearch.getStartTime())) {
-            filterMap.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, DateUtils.parseDate(voUserSearch.getStartTime()).atTime(LocalTime.MIN)));
+            filterMap.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, DateUtils.parseDateTime(voUserSearch.getStartTime())));
         }
         if (StringUtils.isNotBlank(voUserSearch.getEndTime())) {
-            filterMap.put("endTime", new SearchFilter("createTime", SearchFilter.Operator.LTE, DateUtils.parseDate(voUserSearch.getEndTime()).atTime(LocalTime.MAX)));
+            filterMap.put("endTime", new SearchFilter("createTime", SearchFilter.Operator.LTE, DateUtils.parseDateTime(voUserSearch.getEndTime())));
         }
         if (StringUtils.isNotBlank(voUserSearch.getUserName())) {
             filterMap.put("userName", new SearchFilter("userName", SearchFilter.Operator.EQ, voUserSearch.getUserName()));

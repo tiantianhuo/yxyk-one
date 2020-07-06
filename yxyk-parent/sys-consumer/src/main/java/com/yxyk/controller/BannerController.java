@@ -39,8 +39,8 @@ public class BannerController {
      * @return JSONResponse
      */
     @PostMapping("deleteOne")
-    public JSONResponse deleteOne(@RequestBody VoParams voParams) {
-        return menuFeign.deleteOne(voParams);
+    public JSONResponse deleteOne(VoParams voParams) {
+        return menuFeign.deleteOne(voParams.getId());
     }
 
 

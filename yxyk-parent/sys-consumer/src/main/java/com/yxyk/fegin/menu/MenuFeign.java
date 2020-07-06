@@ -26,11 +26,11 @@ public interface MenuFeign {
     /**
      * 删除
      *
-     * @param voParams vo
+     * @param  id
      * @return JSONResponse
      */
     @PostMapping("/banners/deleteBannerById")
-    JSONResponse deleteOne(@RequestBody VoParams voParams);
+    JSONResponse deleteOne(@RequestParam("id") Long id);
 
     /**
      * 操作（1、上移 2、下移 3、置顶 4、置底）
