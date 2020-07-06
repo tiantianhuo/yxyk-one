@@ -1,8 +1,8 @@
 package com.yxyk.config.exception;
 
+import com.yxyk.BaseController;
 import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.OperationException;
-import com.yxyk.controller.common.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;

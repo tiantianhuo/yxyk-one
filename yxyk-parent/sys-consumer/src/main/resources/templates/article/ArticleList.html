@@ -26,6 +26,9 @@
     <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="/vonder/layui/layui.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.8.3.min.js.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js.js"></script>
+    <script type="text/javascript" src="/js/jquery.spinner.js.js"></script>
 
     <!--城市三级联动-->
     <link rel="stylesheet" type="text/css" href="/vonder/select-select/css/index.css"/>
@@ -60,7 +63,7 @@
         <div class="content-right">
             <div>
                 <ul class="customer-ul">
-                    <li>article</li>
+                    <li>文章管理—列表</li>
                 </ul>
                 <div class="second-tab">
                     <div class="show-title">
@@ -81,9 +84,11 @@
                                    onblur="initTable()"/>
                             <img src="/images/img/search.png" alt=""/>
                         </div>
+                        <div id="toolbar" class="btn-group">
                         <button class="btn found" data-toggle="modal" data-target="#add" value=""
-                                onclick="">新建
+                                onclick="Article()">新建
                         </button>
+                        </div>
                         <table class="p-table" id="article_table">
                         </table>
                     </div>
@@ -99,11 +104,11 @@
 </html>
 <script>
     var deleteId;
-
+    var TableInit;
     $("#li_khzh").attr("class", "actives");
-    $(".add").click(function () {
-        window.location.href = "ArticleDetail";
-    });
+    function Article(){
+        window.location.href = "../ArticleDetail";
+    }
     $(".edit").click(function () {
         window.location.href = "ArticleDetail";
     });
@@ -143,76 +148,84 @@
         $("#article_table").bootstrapTable('destroy');
 
         var keyword = $("#input_text").val();
-        $("#article_table").bootstrapTable({
-            url: "/apis/article/findAllArticle",
-            method: "post",
-            contentType: "application/json",
-            ajax: undefined,
-            sidePagination: "server",
-            queryParams: function (params) {
-                return {
-                    pageNum: params.offset,
-                    pageSize: params.limit,
-                    startTime: startTime,
-                    endTime: endTime,
-                    keyword: keyword,
-                    pid: 0
-                };
-            },
-            toolbar: '#toolbar',
-            striped: false,
-            cache: false,
-            pagination: true,
-            sortable: false,
-            sortOrder: "desc",
-            pageNumber: 1,
-            pageSize: 10,
-            pageList: [10, 20],
-            onClickRow: function (row, $element) {
-            },
-            responseHandler: function (res) {
-                return res.data;
-            },
-            columns: [{
-                field: 'id',
-                title: '序号'
-            }, {
-                field: 'title',
-                title: '标题'
-            }
-                , {
-                    field: 'channelName',
-                    title: '所在栏目'
-                }
-                , {
-                    field: 'state',
-                    title: '是否发布',
-                formatter:function(value){
-                if(value=='0'){return '未发布'}
-                else if(value=='1'){return '已发布'}
-        }
-                }, {
-                field: 'createTime',
-                title: '创建时间'
-            }
-                , {
-                    field: 'createPerson',
-                    title: '创建人'
-                }
-                , {
-                    field: 'updateTime',
-                    title: '修改时间'
-                }
-                , {
-                    field: 'updatePersn',
-                    title: '修改人'
-                }, {
-                    title: '操作内容',
-                    formatter: function (value, row) {
-                        return '<span data-toggle="modal" data-target="#add" onclick="updateCompany(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteCompany(' + row.id + ')">删除</span>';
+        TableInit = function() {
+            var oTableInit = new Object();
+            //初始化Table
+            oTableInit.Init = function () {
+                $('#article_table').bootstrapTable('destroy');
+                $("#article_table").bootstrapTable({
+                    url: "/apis/article/findAllArticle",
+                    method: "post",
+                    contentType: "application/json",
+                    ajax: undefined,
+                    sidePagination: "server",
+                    queryParams: function (params) {
+                        return {
+                            pageNum: params.offset,
+                            pageSize: params.limit,
+                            startTime: startTime,
+                            endTime: endTime,
+                            keyword: keyword,
+                            pid: 0
+                        };
+                    },
+                    toolbar: '#toolbar',
+                    striped: false,
+                    cache: false,
+                    pagination: true,
+                    sortable: false,
+                    sortOrder: "desc",
+                    pageNumber: 1,
+                    pageSize: 10,
+                    pageList: [10, 20],
+                    onClickRow: function (row, $element) {
+                    },
+                    responseHandler: function (res) {
+                        return res.data;
+                    },
+                    columns: [{
+                        field: 'id',
+                        title: '序号'
+                    }, {
+                        field: 'title',
+                        title: '标题'
                     }
-                }]
-        });
+                        , {
+                            field: 'channelName',
+                            title: '所在栏目'
+                        }
+                        , {
+                            field: 'state',
+                            title: '是否发布',
+                            formatter:function(value){
+                                if(value=='0'){return '未发布'}
+                                else if(value=='1'){return '已发布'}
+                            }
+                        }, {
+                            field: 'createTime',
+                            title: '创建时间'
+                        }
+                        , {
+                            field: 'createPerson',
+                            title: '创建人'
+                        }
+                        , {
+                            field: 'updateTime',
+                            title: '修改时间'
+                        }
+                        , {
+                            field: 'updatePersn',
+                            title: '修改人'
+                        }, {
+                            title: '操作内容',
+                            formatter: function (value, row) {
+                                return '<span data-toggle="modal" data-target="#add" onclick="updateCompany(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteCompany(' + row.id + ')">删除</span>';
+                            }
+                        }]
+                });
+            }
+            return oTableInit;
+        }
     }
 
     function deleteCompany(id) {
@@ -236,7 +249,7 @@
     $(function () {
         //1.初始化Table
         var oTable = new TableInit();
-        oTable.Init();
+       oTable.Init();
         var setting = {
             view: {
             },
@@ -291,7 +304,7 @@
         }
 
         $(document).ready(function () {
-            $.fn.zTree.init($("#tree"), setting);
+           // $.fn.zTree.init($("#tree"), setting);
         });
     })
     //得到查询的参数

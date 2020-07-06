@@ -76,4 +76,22 @@ public class MappingController {
     public String modularTable() {
         return "modular/modular_table";
     }
+    /**
+     * 文章列表
+     *
+     * @return
+     */
+    @GetMapping("ArticleList")
+    public String ArticleList() {
+        return "article/ArticleList";
+    }
+    /**
+     * 文章添加
+     *
+     * @return
+     */
+    @GetMapping("ArticleDetail")
+    public String ArticleDetail() {
+        return "article/ArticleDetail";
+    }
 }

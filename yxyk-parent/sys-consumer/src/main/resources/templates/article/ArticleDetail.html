@@ -53,9 +53,18 @@
             <!--地域管理——内容-->
             <div>
                 <ul class="customer-ul">
-                    <li>客户账号管理</li>
+                    <li>文章管理</li>
                 </ul>
                 <div class="customer-box">
+                    <div class="fromboxs">
+                        <div class="from-left">
+                            所属栏目：
+                        </div>
+                        <div class="from-right">
+                            <input type="hidden"  autocomplete="off" id="id"/>
+                            <input type="text" placeholder="请在左侧选择栏目" autocomplete="off" id="navigationName"/>
+                        </div>
+                    </div>
                     <div class="fromboxs">
                         <div class="from-left">
                             文章标题：
@@ -74,7 +83,7 @@
                     </div>
                     <div class="fromboxs">
                         <div class="from-left">
-                            文章序号：
+                            文章排序：
                         </div>
                         <div class="from-right">
                             <input type="text" placeholder="请输入文章序号" autocomplete="off" id="sort"/>

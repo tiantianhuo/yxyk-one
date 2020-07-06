@@ -141,7 +141,7 @@ public class ShiroConfig {
 
 
         filterChainMap.put("/static/**", "anon"); //js资源放行
-       filterChainMap.put("/**", "authc");//其余全部拦截
+      // filterChainMap.put("/**", "authc");//其余全部拦截
 
 //        filterChainMap.put("/**", "anon");//其余全部拦截
         factoryBean.setFilterChainDefinitionMap(filterChainMap);
