@@ -12,13 +12,6 @@
     <link rel="stylesheet" href="/css/zone.css"/>
     <link rel="stylesheet" href="/css/delete.css"/>
     <link rel="stylesheet" href="/css/customer.css"/>
-    <!--ztree-->
-    <link rel="stylesheet" href="/vonder/zTree_v3/css/zTreeStyle/zTreeStyle.css">
-    <script src="/vonder/zTree_v3/js/jquery.ztree.all.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.core.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.excheck.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.exedit.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.exhide.js"></script>
     <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
     <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="/vonder/layui/layui.js"></script>
@@ -61,8 +54,8 @@
                             所属栏目：
                         </div>
                         <div class="from-right">
-                            <input type="hidden"  autocomplete="off" id="id"/>
-                            <input type="text" placeholder="请在左侧选择栏目" autocomplete="off" id="navigationName"/>
+                            <input type="hidden"  autocomplete="off" id="channel"/>
+                            <input type="text" placeholder="请在左侧选择栏目" autocomplete="off" id="channelName"/>
                         </div>
                     </div>
                     <div class="fromboxs">
@@ -78,7 +71,7 @@
                             内容：
                         </div>
                         <div class="from-right">
-                           <textarea id="content" placeholder="请填写内容" style="display: none;"></textarea>
+                           <textarea id="content" name ="content" placeholder="请填写内容" style="display: none;"></textarea>
                         </div>
                     </div>
                     <div class="fromboxs">
@@ -104,7 +97,7 @@
 </html>
 <script>
 
-    $("#li_khzh").attr("class", "actives");
+    $("#li_wzgl").attr("class", "actives");
 
     $(".off").click(function () {
         window.location.href = "ArticleList"
@@ -118,30 +111,24 @@
     $(".return").click(function () {
         window.location.href = "logout"
     });
-    //富文本
-    layui.use('layedit', function(){
-        var layedit = layui.layedit;
-        layedit.build('content'); //建立编辑器
-    });
-    layedit.getContent(index) //获取html
-    layedit.getText(index) // 获取纯文本
 
-    initCompany();
     function saveArticle() {
         var title = $("#title").val();
         if (title === "" || title === 0) {
             alert("操作失败,请添加文章标题");
             return false;
         }
-
-        var content =  layedit.getText(index)
+        var channelName =  $("#channelName").val();
+        var content = $("#content").val();
         var sort = $("#sort").val();
         var id = getUrlParam("id");
-
+    debugger;
         $.post("/apis/article/saveArticle", {
-           // id: id,
+            id:id,
+            channelName:channelName,
+            channel:"1",
             title: title,
-            content: content,
+            content: "222222",
             sort: sort
         }, function (result) {
             if (result.success) {
@@ -152,13 +139,15 @@
         });
     }
 
-    initUser();
 
-    function initUser() {
+    initArticle()
+    function initArticle() {
+        debugger;
         var id = getUrlParam("id");
         if (id != null && id !== "") {
             $.post("/apis/article/findArticleById", {id: id}, function (result) {
                 if (result.success) {
+                    $("#channelName").val(result.data.channelName);
                     $("#title").val(result.data.title);
                     $("#content").val(result.data.content);
                     $("#sort").val(result.data.sort);

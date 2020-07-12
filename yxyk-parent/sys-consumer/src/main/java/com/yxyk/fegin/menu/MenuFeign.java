@@ -2,7 +2,6 @@ package com.yxyk.fegin.menu;
 
 
 import com.yxyk.bean.common.JSONResponse;
-import com.yxyk.bean.common.VoParams;
 import com.yxyk.bean.vo.VoBanner;
 import com.yxyk.bean.vo.VoBannerSys;
 import org.springframework.cloud.openfeign.FeignClient;

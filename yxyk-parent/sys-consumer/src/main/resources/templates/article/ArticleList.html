@@ -13,22 +13,19 @@
     <link rel="stylesheet" href="/css/zone.css"/>
     <link rel="stylesheet" href="/css/delete.css"/>
     <link rel="stylesheet" href="/css/customer.css"/>
-    <!--ztree-->
-    <link rel="stylesheet" href="/vonder/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <!--ztree
+    <link rel="stylesheet" href="/vonder/zTree_v3.5/css/zTreeStyle/zTreeStyle.css">
     <script src="/vonder/zTree_v3/js/jquery.ztree.all.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.core.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.excheck.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.exedit.js"></script>
-    <script src="/vonder/zTree_v3/js/jquery.ztree.exhide.js"></script>
+    <script src="/vonder/zTree_v3.5/js/jquery.ztree.core.js"></script>
+    <script src="/vonder/zTree_v3.5/js/jquery.ztree.excheck.js"></script>
+    <script src="/vonder/zTree_v3.5/js/jquery-1.4.4.min.js"></script>
+    <script src="/vonder/zTree_v3.5/js/jquery.ztree.exhide.js"></script>-->
 
 
     <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
     <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="/vonder/layui/layui.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/jquery-1.8.3.min.js.js"></script>
-    <script type="text/javascript" src="/js/jquery.min.js.js"></script>
-    <script type="text/javascript" src="/js/jquery.spinner.js.js"></script>
 
     <!--城市三级联动-->
     <link rel="stylesheet" type="text/css" href="/vonder/select-select/css/index.css"/>
@@ -47,274 +44,226 @@
     <div class="content">
         <!--左侧开始-->
         <#include "../common/menu.html"/>
-        <div class="col-sm-3 col-xs-4 ui-layout-content">
-            <div style="margin-top: 40px;height: 80%;">
-                <div style="margin:20px 10px 20px 20px">
-                    <div style="color: #333;border-bottom: 1px solid #8b8b8b;">
-                        <h3>栏目</h3>
-                    </div>
-                    <div class="ui-layout-content">
-                        <ul id="tree" class="ztree"></ul>
-                    </div>
-                    <input type="hidden" value="栏目" id="input_hidden"/>
-                </div>
+
+        <!--   <div class="box-body" align="center">
+               <div class="zTreeDemoBackground left">
+                   <ul id="departmenttree" class="ztree"></ul>
+               </div>
+           </div>-->
+           <div class="content-right">
+               <div>
+                   <ul class="customer-ul">
+                       <li>文章管理—列表</li>
+                   </ul>
+                   <div class="second-tab">
+                       <div class="show-title">
+                           <div class="input-box">
+                               <span>筛选：</span>
+                           </div>
+                           <div class="input-box">
+                               <div class="layui-inline">
+                                   <div class="layui-input-inline">
+                                       <input type="text" class="layui-input" id="test1"
+                                              placeholder="请选择时间">
+                                       <img src="/images/img/data.png"/>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="input-box img-box">
+                               <input type="text" placeholder="请输入名称筛选" class="layui-input " id="input_text"
+                                      onblur="initTable()"/>
+                               <img src="/images/img/search.png" alt=""/>
+                           </div>
+                           <div id="toolbar" class="btn-group">
+                           <button class="btn found" data-toggle="modal" data-target="#add" value=""
+                                   onclick="Article()">新建
+                           </button>
+                           </div>
+                           <table class="p-table" id="article_table">
+                           </table>
+                       </div>
+                   </div>
+               </div>
+               <div id="demo" class="demo"></div>
+           </div>
+
+       </div>
+   </div>
+   <#include "../common/footer.html"/>
+
+<div class="modal fade modal-new results-sentencing assa" id="delete" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal_c">
+            <div class="modal-header modal_h">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                    <i class="layui-icon layui-icon-close closes"></i>
+                </button>
+                <h4 class="modal-title modal_t">提示</h4>
             </div>
-        </div>
-        <div class="content-right">
-            <div>
-                <ul class="customer-ul">
-                    <li>文章管理—列表</li>
-                </ul>
-                <div class="second-tab">
-                    <div class="show-title">
-                        <div class="input-box">
-                            <span>筛选：</span>
-                        </div>
-                        <div class="input-box">
-                            <div class="layui-inline">
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="test1"
-                                           placeholder="请选择时间">
-                                    <img src="/images/img/data.png"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-box img-box">
-                            <input type="text" placeholder="请输入名称筛选" class="layui-input " id="input_text"
-                                   onblur="initTable()"/>
-                            <img src="/images/img/search.png" alt=""/>
-                        </div>
-                        <div id="toolbar" class="btn-group">
-                        <button class="btn found" data-toggle="modal" data-target="#add" value=""
-                                onclick="Article()">新建
+            <div class="modal-body modal-b">
+                <form>
+                    <div class="fromboxs">你确定要删除吗？</div>
+                    <div class="fromboxs anniu annius">
+                        <button class="queding quedings" data-dismiss="modal" type="button" onclick="deleteById()">确定
                         </button>
-                        </div>
-                        <table class="p-table" id="article_table">
-                        </table>
+                        <button class="quxiao quxiaos" data-dismiss="modal">取消</button>
                     </div>
-                </div>
+                </form>
             </div>
-            <div id="demo" class="demo"></div>
         </div>
-
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal -->
 </div>
-<#include "../common/footer.html"/>
-</body>
-</html>
-<script>
-    var deleteId;
-    var TableInit;
-    $("#li_khzh").attr("class", "actives");
-    function Article(){
-        window.location.href = "../ArticleDetail";
-    }
-    $(".edit").click(function () {
-        window.location.href = "ArticleDetail";
-    });
+   </body>
+   </html>
+   <script>
+       var deleteId;
+       var TableInit;
+       $("#li_wzgl").attr("class", "actives");
+       function Article(){
+           window.location.href = "../ArticleDetail";
+       }
+       $(".edit").click(function () {
+           window.location.href = "ArticleDetail";
+       });
 
 
-    //日期范围
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
-        //日期范围
-        laydate.render({
-            elem: '#test1',
-            range: "~",
-            done: function (value) {
-                $("#test1").val(value);
-                initTable();
-            }
-        });
-        laydate.render({
-            elem: '#test2',
-            range: "~"
-        });
-    });
+       //日期范围
+       layui.use('laydate', function () {
+           var laydate = layui.laydate;
+           //日期范围
+           laydate.render({
+               elem: '#test1',
+               range: "~",
+               done: function (value) {
+                   $("#test1").val(value);
+                   initTable();
+               }
+           });
+           laydate.render({
+               elem: '#test2',
+               range: "~"
+           });
+       });
 
 
-    initTable();
+       initTable();
 
-    function initTable() {
+       function initTable() {
 
-        var startTime = "";
-        var endTime = "";
+           var startTime = "";
+           var endTime = "";
 
-        if ($("#test1").val() !== "") {
-            startTime = $("#test1").val().split("~")[0];
-            endTime = $("#test1").val().split("~")[1];
-        }
+           if ($("#test1").val() !== "") {
+               startTime = $("#test1").val().split("~")[0];
+               endTime = $("#test1").val().split("~")[1];
+           }
 
-        $("#article_table").bootstrapTable('destroy');
+      // $("#article_table").bootstrapTable('destroy');
 
-        var keyword = $("#input_text").val();
-        TableInit = function() {
-            var oTableInit = new Object();
-            //初始化Table
-            oTableInit.Init = function () {
-                $('#article_table').bootstrapTable('destroy');
-                $("#article_table").bootstrapTable({
-                    url: "/apis/article/findAllArticle",
-                    method: "post",
-                    contentType: "application/json",
-                    ajax: undefined,
-                    sidePagination: "server",
-                    queryParams: function (params) {
-                        return {
-                            pageNum: params.offset,
-                            pageSize: params.limit,
-                            startTime: startTime,
-                            endTime: endTime,
-                            keyword: keyword,
-                            pid: 0
-                        };
-                    },
-                    toolbar: '#toolbar',
-                    striped: false,
-                    cache: false,
-                    pagination: true,
-                    sortable: false,
-                    sortOrder: "desc",
-                    pageNumber: 1,
-                    pageSize: 10,
-                    pageList: [10, 20],
-                    onClickRow: function (row, $element) {
-                    },
-                    responseHandler: function (res) {
-                        return res.data;
-                    },
-                    columns: [{
-                        field: 'id',
-                        title: '序号'
-                    }, {
-                        field: 'title',
-                        title: '标题'
-                    }
-                        , {
-                            field: 'channelName',
-                            title: '所在栏目'
-                        }
-                        , {
-                            field: 'state',
-                            title: '是否发布',
-                            formatter:function(value){
-                                if(value=='0'){return '未发布'}
-                                else if(value=='1'){return '已发布'}
-                            }
-                        }, {
-                            field: 'createTime',
-                            title: '创建时间'
-                        }
-                        , {
-                            field: 'createPerson',
-                            title: '创建人'
-                        }
-                        , {
-                            field: 'updateTime',
-                            title: '修改时间'
-                        }
-                        , {
-                            field: 'updatePersn',
-                            title: '修改人'
-                        }, {
-                            title: '操作内容',
-                            formatter: function (value, row) {
-                                return '<span data-toggle="modal" data-target="#add" onclick="updateCompany(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteCompany(' + row.id + ')">删除</span>';
-                            }
-                        }]
-                });
-            }
-            return oTableInit;
-        }
-    }
+           var keyword = $("#input_text").val();
 
-    function deleteCompany(id) {
-        deleteId = id;
-    }
+                   $('#article_table').bootstrapTable('destroy');
+                   $("#article_table").bootstrapTable({
+                       url: "/apis/article/findAllArticle",
+                       method: "post",
+                       contentType: "application/json",
+                       ajax: undefined,
+                       sidePagination: "server",
+                       queryParams: function (params) {
+                           return {
+                               pageNum: params.offset/params.limit,
+                               pageSize: params.limit,
+                               startTime: startTime,
+                               endTime: endTime,
+                               keyword: keyword,
+                               pid: 0
+                           };
+                       },
+                       toolbar: '#toolbar',
+                       striped: false,
+                       cache: false,
+                       pagination: true,
+                       sortable: false,
+                       sortOrder: "desc",
+                       pageNumber: 1,
+                       pageSize: 10,
+                       pageList: [10, 20],
+                       onClickRow: function (row, $element) {
+                       },
+                       responseHandler: function (res) {
+                           debugger;
+                           console.log(res.data);
+                           return {
+                               //data:res.data
+                               rows: res.data.rows,
+                               total: res.data.total
+                           }
+                       },
+                       columns: [{
+                           field: 'id',
+                           title: '序号'
+                       }, {
+                           field: 'title',
+                           title: '标题'
+                       }
+                           , {
+                               field: 'channelName',
+                               title: '所在栏目'
+                           }
+                           , {
+                               field: 'state',
+                               title: '是否发布',
+                               formatter:function(value){
+                                   if(value=='0'){return '未发布'}
+                                   else if(value=='1'){return '已发布'}
+                               }
+                           }, {
+                               field: 'createTime',
+                               title: '创建时间'
+                           }
+                           , {
+                               field: 'createPerson',
+                               title: '创建人'
+                           }
+                           , {
+                               field: 'updateTime',
+                               title: '修改时间'
+                           }
+                           , {
+                               field: 'updatePersn',
+                               title: '修改人'
+                           }, {
+                               title: '操作内容',
+                               formatter: function (value, row) {
+                                   return '<span data-toggle="modal" data-target="#add" onclick="updateCompany(' + row.id + ')">修改</span><span data-toggle="modal" data-target="#delete" onclick="deleteCompany(' + row.id + ')">删除</span>';
+                               }
+                           }]
+                   });
 
-    function deleteById() {
-        $.post("/apis/article/delArticle", {
-            id: deleteId
-        }, function (result) {
-            if (result.success) {
-                initTable();
-            }
-        })
-    }
+              // return oTableInit;
 
-    function updateCompany(id) {
-        window.location.href = "/accountDetail?id=" + id;
-    }
+       }
 
-    $(function () {
-        //1.初始化Table
-        var oTable = new TableInit();
-       oTable.Init();
-        var setting = {
-            view: {
-            },
-            check: {
-            },
-            edit: {
-            },
-            async: {
-                enable: true,
-                url: "/apis/navigation/findAll",
-                type: 'post',
-                autoParam: ["id"],
-            },
-            data: {
-                simpleData: {
-                    enable: true,
-                    idKey: "id",
-                    pIdKey: "pId",
-                    rootPId: 0
-                }
-            },
-            callback: {
-                onClick: function (event, treeId, treeNode, clickFlag) {
-                    if (!treeNode.isParent) {
-                        $("#input_hidden").attr("value", treeNode.name);
-                        oTable.Init();
-                    }
-                    if (treeNode.isParent) {
-                        $("#input_hidden").attr("value", treeNode.name);
-                        oTable.Init();
-                    }
-                },
-                onAsyncError: zTreeOnAsyncError,
-                onAsyncSuccess: function (event, treeId, treeNode, msg) {
+       function deleteCompany(id) {
+           deleteId = id;
+       }
 
-                }
-            }
-        };
 
-        function filter(treeId, parentNode, childNodes) {
-            if (!childNodes) {
-                return null;
-            }
-            for (var i = 0, l = childNodes.length; i < l; i++) {
-                childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
-            }
-            return childNodes;
-        }
+       function deleteById() {
+           $.post("/apis/article/delArticle", {
+               id: deleteId
+           }, function (result) {
+               if (result.success) {
+                   initTable();
+               }
+           })
+       }
 
-        function zTreeOnAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
-            alert("加载错误：" + XMLHttpRequest);
-        }
+       function updateCompany(id) {
+           window.location.href = "/ArticleDetail?id=" + id;
+       }
 
-        $(document).ready(function () {
-           // $.fn.zTree.init($("#tree"), setting);
-        });
-    })
-    //得到查询的参数
-    function queryParams(params) {
-        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-            pageNum: Math.round((params.offset + params.limit) / params.limit),
-            pageSize: params.limit,
-            //树的名称
-            input: $("#input_hidden").val(),
-        };
-        return temp;
-    }
-</script>
+   </script>

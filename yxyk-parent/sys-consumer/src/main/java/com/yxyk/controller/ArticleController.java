@@ -1,17 +1,11 @@
 package com.yxyk.controller;
 
 import com.yxyk.bean.common.JSONResponse;
-import com.yxyk.bean.common.VoParams;
 import com.yxyk.bean.vo.VoArticle;
 import com.yxyk.bean.vo.VoArticleAll;
-import com.yxyk.bean.vo.VoBanner;
-import com.yxyk.bean.vo.VoBannerSys;
 import com.yxyk.fegin.article.ArticleFeign;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Classname ArticleController
@@ -32,11 +26,11 @@ public class ArticleController {
      * @param voArticle vo
      * @return JSONResponse
      */
-    @PostMapping("saveArticle")
-    public JSONResponse saveArticle(@RequestBody VoArticle voArticle) {
-        return articleFeign.saveArticle(voArticle);
-    }
 
+    @PostMapping("saveArticle")
+    public JSONResponse save(@RequestBody VoArticle voArticle) {
+        return articleFeign.save(voArticle);
+    }
     /**
      * 删除
      *
@@ -80,7 +74,7 @@ public class ArticleController {
      * @return JSONResponse
      */
     @PostMapping("findArticleById")
-    public JSONResponse findArticleById(Long id) {
+    public JSONResponse findArticleById(@RequestParam(value = "id")Long id) {
         return articleFeign.findArticleById(id);
     }
 }
