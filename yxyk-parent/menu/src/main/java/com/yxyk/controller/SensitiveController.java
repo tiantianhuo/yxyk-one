@@ -9,18 +9,16 @@ import com.yxyk.bean.po.AdminSensitive;
 import com.yxyk.bean.vo.VoAdminSensitive;
 import com.yxyk.bean.vo.VoAdminSensitiveAll;
 import com.yxyk.service.SensitiveSevice;
-import com.yxyk.utils.ChangeUtils;
-import com.yxyk.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping(value = "/apis/Sensitive/")
+@RequestMapping(value = "/sensitive/")
 public class SensitiveController extends BaseController {
     @Autowired
     private final SensitiveSevice sensitiveSevice;
@@ -37,7 +35,7 @@ public class SensitiveController extends BaseController {
      */
     @PostMapping("saveSensitive")
     public JSONResponse saveSensitive(@Valid VoAdminSensitive vosensitive) throws OperationException {
-       sensitiveSevice.saveSensitive(ChangeUtils.changeToSen(vosensitive));
+        sensitiveSevice.saveSensitive(vosensitive);
         return this.success();
     }
     /**
@@ -58,14 +56,12 @@ public class SensitiveController extends BaseController {
     /**
      * 获取所有未删除数据
      *
-     * @param voSensitive 敏感词参数
+     * @param voAdminSensitive 敏感词参数
      * @return JSONResponse
      */
     @PostMapping("findAllSensitive")
-    public JSONResponse findAllSensitive(VoAdminSensitiveAll voSensitive) {
-        LocalDateTime startTime = DateUtils.parseDateTime(voSensitive.getStartTime());
-        LocalDateTime endTime = DateUtils.parseDateTime(voSensitive.getEndTime());
-        Page<AdminSensitive> all = sensitiveSevice.findAll(startTime, endTime, voSensitive.getSensitiveword(), voSensitive.getPageNum(), voSensitive.getPageSize());
+    public JSONResponse findAllSensitive(VoAdminSensitiveAll voAdminSensitive) {
+        Page<AdminSensitive> all = sensitiveSevice.findAll(voAdminSensitive);
         return this.success(all);
 
     }

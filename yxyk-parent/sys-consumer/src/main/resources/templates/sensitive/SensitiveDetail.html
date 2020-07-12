@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>文章管理-修改</title>
+    <title>敏感词管理-修改</title>
     <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
@@ -46,45 +46,36 @@
             <!--地域管理——内容-->
             <div>
                 <ul class="customer-ul">
-                    <li>文章管理</li>
+                    <li>敏感词管理</li>
                 </ul>
                 <div class="customer-box">
                     <div class="fromboxs">
                         <div class="from-left">
-                            所属栏目：
+                            敏感词：
                         </div>
                         <div class="from-right">
-                            <input type="hidden"  autocomplete="off" id="channel"/>
-                            <input type="text" placeholder="请在左侧选择栏目" autocomplete="off" id="channelName"/>
+                            <input type="text" placeholder="请输入敏感词" autocomplete="off" id="sensitiveword"/>
                         </div>
                     </div>
                     <div class="fromboxs">
                         <div class="from-left">
-                            文章标题：
+                            替换：
                         </div>
                         <div class="from-right">
-                            <input type="text" placeholder="请输入文章标题" autocomplete="off" id="title"/>
+                            <input type="text" placeholder="请输入替换词" autocomplete="off" id="replaceto"/>
                         </div>
                     </div>
                     <div class="fromboxs">
                         <div class="from-left">
-                            内容：
+                            排序：
                         </div>
                         <div class="from-right">
-                           <textarea id="content" name ="content" placeholder="请填写内容" style="display: none;"></textarea>
-                        </div>
-                    </div>
-                    <div class="fromboxs">
-                        <div class="from-left">
-                            文章排序：
-                        </div>
-                        <div class="from-right">
-                            <input type="text" placeholder="请输入文章序号" autocomplete="off" id="sort"/>
+                            <input type="text" placeholder="请填序号" autocomplete="off" id="sort"/>
                         </div>
                     </div>
                 </div>
                 <div class="click">
-                    <button class="btn save" onclick="saveArticle()">保存</button>
+                    <button class="btn save" onclick="saveSensitive()">保存</button>
                     <button class="btn off">取消</button>
                 </div>
             </div>
@@ -97,10 +88,10 @@
 </html>
 <script>
 
-    $("#li_wzgl").attr("class", "actives");
+    $("#li_mgcgl").attr("class", "actives");
 
     $(".off").click(function () {
-        window.location.href = "ArticleList"
+        window.location.href = "SensititveList"
     });
 
     //提示框
@@ -112,27 +103,25 @@
         window.location.href = "logout"
     });
 
-    function saveArticle() {
+    function saveSensitive() {
         var title = $("#title").val();
         if (title === "" || title === 0) {
             alert("操作失败,请添加文章标题");
             return false;
         }
-        var channelName =  $("#channelName").val();
-        var content = $("#content").val();
+        var sensitiveword =  $("#sensitiveword").val();
+        var replaceto = $("#replaceto").val();
         var sort = $("#sort").val();
         var id = getUrlParam("id");
     debugger;
-        $.post("/apis/article/saveArticle", {
+        $.post("/apis/sensitivev/saveSensitive", {
             id:id,
-            channelName:channelName,
-            channel:"1",
-            title: title,
-            content: "222222",
-            sort: sort
+            sensitiveword:sensitiveword,
+            replaceto:replaceto,
+            sort:sort
         }, function (result) {
             if (result.success) {
-                window.location.href = "/ArticleList";
+                window.location.href = "/SensititveList";
             } else {
                 alert(result.msg)
             }
@@ -140,16 +129,14 @@
     }
 
 
-    initArticle()
-    function initArticle() {
-        debugger;
+    initSensitive()
+    function initSensitive() {
         var id = getUrlParam("id");
         if (id != null && id !== "") {
-            $.post("/apis/article/findArticleById", {id: id}, function (result) {
+            $.post("/apis/sensitive/findSensitiveById", {id: id}, function (result) {
                 if (result.success) {
-                    $("#channelName").val(result.data.channelName);
-                    $("#title").val(result.data.title);
-                    $("#content").val(result.data.content);
+                    $("#sensitiveword").val(result.data.sensitiveword);
+                    $("#replaceto").val(result.data.replaceto);
                     $("#sort").val(result.data.sort);
                 }
             })

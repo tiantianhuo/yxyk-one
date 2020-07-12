@@ -4,6 +4,7 @@ package com.yxyk.fegin.article;
 import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.vo.VoArticle;
 import com.yxyk.bean.vo.VoArticleAll;
+import com.yxyk.bean.vo.VoBanner;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +20,7 @@ public interface ArticleFeign {
      * @return JSONResponse
      */
     @PostMapping("/article/saveArticle")
-        JSONResponse saveArticle(VoArticle voArticle);
-
+    JSONResponse save(@RequestBody  VoArticle voArticle);
     /**
      * 删除
      *
@@ -28,7 +28,7 @@ public interface ArticleFeign {
      * @return JSONResponse
      */
     @PostMapping("/article/delArticle")
-    JSONResponse delArticle(Long id);
+    JSONResponse delArticle(@RequestParam("id") Long id);
 
     /**
      * 获取所有未删除文章
@@ -55,5 +55,5 @@ public interface ArticleFeign {
      * @return JSONResponse
      */
     @PostMapping("/article/findArticleById")
-    JSONResponse findArticleById(Long id);
+    JSONResponse findArticleById(@RequestParam(value = "id")Long id);
 }

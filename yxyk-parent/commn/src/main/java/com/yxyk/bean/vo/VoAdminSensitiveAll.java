@@ -35,4 +35,5 @@ public class VoAdminSensitiveAll extends AdminSensitive {
      */
     @NotNull(message = "请输入每页最大条数")
     private Integer pageSize;
+    private String keyword;
 }

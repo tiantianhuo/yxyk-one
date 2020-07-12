@@ -104,4 +104,32 @@ public class MappingController {
     public String ArticleDetail() {
         return "article/ArticleDetail";
     }
+    /**
+     * 敏感ci列表
+     *
+     * @return
+     */
+    @GetMapping("SensititveList")
+    public String SensititveList() {
+        return "sensitive/SensititveList";
+    }
+    /**
+     * 敏感ci添加
+     *
+     * @return
+     */
+    @GetMapping("SensitiveDetail")
+    public String SensitiveDetail() {
+        return "sensitive/SensitiveDetail.html";
+    }
+    /**
+     * 敏感ci导入
+     *
+     * @return
+     */
+    @GetMapping("excellmport")
+    public String excellmport() {
+        return "sensitive/excellmport.html";
+    }
+
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>文章管理</title>
+    <title>敏感词管理</title>
     <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vonder/bootstrap-table/bootstrap-table.css">
     <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
@@ -53,7 +53,7 @@
            <div class="content-right">
                <div>
                    <ul class="customer-ul">
-                       <li>文章管理—列表</li>
+                       <li>敏感词管理—列表</li>
                    </ul>
                    <div class="second-tab">
                        <div class="show-title">
@@ -75,11 +75,19 @@
                                <img src="/images/img/search.png" alt=""/>
                            </div>
                            <div id="toolbar" class="btn-group">
+                               <button class="btn found" data-toggle="modal" data-target="#add" value=""
+                                       onclick="sensitive()">上传
+                               </button>
+                               <button class="btn found" data-toggle="modal" data-target="#add" value=""
+                                       onclick="down()">下载模板
+                               </button>
                            <button class="btn found" data-toggle="modal" data-target="#add" value=""
                                    onclick="Article()">新建
                            </button>
+
                            </div>
-                           <table class="p-table" id="article_table">
+
+                           <table class="p-table" id="sensitive_table">
                            </table>
                        </div>
                    </div>
@@ -121,12 +129,15 @@
    <script>
        var deleteId;
        var TableInit;
-       $("#li_wzgl").attr("class", "actives");
+       $("#li_mgcgl").attr("class", "actives");
        function Article(){
-           window.location.href = "../ArticleDetail";
+           window.location.href = "../SensitiveDetail";
+       }
+       function sensitive(){
+           window.location.href = "../excellmport";
        }
        $(".edit").click(function () {
-           window.location.href = "ArticleDetail";
+           window.location.href = "SensititveList";
        });
 
 
@@ -161,13 +172,10 @@
                endTime = $("#test1").val().split("~")[1];
            }
 
-      // $("#article_table").bootstrapTable('destroy');
-
            var keyword = $("#input_text").val();
-
-                   $('#article_table').bootstrapTable('destroy');
-                   $("#article_table").bootstrapTable({
-                       url: "/apis/article/findAllArticle",
+                   $('#sensitive_table').bootstrapTable('destroy');
+                   $("#sensitive_table").bootstrapTable({
+                       url: "/apis/sensitive/findAllSensitive",
                        method: "post",
                        contentType: "application/json",
                        ajax: undefined,
@@ -206,21 +214,18 @@
                            field: 'id',
                            title: '序号'
                        }, {
-                           field: 'title',
-                           title: '标题'
+                           field: 'sensitiveword',
+                           title: '敏感词'
                        }
                            , {
-                               field: 'channelName',
-                               title: '所在栏目'
+                               field: 'replaceto',
+                               title: '替换词'
                            }
                            , {
-                               field: 'state',
-                               title: '是否发布',
-                               formatter:function(value){
-                                   if(value=='0'){return '未发布'}
-                                   else if(value=='1'){return '已发布'}
-                               }
-                           }, {
+                               field: 'sort',
+                               title: '排序'
+                           }
+                           , {
                                field: 'createTime',
                                title: '创建时间'
                            }
@@ -242,9 +247,6 @@
                                }
                            }]
                    });
-
-              // return oTableInit;
-
        }
 
        function deleteCompany(id) {
@@ -253,8 +255,16 @@
 
 
        function deleteById() {
-           $.post("/apis/article/delArticle", {
+           $.post("/apis/sensitive/delSensitive", {
                id: deleteId
+           }, function (result) {
+               if (result.success) {
+                   initTable();
+               }
+           })
+       }
+       function down() {
+           $.post("/apis/sensitive/downloadExcel", {
            }, function (result) {
                if (result.success) {
                    initTable();
@@ -263,7 +273,7 @@
        }
 
        function updateCompany(id) {
-           window.location.href = "/ArticleDetail?id=" + id;
+           window.location.href = "/SensitiveDetail?id=" + id;
        }
 
    </script>

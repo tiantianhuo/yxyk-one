@@ -1,14 +1,7 @@
 package com.yxyk.utils;
 
-import com.yxyk.bean.common.SysConst;
-import com.yxyk.bean.po.Banner;
-import com.yxyk.bean.po.Navigation;
-import com.yxyk.bean.po.Role;
-import com.yxyk.bean.po.User;
-import com.yxyk.bean.vo.VoBanner;
-import com.yxyk.bean.vo.VoNavigation;
-import com.yxyk.bean.vo.VoRole;
-import com.yxyk.bean.vo.VoUser;
+import com.yxyk.bean.po.*;
+import com.yxyk.bean.vo.*;
 
 /**
  * created with IntelliJ IDEA
@@ -71,5 +64,30 @@ public class VoChangeUtils {
         banner.setPath(voBanner.getPath());
         return banner;
 
+    }
+    public static AdminArticle changeToAr(VoArticle voArticle) {
+        AdminArticle adminArticle = new AdminArticle();
+        if(voArticle.getId()!=null){
+            adminArticle.setId(voArticle.getId());
+            adminArticle.setSort(voArticle.getSort());
+        }else {
+            adminArticle.setSort(System.currentTimeMillis());
+        }
+        //adminArticle.setSort(voArticle.getSort());
+        adminArticle.setChannel(voArticle.getChannel());
+        adminArticle.setChannelName(voArticle.getChannelName());
+        adminArticle.setTitle(voArticle.getTitle());
+        adminArticle.setContent(voArticle.getContent());
+        adminArticle.setCreatePerson("USER");
+        return adminArticle;
+    }
+    public static AdminSensitive changeToSen(VoAdminSensitive voAdminSensitive) {
+        AdminSensitive adminSensitive = new AdminSensitive();
+        if(voAdminSensitive.getId()!=null){
+            adminSensitive.setId(voAdminSensitive.getId());
+        }
+        adminSensitive.setSensitiveword(voAdminSensitive.getSensitiveword());
+        adminSensitive.setCreatePerson("USER");
+        return adminSensitive;
     }
 }
