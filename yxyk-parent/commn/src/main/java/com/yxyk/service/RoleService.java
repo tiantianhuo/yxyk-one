@@ -16,13 +16,11 @@ import java.util.List;
  */
 public interface RoleService extends BaseService<Role, Long> {
 
-    Page<Role> findByRoleNameAndStartTime(VoRoleAll obj, long procuratorateId);
+    Page<Role> findByRoleNameAndStartTime(VoRoleAll obj);
 
     Role findByIdAndDeleteState(Long id);
 
     Role saveRole(Role role);
-
-    boolean savePermission(Long id, String permission);
 
     List<Role> findByDeleteState(int deleteState);
 }

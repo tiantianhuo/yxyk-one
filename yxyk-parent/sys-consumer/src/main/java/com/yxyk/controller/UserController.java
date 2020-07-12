@@ -3,25 +3,19 @@ package com.yxyk.controller;
 import com.yxyk.BaseController;
 import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.OperationException;
-import com.yxyk.bean.po.User;
 import com.yxyk.bean.vo.VoUser;
 import com.yxyk.bean.vo.VoUserSearch;
-import com.yxyk.service.UserService;
-import com.yxyk.utils.VoChangeUtils;
+import com.yxyk.fegin.user.UserFeigen;
 import lombok.AllArgsConstructor;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * created with IntelliJ IDEA
@@ -35,7 +29,7 @@ import java.util.Map;
 @RequestMapping(value = "/apis/user/")
 public class UserController extends BaseController {
 
-    private final UserService userService;
+    private final UserFeigen userFeigen;
 
 
     /**
@@ -47,7 +41,7 @@ public class UserController extends BaseController {
      */
     @PostMapping("saveUser")
     public JSONResponse saveUser(@Valid VoUser voUser) throws OperationException {
-        userService.saveUser(VoChangeUtils.changeToUser(voUser));
+        userFeigen.saveUser(voUser);
         return this.success();
     }
 
@@ -88,9 +82,9 @@ public class UserController extends BaseController {
      * @return JSONResponse
      */
     @PostMapping("findUserPage")
-    public JSONResponse findUserPage(VoUserSearch voUserSearch) {
-        Page<User> userPage = userService.findUserPage(voUserSearch);
-        return this.success(userPage);
+    public JSONResponse findUserPage(@RequestBody VoUserSearch voUserSearch) {
+       ;
+        return userFeigen.findUserPage(voUserSearch);
     }
 
     /**
@@ -102,7 +96,7 @@ public class UserController extends BaseController {
      */
     @PostMapping("deleteById")
     public JSONResponse deleteById(Long id) throws OperationException {
-        userService.deleteUser(id);
+        userFeigen.deleteById(id);
         return this.success();
     }
 
@@ -115,8 +109,7 @@ public class UserController extends BaseController {
      */
     @PostMapping("findById")
     public JSONResponse findById(Long id) throws OperationException {
-        User user = userService.findById(id).orElseThrow(() -> new OperationException("数据不存在或者已经被删除"));
-        return this.success(user);
+        return userFeigen.findById(id);
     }
 
 }

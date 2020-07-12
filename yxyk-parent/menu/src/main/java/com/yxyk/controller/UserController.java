@@ -13,9 +13,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -42,7 +40,7 @@ public class UserController extends BaseController {
      * @throws OperationException 自定义异常信息
      */
     @PostMapping("saveUser")
-    public JSONResponse saveUser(@Valid VoUser voUser) throws OperationException {
+    public JSONResponse saveUser(@RequestBody @Valid VoUser voUser) throws OperationException {
         userService.saveUser(VoChangeUtils.changeToUser(voUser));
         return this.success();
     }
@@ -65,17 +63,7 @@ public class UserController extends BaseController {
         return this.success();
     }
 
-    /**
-     * 用户退出
-     *
-     * @return JSONResponse
-     */
-    @PostMapping("logout")
-    public JSONResponse logoutUser() {
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        return this.success();
-    }
+
 
     /**
      * 获取用户分页
@@ -84,7 +72,7 @@ public class UserController extends BaseController {
      * @return JSONResponse
      */
     @PostMapping("findUserPage")
-    public JSONResponse findUserPage(VoUserSearch voUserSearch) {
+    public JSONResponse findUserPage(@RequestBody VoUserSearch voUserSearch) {
         Page<User> userPage = userService.findUserPage(voUserSearch);
         return this.success(userPage);
     }
@@ -110,7 +98,7 @@ public class UserController extends BaseController {
      * @throws OperationException 自定义异常信息
      */
     @PostMapping("findById")
-    public JSONResponse findById(Long id) throws OperationException {
+    public JSONResponse findById(@RequestParam("id") Long id) throws OperationException {
         User user = userService.findById(id).orElseThrow(() -> new OperationException("数据不存在或者已经被删除"));
         return this.success(user);
     }

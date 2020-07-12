@@ -28,7 +28,7 @@ public class MappingController {
 
 
     /**
-     * 机构管理
+     * 角色管理
      *
      * @return String
      */
@@ -55,6 +55,16 @@ public class MappingController {
     @GetMapping("accountManger")
     public String accountManger() {
         return "accountManger/accountManger";
+    }
+
+    /**
+     * 角色详情
+     *
+     * @return String
+     */
+    @GetMapping("addDetail")
+    public String addDetail() {
+        return "accountDetail/Detail";
     }
 
     /**

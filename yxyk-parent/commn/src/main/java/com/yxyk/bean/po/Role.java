@@ -34,5 +34,5 @@ public class Role extends IdEntity {
      */
     private String permissions;
 
-    private Long procuratorId;
+
 }

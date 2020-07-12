@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>角色管理管理-添加角色</title>
+    <link rel="stylesheet" href="/vonder/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vonder/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/vonder/font_7grt4on8i7d/iconfont.css" media="all">
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/model.css"/>
+    <link rel="stylesheet" href="/css/zone.css"/>
+    <link rel="stylesheet" href="/css/delete.css"/>
+    <link rel="stylesheet" href="/css/customer.css"/>
+
+    <script src="/vonder/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+    <script src="/vonder/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/vonder/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <!--bootstrap CheckBox美化-->
+<!--    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">-->
+    <link rel="stylesheet" type="text/css" href="/css/build.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/vonder/select-search/jquery.searchableSelect.css"/>
+    <script src="/select-search/jquery.searchableSelect.js"></script>
+
+    <!--提示框-->
+    <link rel="stylesheet" type="text/css" href="/css/zebra_tooltips.css"/>
+    <script src="/js/zebra_tooltips.js"></script>
+</head>
+<style>
+    input {
+        outline: none !important;
+    }
+</style>
+<body>
+<!--头-->
+<#include "../common/header.html"/>
+<div class="wrapper ">
+    <div class="content">
+        <!--左侧开始-->
+        <#include "../common/menu.html"/>
+
+        <!--右侧开始-->
+        <div class="content-right">
+            <!--地域管理——内容-->
+            <div>
+                <ul class="customer-ul">
+                    <li>角色管理</li>
+                </ul>
+                <div class="customer-box">
+                    <div class="fromboxs">
+                        <div class="from-left">
+                            角色名称：
+                        </div>
+                        <div class="from-right">
+                            <input type="text" placeholder="请输入角色名称" autocomplete="off" id="text_roleName"/>
+                        </div>
+                    </div>
+                    <div class="fromboxs">
+                        <div class="from-left">
+                            备注：
+                        </div>
+                        <div class="from-right">
+                            <textarea placeholder="请输入备注信息" id="remarks"></textarea>
+                        </div>
+                    </div>
+                    <div class="fromboxs">
+                        <div class="from-left">
+                            权限管理：
+                        </div>
+                        <div class="from-right">
+                            <div class="peizhi">
+                                <table class="table table-bordered table-hover table-box" id="press_table">
+                                    <thead>
+                                    <tr class="beijing">
+                                        <th>权限</th>
+                                        <th colspan="3">权限配置</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="leftpz">后台用户管理</td>
+                                        <td class="rightpz" colspan="3">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox1" class="styled" type="checkbox" value="10101"
+                                                       name="press_check">
+                                                <label for="checkbox1">
+                                                    管理
+                                                </label>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="leftpz">app用户管理</td>
+                                        <td class="rightpz" colspan="3">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox2" class="styled" type="checkbox" value="10201"
+                                                       name="press_check">
+                                                <label for="checkbox2">
+                                                    管理
+                                                </label>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="leftpz">商品信息，审核</td>
+                                        <td class="rightpz" colspan="3">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox3" class="styled" type="checkbox" value="10301"
+                                                       name="press_check">
+                                                <label for="checkbox3">
+                                                    管理
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="leftpz">审核商户</td>
+                                        <td class="rightpz" colspan="3">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox4" class="styled" type="checkbox" value="10301"
+                                                       name="press_check">
+                                                <label for="checkbox4">
+                                                    管理
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="leftpz">查看修改敏感词</td>
+                                        <td class="rightpz" colspan="3">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox5" class="styled" type="checkbox" value="10301"
+                                                       name="press_check">
+                                                <label for="checkbox5">
+                                                    管理
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td class="leftpz" rowspan="4" style="vertical-align: middle;">办公应用</td>-->
+<!--                                        <td colspan="2">小程序管理</td>-->
+<!--                                        <td class="rightpz">-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox6" class="styled" type="checkbox" value="10401"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox6">-->
+<!--                                                    banner设置-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox7" class="styled" type="checkbox" value="10402"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox7">-->
+<!--                                                    公告设置-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox18" class="styled" type="checkbox" value="10408"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox18">-->
+<!--                                                    举报指引设置-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox8" class="styled" type="checkbox" value="10403"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox8">-->
+<!--                                                    举报模块设置-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td colspan="2" class="td">查看修改敏感词</td>-->
+<!--                                        <td class="rightpz">-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox9" class="styled" type="checkbox" value="10404"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox9">-->
+<!--                                                    管理-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td colspan="2" class="td">法律法规</td>-->
+<!--                                        <td class="rightpz">-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox11" class="styled" type="checkbox" value="10406"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox11">-->
+<!--                                                    查看-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td colspan="2" class="td">案例库</td>-->
+<!--                                        <td class="rightpz">-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox12" class="styled" type="checkbox" value="10407"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox12">-->
+<!--                                                    查看-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td class="leftpz">配置管理</td>-->
+<!--                                        <td class="rightpz" colspan="3">-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox13" class="styled" type="checkbox" value="10501"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox1">-->
+<!--                                                    用户管理-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox14" class="styled" type="checkbox" value="10502"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox14">-->
+<!--                                                    角色管理-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td class="leftpz">个人中心</td>-->
+<!--                                        <td class="rightpz" colspan="3">-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox15" class="styled" type="checkbox" value="10601"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox15">-->
+<!--                                                    修改密码-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                            <div class="checkbox checkbox-primary">-->
+<!--                                                <input id="checkbox16" class="styled" type="checkbox" value="10602"-->
+<!--                                                       name="press_check">-->
+<!--                                                <label for="checkbox16">-->
+<!--                                                    主页设置-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="click">
+                    <button class="btn save" onclick="saveRole()">保存</button>
+                    <button class="btn off">取消</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<#include "../common/footer.html"/>
+</body>
+</html>
+<script>
+
+    $("#li_jggl").attr("class", "actives");
+
+    $(".off").click(function () {
+        window.location.href = "accountManger"
+    });
+
+    if (getUrlParam("id") === "") {
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            //日期范围
+            laydate.render({
+                elem: '#test1',
+                range: "~"
+            });
+            laydate.render({
+                elem: '#test2',
+                range: "~"
+            });
+        });
+    }
+
+
+    function saveRole() {
+        var roleName = $("#text_roleName").val();
+        var remarks = $("#remarks").val();
+        var id = getUrlParam("id");
+        var pressArr = "";
+        $("input[name='press_check']:checked").each(function (i, obj) {
+            pressArr += ($(obj).val() + ",");
+        });
+        $.post("/apis/role/addRole", {
+            id: id,
+            roleName: roleName,
+            remarks: remarks,
+            permission: pressArr,
+        }, function (result) {
+            if (result.success) {
+                window.location.href = "/companyManger";
+            } else {
+                alert(result.msg)
+            }
+        });
+    }
+
+    initUser();
+
+    function initUser() {
+        var id = getUrlParam("id");
+        if (id != null && id !== "") {
+            $.post("/apis/role/findRoleById", {id: id}, function (result) {
+                if (result.success) {
+                    $("#text_roleName").val(result.data.roleName);
+                    $("#remarks").val(result.data.remarks);
+                    $(result.data.permissions.split(",")).each(function (i, obj) {
+                        $("input[value=" + obj + "]").attr("checked", "checked");
+                    });
+
+                }
+            })
+        }
+    }
+
+
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return r[2];
+        return "";
+    }
+
+
+</script>

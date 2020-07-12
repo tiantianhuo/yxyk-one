@@ -4,6 +4,7 @@ import com.yxyk.bean.common.OperationException;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.User;
 import com.yxyk.bean.vo.VoUserSearch;
+import com.yxyk.reportory.RoleRepository;
 import com.yxyk.reportory.UserRepository;
 import com.yxyk.service.UserService;
 import com.yxyk.utils.DateUtils;
@@ -35,6 +36,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    private final RoleRepository roleRepository;
+
 
     @Override
     public void saveUser(User user) throws OperationException {
@@ -45,7 +48,7 @@ public class UserServiceImpl implements UserService {
             if (!userOptional.isPresent() || Objects.equals(dbUser.getId(), userId)) {
                 dbUser.setUserName(user.getUserName());
                 dbUser.setRoleId(user.getRoleId());
-                dbUser.setPressStr(user.getPressStr());
+                dbUser.setPressStr(roleRepository.findByIdAndDeleteState(user.getRoleId(),SysConst.DeletedState.UN_DELETE_STATE.getCode()).getPermissions());
                 dbUser.setRemarks(user.getRemarks());
                 if (StringUtils.isNotBlank(user.getPassword())) {
                     user.setPassword(new SimpleHash(SysConst.SHIRO_PASSWORD_TYPE, user.getPassword(), dbUser.getSalt(), SysConst.SHIRO_PASSWORD_COUNT).toString());
@@ -61,6 +64,7 @@ public class UserServiceImpl implements UserService {
                 user.setPassword(new SimpleHash(SysConst.SHIRO_PASSWORD_TYPE, user.getPassword(), Integer.toString(salt), SysConst.SHIRO_PASSWORD_COUNT).toString());
                 user.setDeleteState(SysConst.DeletedState.UN_DELETE_STATE.getCode());
                 user.setCreateTime(LocalDateTime.now());
+                user.setPressStr(roleRepository.findByIdAndDeleteState(user.getRoleId(),SysConst.DeletedState.UN_DELETE_STATE.getCode()).getPermissions());
                 user.setAdminState(SysConst.IsAdmin.IS_ADMIN.getCode());
                 userRepository.save(user);
             } else {
@@ -118,5 +122,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> findByRoleId(Long id) {
+        return userRepository.findByRoleIdAndDeleteState(id,SysConst.DeletedState.UN_DELETE_STATE.getCode());
     }
 }

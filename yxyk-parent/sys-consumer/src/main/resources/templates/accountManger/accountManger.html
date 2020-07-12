@@ -255,7 +255,12 @@
                 title: '名称'
             }, {
                 field: 'path',
-                title: "轮播图跳转地址"
+                title: "轮播图地址",
+                align : 'center',
+                formatter:function (value,row,index)
+                {
+                    return '<img  src='+value+' width="100" height="100" class="img-rounded" >';
+                }
             }, {
                 field: 'openState',
                 title: '开启状态'

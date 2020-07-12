@@ -2,12 +2,17 @@ package com.yxyk.service.impl;
 
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.Role;
+import com.yxyk.bean.po.User;
 import com.yxyk.bean.vo.VoRoleAll;
 import com.yxyk.reportory.RoleRepository;
+import com.yxyk.reportory.UserRepository;
 import com.yxyk.service.RoleService;
+import com.yxyk.service.UserService;
+import com.yxyk.utils.DateUtils;
 import com.yxyk.utils.DynamicSpecifications;
 import com.yxyk.utils.SearchFilter;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -34,34 +39,34 @@ public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
 
+    private final UserRepository userRepository;
+
     @Override
-    public Page<Role> findByRoleNameAndStartTime(VoRoleAll voRole, long procuratorId) {
-        LocalDateTime startTime = voRole.getStartTime();
-        LocalDateTime endTime = voRole.getEndTime();
+    public Page<Role> findByRoleNameAndStartTime(VoRoleAll voRole) {
+
         String roleName = voRole.getRoleName();
         int curr = voRole.getPageNum();
         int pageSize = voRole.getPageSize();
         Map<Object, SearchFilter> filters = new HashMap<Object, SearchFilter>();
 
         filters.put("deleteState", new SearchFilter("deleteState", SearchFilter.Operator.EQ, SysConst.DeletedState.UN_DELETE_STATE.getCode()));
-        filters.put("procuratorId", new SearchFilter("procuratorId", SearchFilter.Operator.EQ, procuratorId));
+      //  filters.put("procuratorId", new SearchFilter("procuratorId", SearchFilter.Operator.EQ, procuratorId));
 
         if (roleName != null && roleName != "") {
             filters.put("roleName", new SearchFilter("roleName", SearchFilter.Operator.LIKE, roleName));
         }
 
-        if (startTime != null) {
-            filters.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, startTime));
+        if (StringUtils.isNotBlank(voRole.getStartTime())) {
+            filters.put("startTime", new SearchFilter("createTime", SearchFilter.Operator.GTE, DateUtils.parseDateTime(voRole.getStartTime())));
         }
-
-        if (endTime != null) {
-            filters.put("endTime", new SearchFilter("updateTime", SearchFilter.Operator.LTE, endTime));
+        if (StringUtils.isNotBlank(voRole.getEndTime())) {
+            filters.put("endTime", new SearchFilter("createTime", SearchFilter.Operator.LTE, DateUtils.parseDateTime(voRole.getEndTime())));
         }
 
         Specification<Role> specification = DynamicSpecifications.bySearchFilter(filters.values(), Role.class);
 
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
-        PageRequest pageRequest = PageRequest.of(curr - 1, pageSize, sort);
+        PageRequest pageRequest = PageRequest.of(curr, pageSize, sort);
 
         return roleRepository.findAll(specification, pageRequest);
     }
@@ -73,16 +78,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role saveRole(Role role) {
+        List<User> userList = userRepository.findByRoleIdAndDeleteState(role.getId(), SysConst.DeletedState.UN_DELETE_STATE.getCode());
+        for (User user : userList) {
+            user.setPressStr(role.getPermissions());
+            userRepository.save(user);
+        }
         return roleRepository.save(role);
     }
 
-    @Override
-    public boolean savePermission(Long id, String permission) {
-        Role role = roleRepository.findByIdAndDeleteState(id, SysConst.DeletedState.UN_DELETE_STATE.getCode());
-        role.setPermissions(permission);
-        roleRepository.save(role);
-        return true;
-    }
+
 
     @Override
     public List<Role> findByDeleteState(int deleteState) {

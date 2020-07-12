@@ -7,6 +7,7 @@ import com.yxyk.bean.vo.VoUserSearch;
 import com.yxyk.service.common.BaseService;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -31,4 +32,6 @@ public interface UserService extends BaseService<User, Long> {
     void deleteUser(Long id) throws OperationException;
 
     Optional<User> findById(Long id);
+
+    List<User> findByRoleId(Long id);
 }

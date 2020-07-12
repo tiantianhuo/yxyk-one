@@ -53,12 +53,6 @@ public class User extends IdEntity {
     private Long parentId;
 
 
-
-    /**
-     * 检察院id
-     */
-    private Long procuratorId;
-
     /**
      * 角色 名称
      */
@@ -70,20 +64,6 @@ public class User extends IdEntity {
      */
     private String pressStr;
 
-    /**
-     * 账号开始时间
-     */
-    private LocalDateTime startTime;
-
-    /**
-     * 账号开始时间
-     */
-    private LocalDateTime endTime;
-
-    /**
-     * 主页设置
-     */
-    private String homeUrl;
 
     /**
      * 是否是管理员用户
