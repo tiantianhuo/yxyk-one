@@ -1,5 +1,6 @@
 package com.yxyk.fegin.navigation;
 
+import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.VoParams;
 import com.yxyk.bean.po.Navigation;
 import com.yxyk.bean.vo.VoNavigation;
@@ -23,7 +24,7 @@ public interface NavigationFeigen {
      * @return list
      */
     @PostMapping("/navigation/findAll")
-    List<Navigation> findAll();
+    JSONResponse findAll();
     /**
      * 保存
      * @param voNavigation vo

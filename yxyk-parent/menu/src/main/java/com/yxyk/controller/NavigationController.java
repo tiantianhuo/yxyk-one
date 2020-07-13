@@ -1,10 +1,12 @@
 package com.yxyk.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.yxyk.BaseController;
 import com.yxyk.bean.common.JSONResponse;
 import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.common.VoParams;
 import com.yxyk.bean.po.Navigation;
+import com.yxyk.bean.ro.RoNavigation;
 import com.yxyk.bean.vo.VoNavigation;
 import com.yxyk.service.NavigationService;
 import com.yxyk.service.RoleService;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,7 +44,21 @@ public class NavigationController extends BaseController {
     public JSONResponse findAllNavigation() {
         List<Navigation> navigationList = navigationService.findAllByAuthority(roleService.findByIdAndDeleteState(getUser().getRoleId()).getPermissions());
         List<VoNavigation> navigations = RoChangeUtils.changToRoNavigation(navigationList);
-        return this.success(navigations);
+        StringBuffer json = new StringBuffer("[");
+        String data = "";
+
+        for (VoNavigation navigation : navigations) {
+            RoNavigation treeUser1 = new RoNavigation(navigation.getId(),navigation.getPId(),navigation.getNavigationName());
+            json.append("{id:" + navigation.getId()+ ",");
+            json.append("pId:" + navigation.getPId() + ",");
+            json.append("name:\"" + navigation.getNavigationName() + "\",");
+            data = json.substring(0, json.lastIndexOf(",")) + "},";
+            json = new StringBuffer(data);
+
+        }
+        data = json.substring(0, json.length() - 1) + "]";
+        JSONObject jsonObject1 = JSONObject.parseObject(data);
+        return this.success(jsonObject1);
     }
 
     /**
