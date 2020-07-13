@@ -3,7 +3,7 @@ package com.yxyk.utils;
 import com.yxyk.bean.po.AdminSensitive;
 import com.yxyk.bean.po.ImportData;
 import com.yxyk.bean.vo.VoAdminSensitive;
-import com.yxyk.service.impl.SensitiveSeviceImpl;;
+import com.yxyk.service.impl.SensitiveSeviceImpl;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -30,7 +30,7 @@ public class Excel {
         }
         try {
             //根据路径获取这个操作excel的实例
-            XSSFWorkbook wb = new XSSFWorkbook (file.getInputStream());
+            XSSFWorkbook wb = new XSSFWorkbook(file.getInputStream());
             //根据页面index 获取sheet页
             XSSFSheet sheet = wb.getSheetAt(0);
             //实体类集合
@@ -47,8 +47,9 @@ public class Excel {
             //循环展示导入的数据，实际应用中应该校验并存入数据库
             for (ImportData imdata : importDatas) {
                 adminSensitive.setSensitiveword(imdata.getSensitiveword());
-                sensitiveSevice.saveSensitive(adminSensitive);
                 System.out.println("Sensitiveword:" + imdata.getSensitiveword());
+                sensitiveSevice.save(adminSensitive);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,8 +63,6 @@ public class Excel {
             //获取文件的路径
             ClassPathResource cpr = new ClassPathResource("/templates/sensitive/muban.xlsx");
             //String excelPath = request.getSession().getServletContext().getRealPath("模板.xlsx");
-           // String excelPath =  SensitiveSeviceImpl.class.getClassLoader().getResource("模板.xlsx").getPath();
-
             // 读到流中
             InputStream inStream = new FileInputStream(String.valueOf(cpr));//文件的存放路径
             // 设置输出的格式

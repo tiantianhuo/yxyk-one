@@ -120,7 +120,7 @@ public class MappingController {
      */
     @GetMapping("SensitiveDetail")
     public String SensitiveDetail() {
-        return "sensitive/SensitiveDetail.html";
+        return "sensitive/SensitiveDetail";
     }
     /**
      * 敏感ci导入
@@ -129,7 +129,7 @@ public class MappingController {
      */
     @GetMapping("excellmport")
     public String excellmport() {
-        return "sensitive/excellmport.html";
+        return "sensitive/excellmport";
     }
 
 }

@@ -35,6 +35,7 @@ public class SensitiveSeviceImpl implements SensitiveSevice {
 
     @Override
     public AdminSensitive save(AdminSensitive adminSensitive) {
+        System.out.println("Sensitiveword:" + adminSensitive.getSensitiveword());
         return sensitiveRepository.save(adminSensitive);
     }
 

@@ -8,9 +8,11 @@ import com.yxyk.bean.po.AdminArticle;
 import com.yxyk.bean.po.Banner;
 import com.yxyk.bean.vo.VoArticle;
 import com.yxyk.bean.vo.VoArticleAll;
+import com.yxyk.bean.vo.VoRole;
 import com.yxyk.service.ArticleService;
 import com.yxyk.utils.ArticleChangeUtils;
 import com.yxyk.utils.DateUtils;
+import com.yxyk.utils.VoChangeUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/apis/article")
 public class ArticleController extends BaseController {
 
     private final ArticleService articleService;
@@ -41,7 +43,7 @@ public class ArticleController extends BaseController {
      */
     @PostMapping("/saveArticle")
     public JSONResponse saveSensitive(@RequestBody VoArticle voArticle) throws OperationException {
-         articleService.saveArticle(voArticle);
+         articleService.saveArticle(VoChangeUtils.changeToAr(voArticle));
         return this.success();
     }
     /**

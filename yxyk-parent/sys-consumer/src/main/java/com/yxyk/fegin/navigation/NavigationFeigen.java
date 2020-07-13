@@ -24,7 +24,6 @@ public interface NavigationFeigen {
      */
     @PostMapping("/navigation/findAll")
     List<Navigation> findAll();
-
     /**
      * 保存
      * @param voNavigation vo

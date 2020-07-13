@@ -38,7 +38,6 @@ public class NavigationController extends BaseController {
     public JSONResponse findAllNavigation() {
         return this.success(navigationFeigen.findAll());
     }
-
     /**
      * 保存栏目
      *

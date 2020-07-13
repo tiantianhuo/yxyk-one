@@ -111,7 +111,19 @@
     $(".return").click(function () {
         window.location.href = "logout"
     });
+    //富文本
+    // var content =  layedit.getText(index) // 获取纯文本
+    layui.use('layedit', function () {
+        var layedit = layui.layedit;
+        //创建一个编辑器
+        var Index = layedit.build('content',{
+            height: 535,
+            uploadImage: {
+                url: "http://localhost:9280/fastdfs/filesystem/upload"
+            }
+        });
 
+    });
     function saveArticle() {
         var title = $("#title").val();
         if (title === "" || title === 0) {
@@ -122,14 +134,13 @@
         var content = $("#content").val();
         var sort = $("#sort").val();
         var id = getUrlParam("id");
-    debugger;
         $.post("/apis/article/saveArticle", {
             id:id,
             channelName:channelName,
             channel:"1",
             title: title,
             content: "222222",
-            sort: sort
+            sort: sort,
         }, function (result) {
             if (result.success) {
                 window.location.href = "/ArticleList";

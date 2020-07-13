@@ -5,6 +5,7 @@ import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.AdminArticle;
 import com.yxyk.bean.po.Banner;
 import com.yxyk.bean.po.Navigation;
+import com.yxyk.bean.po.User;
 import com.yxyk.bean.vo.VoArticle;
 import com.yxyk.bean.vo.VoArticleAll;
 import com.yxyk.reportory.ArticleRepository;
@@ -59,13 +60,12 @@ public class ArticleSeviceImpl implements ArticleService {
 
     /**
      * 保存
-     * @param voArticle
+     * @param adminArticle
      * @throws OperationException
      */
     @Override
-    public void saveArticle(VoArticle voArticle) throws OperationException {
-        AdminArticle adminArticle = VoChangeUtils.changeToAr(voArticle);
-        articleRepository.save(adminArticle);
+    public AdminArticle saveArticle(AdminArticle adminArticle) throws OperationException {
+        return  articleRepository.save(adminArticle);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.yxyk.utils;
 
+import com.yxyk.bean.common.SysConst;
 import com.yxyk.bean.po.*;
 import com.yxyk.bean.vo.*;
 
@@ -69,11 +70,10 @@ public class VoChangeUtils {
         AdminArticle adminArticle = new AdminArticle();
         if(voArticle.getId()!=null){
             adminArticle.setId(voArticle.getId());
-            adminArticle.setSort(voArticle.getSort());
         }else {
-            adminArticle.setSort(System.currentTimeMillis());
+            adminArticle.setDeleteState(SysConst.DeletedState.UN_DELETE_STATE.getCode());
         }
-        //adminArticle.setSort(voArticle.getSort());
+        adminArticle.setSort(voArticle.getSort());
         adminArticle.setChannel(voArticle.getChannel());
         adminArticle.setChannelName(voArticle.getChannelName());
         adminArticle.setTitle(voArticle.getTitle());

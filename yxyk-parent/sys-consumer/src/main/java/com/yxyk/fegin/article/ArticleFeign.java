@@ -19,7 +19,7 @@ public interface ArticleFeign {
      * @param voArticle vo
      * @return JSONResponse
      */
-    @PostMapping("/article/saveArticle")
+    @PostMapping("/apis/article/saveArticle")
     JSONResponse save(@RequestBody  VoArticle voArticle);
     /**
      * 删除
@@ -27,7 +27,7 @@ public interface ArticleFeign {
      * @param id 删除文章id
      * @return JSONResponse
      */
-    @PostMapping("/article/delArticle")
+    @PostMapping("/apis/article/delArticle")
     JSONResponse delArticle(@RequestParam("id") Long id);
 
     /**
@@ -36,7 +36,7 @@ public interface ArticleFeign {
      * @param voArticle 文章参数
      * @return JSONResponse
      */
-    @PostMapping("/article/findAllArticle")
+    @PostMapping("/apis/article/findAllArticle")
    JSONResponse findAllArticle(@RequestBody VoArticleAll voArticle);
 
     /**
@@ -46,7 +46,7 @@ public interface ArticleFeign {
      * @param event event 操作（1、上移 2、下移 3、置顶 4、置底）
      * @return JSONResponse
      */
-    @PostMapping("/article/changeBannerIndex")
+    @PostMapping("/apisarticle/changeBannerIndex")
     JSONResponse changBannerIndex(@RequestParam(value = "id") Long id,@RequestParam("event") Integer event);
 
     /**
@@ -54,6 +54,6 @@ public interface ArticleFeign {
      * @param id id
      * @return JSONResponse
      */
-    @PostMapping("/article/findArticleById")
+    @PostMapping("/apis/article/findArticleById")
     JSONResponse findArticleById(@RequestParam(value = "id")Long id);
 }
