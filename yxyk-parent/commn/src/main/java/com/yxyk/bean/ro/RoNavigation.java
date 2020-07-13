@@ -12,7 +12,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RoNavigation {
-
+    /**
+     * 栏目id
+     */
+    private Long  id;
     /**
      * 栏目名称
      */
@@ -26,10 +29,16 @@ public class RoNavigation {
     /**
      * 父栏目id
      */
-    private String pId;
+    private Long pId;
 
     /**
      * 权限码
      */
     private String permissionCode;
+
+    public RoNavigation(Long id, Long pId, String navigationName) {
+        this.id = id;
+        this.pId = pId;
+        this.navigationName = navigationName;
+    }
 }
